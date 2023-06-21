@@ -69,7 +69,7 @@ function Game5() {
     } catch (err) {
       setIsLoading(false);
       console.log(err);
-      toast.error("Game creation failed.");
+      toast.error("Game creation failed. Please make sure your Metamask wallet is properly connected.");
     }
   };
 
