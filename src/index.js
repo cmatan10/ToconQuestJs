@@ -9,7 +9,7 @@ import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
 
-import AdminLayout from "layouts/Admin.js";
+import AdminLayout from "layouts/Admin.js";""
 export const Web3Context = createContext();
 
 const App = () => {
