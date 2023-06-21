@@ -1,0 +1,114 @@
+/* Container */
+.container {
+    margin-top: 2rem;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+
+/* Card */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, .1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* CardBody */
+.card-body {}
+
+/* CardTitle */
+.card-title {
+    text-align: center;
+    color: #6c757d;
+}
+
+/* Button */
+.button {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.button-copy {
+    position: 'absolute';
+    top: '0';
+    right: '0';
+    margin: '1em';
+    border: 'none';
+    background-color: '#f0f0f0';
+    color: '#555';
+    padding: '0.5em 1em';
+    font-size: '1rem';
+    font-weight: 'bold'
+}
+
+/* Input */
+.input {}
+
+/* Paragraph */
+.paragraph {
+    margin-top: 1rem;
+}
+
+/* h3 */
+.h3 {
+    margin-top: 1rem;
+}
+
+.code-section {
+    position: relative;
+}
+
+.container-color {
+    background-image: linear-gradient(to right, #f77449, #1C244B 70%);
+    padding: 3rem 0;
+    color: white;
+}
+
+.title-color{
+    color:#5e72e4
+}
+.Instance-color{
+    color:#ffffff
+}
+
+.big-font {
+    font-size: 19px !important;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.card-fixed {
+    height: 180px; /* or whatever shorter height you desire */
+    overflow-y: auto;
+  }
+
+  .game-container{
+    min-height: 200vh; /* This line ensures the container will always be at least as tall as the viewport. */
+  }
+  .card-frame {
+    position: relative;
+    padding: 20px;
+    background: #001636;
+    border-radius: 15px;
+
+    border: solid 5px #3c427e;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    overflow: hidden; 
+  }
+  
+  .card-frame::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    border: solid 10px #5e72e4;
+    border-radius: 15px;
+    z-index: -1;
+  }
