@@ -70,9 +70,9 @@ const Header = () => {
   return (
     <div className="header pb-9 pt-md-3 container-color">
       <Col className="text-center">
-<h1 className="" style={{ color: '#5e72e4', fontSize: '3.4em', fontWeight: 'bold', fontFamily: 'Montserrat' }}>
-  ToconQuest
-</h1>
+        <h1 className="" style={{ color: '#5e72e4', fontSize: '3.4em', fontWeight: 'bold', fontFamily: 'Montserrat' }}>
+          Tocon Quest
+        </h1>
 
         <TypeAnimation
           sequence={[
@@ -105,7 +105,7 @@ const Header = () => {
                       <CardTitle
                         tag="h5"
                         className="text-uppercase mb-0"
-                        style={{ color: '#5e72e4' , fontFamily: 'Montserrat' }}
+                        style={{ color: '#5e72e4', fontFamily: 'Montserrat' }}
                       >
                         Login
                       </CardTitle>
@@ -130,7 +130,7 @@ const Header = () => {
                       <CardTitle
                         tag="h5"
                         className="text-uppercase mb-0 pb-2"
-                        style={{ color: '#5e72e4' , fontFamily: 'Montserrat' }}
+                        style={{ color: '#5e72e4', fontFamily: 'Montserrat' }}
                       >
                         Achievements
                       </CardTitle>
