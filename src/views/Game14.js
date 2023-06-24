@@ -244,9 +244,9 @@ function Game14() {
         <Card className="game-card card-color" style={{ backgroundColor: '#001636', color: 'white' }}>
           <CardBody>
             <CardTitle className="game-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to explore and manipulate the Add data type in Solidity effectively. Don't let the bytes intimidate you! </b>
+            <p><b>Your task is to find out the address of the contract that will be deployed by calling the deploy function. </b>
               <br /><br />
-              <b><strong> You need:</strong>   To play this game, you need to understand Solidity's bytes data type, specifically Add, and how to use it in a contract function.</b></p>
+              <b><strong> You need:</strong>understand how a smart contract address is calculated and calculate the address where the SomeContract contract will be deployed.</b></p>
             <div>
               <Button color="primary" className="button-margin" onClick={createGame}>
                 Create Instance
