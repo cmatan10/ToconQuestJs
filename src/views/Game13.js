@@ -72,14 +72,14 @@ function Game13() {
     }
   };
 
-  const encode = async (_str, _num) => {
+  const decode = async (_str, _num) => {
     if (instanceContract) {
       if (isNaN(Number(_num))) {
         alert('Invalid input! Please enter a number.');
         return;
       }
       try {
-        await instanceContract.methods.encode(_str, _num).send({
+        await instanceContract.methods.decode(_str, _num).send({
           from: walletAddress,
           gas: 500000,
         }).then(async () => {
@@ -229,8 +229,8 @@ function Game13() {
             onChange={(e) => set_num(e.target.value)}
           />
         </FormGroup>
-        <Button color="primary" className="mt-1" onClick={() => encode(_str, _num)}>
-          encode
+        <Button color="primary" className="mt-1" onClick={() => decode(_str, _num)}>
+          decode
         </Button>
       </CardBody>
     </Card>

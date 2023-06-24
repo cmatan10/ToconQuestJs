@@ -13,6 +13,12 @@
 				"internalType": "address",
 				"name": "sender",
 				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "game",
+				"type": "uint256"
 			}
 		],
 		"name": "DeployInstance",
@@ -66,24 +72,6 @@
 				"type": "address"
 			}
 		],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_target",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "_data",
-				"type": "bytes"
-			}
-		],
-		"name": "execute",
-		"outputs": [],
 		"stateMutability": "payable",
 		"type": "function"
 	},

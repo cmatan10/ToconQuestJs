@@ -12,9 +12,33 @@
 				"type": "uint256"
 			}
 		],
-		"name": "encode",
+		"name": "decode",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes",
+				"name": "encodedData",
+				"type": "bytes"
+			}
+		],
+		"name": "decodeStringAndUint",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "pure",
 		"type": "function"
 	},
 	{

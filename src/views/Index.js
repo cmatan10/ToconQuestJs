@@ -24,7 +24,7 @@ const Index = () => {
   const [walletAddress, setWalletAddress] = useState(web3Context.walletAddress);
   const { nftContract } = useContext(Web3Context);
 
-  const [stages, setStages] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [stages, setStages] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
   
   // Function to get stage status
@@ -512,6 +512,39 @@ const Index = () => {
                       </td>
                       <td>
                         {stages[12] === 1 ? (
+                          <div style={{ color: 'green', fontSize: "19px", paddingTop: "48px" }}>
+                            Successfully solved
+                          </div>
+                        ) : (
+                          <div style={{ color: 'gray', fontSize: "19px", paddingTop: "48px" }}>
+                            Unsolved
+                          </div>
+                        )}
+                      </td>
+                    </Link>
+                  </tr>
+                  <tr>
+                    <Link to="/game14" style={{ display: 'contents' }}>
+                      <th scope="row">
+                        <Media className="align-items-center">
+                          <p className=" mr-5">
+                            <img src={process.env.PUBLIC_URL + "/decodeData.jpeg"} alt="Icon description" style={{ width: "260px", height: "100px" }} />
+                          </p>
+                          <Media>
+                            <span className="mb-0 big-font Instance-color"  >
+                              Factory
+                            </span>
+                          </Media>
+                        </Media>
+                      </th>
+                      <td>
+                        <Badge style={{ fontSize: "19px", paddingTop: "48px" }} color="" className="badge-dot mr-9 Instance-color">
+                        <i className="bg-warning" />
+                          Hard
+                        </Badge>
+                      </td>
+                      <td>
+                        {stages[13] === 1 ? (
                           <div style={{ color: 'green', fontSize: "19px", paddingTop: "48px" }}>
                             Successfully solved
                           </div>
