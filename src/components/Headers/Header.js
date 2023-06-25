@@ -90,7 +90,7 @@ const Header = () => {
       </Col>
 
 
-      
+
       <CarouselComponent />
       <br />
 
@@ -112,9 +112,10 @@ const Header = () => {
                       >
                         Login
                       </CardTitle>
-                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <br/>
+                      <div className="d-flex align-items-center justify-content-center">
                         <span className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}>
-                          {walletAddress}
+                          {walletAddress ? walletAddress : <p style={{ fontSize: '16px' }}> You must connect a digital wallet to play the game </p>}
                         </span>
                         <div className="icon icon-shape bg-danger text-white rounded-circle shadow" style={{ marginLeft: '10px' }}>
                           <i className="fas fa-wallet" />
@@ -137,10 +138,11 @@ const Header = () => {
                       >
                         Achievements
                       </CardTitle>
+                      <br/>
                       <Row>
                         {tokenIDs.length === 0 ? (
-                          <Col>
-                            <span className="h2 font-weight-bold mb-0" style={{ color: 'white', fontSize: '18x' }}>
+                          <Col className="d-flex align-items-center justify-content-center">
+                            <span className="h2 font-weight-bold mb-0" style={{ color: 'white', fontSize: '18px' }}>
                               There is no achievements
                             </span>
                           </Col>
@@ -164,7 +166,7 @@ const Header = () => {
           </Row>
         </div>
       </Container>
-      <br/>
+      <br />
 
 
 
