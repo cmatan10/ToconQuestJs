@@ -83,7 +83,7 @@ const Header = () => {
   return (
     <div className="header mt--5 pb-0 pt-md-0 container-color">
       <Col className="text-center">
-        <h1 className="" style={{ color: '#5e72e4', fontSize: '3.4em', fontWeight: 'bold', fontFamily: 'Montserrat' }}>
+        <h1 style={{ color: '#5e72e4', fontSize: '3.4em', fontWeight: 'bold', fontFamily: 'Montserrat' }}>
           Tocon Quest
         </h1>
 

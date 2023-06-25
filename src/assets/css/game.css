@@ -66,6 +66,9 @@
 .title-color{
     color:#5e72e4
 }
+.header-title-color{
+    color: linear-gradient(to right, #f77449, #1C244B 70%);
+}
 .Instance-color{
     color:#ffffff
 }

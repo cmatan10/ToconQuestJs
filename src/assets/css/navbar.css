@@ -9,3 +9,11 @@
     }
 
   }
+  .navbar-centered-items {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.navbar-nav {
+  justify-content: center;
+}

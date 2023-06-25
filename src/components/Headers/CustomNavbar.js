@@ -114,7 +114,7 @@ const CustomNavbar = () => {
 
   return (
     <Navbar dark expand="sm" style={{ backgroundColor: '#001636' }}> {/* Adjust expand size here */}
-      <Nav className="mr-auto" navbar>
+      <Nav  style={{ display: 'flex', justifyContent: 'center', width: '100%' }} navbar >
       {routes.map((route, index) => {
     if (route.path.startsWith("/game")) {
         return null;
@@ -123,7 +123,7 @@ const CustomNavbar = () => {
         <NavItem key={index}>
             {route.name === "Home" ? (
                 <NavLink tag={Link} to={route.path} className="custom-link">
-                   <img src="/favicon.ico" alt="Home" style={{ width: '25px' }} />
+                    <img src="/favicon.ico" alt="Home" style={{ width: '25px' }} />
                 </NavLink>
             ) : (
                 <NavLink tag={Link} to={route.path} className="custom-link">
