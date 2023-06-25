@@ -2,6 +2,7 @@
     height: 250px; /* set to fill carousel height */
     width: 100%; /* set to fill carousel width */
         cursor: pointer; /* change cursor to pointer on hover */
+        border-radius: 50%;
 
 }
 
@@ -10,6 +11,7 @@
     justify-content: center;
     align-items: center;
     height: 40vh;
+
 }
 
 .carousel-size {
@@ -17,15 +19,4 @@
     height: 250px;
     object-fit: contain; /* This will ensure that the image covers the carousel */
 
-}
-.custom-caption {
-    position: absolute !important;
-    right: 55px !important;
-    top: 15px !important;
-    bottom: auto !important;
-    text-align: right !important;
-    transform: none !important;
-    font-size: 20px !important; /* Adjust to the size you want */
-    color: white !important; /* Add this if you want to change the color of the text */
-    
 }
