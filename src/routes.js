@@ -47,109 +47,102 @@ var routes = [
   },
   {
     path: "/game1",
-    name: "Game1",
+    name: "Bytes2",
     component: <Game1 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game2",
-    name: "Game2",
+    name: "Fallback",
     component: <Game2 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game3",
-    name: "Game3",
+    name: "Balance Checker",
     component: <Game3 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game4",
-    name: "Game4",
+    name: "Payable Contract",
     component: <Game4 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game5",
-    name: "Game5",
+    name: "Timestamp",
     component: <Game5 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game6",
-    name: "Game6",
+    name: "Gas Checker",
     component: <Game6 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game7",
-    name: "Game7",
+    name: "Change Password",
     component: <Game7 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game8",
-    name: "Game8",
+    name: "Overflow",
     component: <Game8 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game9",
-    name: "Game9",
+    name: "Blockhash",
     component: <Game9 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game10",
-    name: "Game10",
+    name: "Interfaceid",
     component: <Game10 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game11",
-    name: "Game11",
+    name: "Encode Data",
     component: <Game11 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game12",
-    name: "Game12",
+    name: "Hash Collision",
     component: <Game12 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game13",
-    name: "Game13",
+    name: "Decode Data",
     component: <Game13 />,
     layout: "/",
     showInSidebar: false,  
   },
   {
     path: "/game14",
-    name: "Game14",
+    name: "Factory",
     component: <Game14 />,
     layout: "/",
     showInSidebar: false,  
-  }
-  
-  
-  
-  
-  
-  
-  
+  } 
 ];
 export default routes;
 
