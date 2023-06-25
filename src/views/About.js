@@ -9,9 +9,6 @@ const About = () => {
     <div >
 
       <Container fluid className="container-colors about-container">
-      <Link to="/" className="btn " style={{ backgroundColor: '#001636', color: 'white', position: 'absolute', left: '0', top: '0' }}>
-          <i className="fas fa-home"></i>
-        </Link>
         <Row className="about-heading-row">
           <Col className="text-center">
             <h1 className="about-heading" style={{color: '#5e72e4'}}>About ToconQuest</h1>

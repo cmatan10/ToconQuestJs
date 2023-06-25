@@ -149,9 +149,7 @@ function Game10() {
     <>
       <Container className="game-container">
         <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
-          <Link to="/" className="btn btn-primary" style={{ position: 'absolute', left: '0', top: '0' }}>
-            <i className="fas fa-home"></i>
-          </Link>
+
           <CardBody>
             <CardTitle className="game-title title-color" ><b>Interfaceid</b></CardTitle>
             <div className="code-section">

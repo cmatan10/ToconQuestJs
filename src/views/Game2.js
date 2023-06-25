@@ -128,9 +128,7 @@ function Game2() {
         <>
             <Container className="container">
                 <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
-                    <Link to="/" className="btn btn-primary" style={{ position: 'absolute', left: '0', top: '0' }}>
-                        <i className="fas fa-home"></i>
-                    </Link>
+
                     <CardBody>
                         <CardTitle className="card-title title-color" ><b>Fallback</b></CardTitle>
                         <div style={{ position: 'relative' }}>

@@ -131,9 +131,9 @@ const CustomNavbar = () => {
           <DropdownToggle nav caret >
             Games
           </DropdownToggle>
-          <DropdownMenu>
+          <DropdownMenu  style={{color: 'white' ,backgroundColor: '#001636'}}>
             {gameRoutes.map((gameRoute, index) => (
-              <DropdownItem key={index} tag={Link} to={gameRoute.path} className="custom-link"> {/* Add custom-link class */}
+              <DropdownItem key={index} tag={Link} to={gameRoute.path} className="custom-link" style={{color: 'white' ,backgroundColor: '#001636'}}> {/* Add custom-link class */}
                 {gameRoute.name}
               </DropdownItem>
             ))}
