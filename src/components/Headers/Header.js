@@ -8,25 +8,27 @@ import CarouselComponent from './CarouselComponent.js'
 const Header = () => {
   const web3Context = useContext(Web3Context);
   const [walletAddress, setWalletAddress] = useState(web3Context.walletAddress);
+  const [Chain, setChain] = useState(web3Context.Chain);
   const { nftContract } = useContext(Web3Context);
   const [tokenIDs, setTokenIDs] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!walletAddress || !nftContract) {
-        return;
+useEffect(() => {
+  const fetchData = async () => {
+    // Check if the chain is supported before making any contract calls
+    if (!walletAddress || !nftContract || ![/* your supported chain IDs */].includes(Chain)) {
+      return;
+    }
+    let tempTokenIDs = [];
+    for (let index = 1; index <= 14; index++) {
+      const balance = await nftContract.methods.balanceOf(walletAddress, index).call();
+      if (balance > 0) {
+        tempTokenIDs.push(index);
       }
-      let tempTokenIDs = [];
-      for (let index = 1; index <= 14; index++) {
-        const balance = await nftContract.methods.balanceOf(walletAddress, index).call();
-        if (balance > 0) {
-          tempTokenIDs.push(index);
-        }
-      }
-      setTokenIDs(tempTokenIDs);
-    };
-    fetchData();
-  }, [walletAddress, nftContract])
+    }
+    setTokenIDs(tempTokenIDs);
+  };
+  fetchData();
+}, [Chain ,walletAddress, nftContract])
 
 
 
@@ -34,24 +36,31 @@ const Header = () => {
 
   useEffect(() => {
     setWalletAddress(web3Context.walletAddress);
-
+    setChain(web3Context.Chain);
     const ethereum = window.ethereum;
-    console.log(ethereum)
     if (ethereum && ethereum.on) {
       const handleAccountsChanged = function (accounts) {
         setWalletAddress(accounts[0]);
-        // Here, you could also update the walletAddress in your context provider
+        // setChain(Chain); remove this line
       };
-
+      const handleChainChanged = (chainId) => {
+        // this line will convert chainId to decimal from hexadecimal
+        const decimalChainId = parseInt(chainId, 16);
+        setChain(decimalChainId);
+      };
+  
       ethereum.on('accountsChanged', handleAccountsChanged);
-
+      ethereum.on('chainChanged', handleChainChanged);
+  
       return () => {
         if (ethereum && ethereum.removeListener) {
           ethereum.removeListener('accountsChanged', handleAccountsChanged);
+          ethereum.removeListener('chainChanged', handleChainChanged);
         }
       }
     }
-  }, [web3Context.walletAddress]);
+  }, [web3Context.walletAddress, web3Context.Chain]);
+  
 
   const tokenIDtoGame = {
     1: 'Bytes2',
@@ -119,6 +128,9 @@ const Header = () => {
                           <i className="fas fa-wallet" />
                         </div>
                       </div>
+                      <span className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}>
+                          {Chain ? <p className="d-flex align-items-center justify-content-center">{Chain}</p> : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}> Meta Mask not detected </p>}
+                        </span>
                     </div>
                   </Row>
                 </CardBody>
