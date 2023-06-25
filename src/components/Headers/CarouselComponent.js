@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Carousel, CarouselItem, CarouselIndicators, CarouselControl } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import { Carousel, CarouselItem,  CarouselControl } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
 import '../../assets/css/CarouselComponent.css';
 
@@ -95,6 +95,14 @@ const CarouselComponent = () => {
             path: '/game14'
         }
     ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+          next();
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [activeIndex, animating]);
+
     const next = () => {
         if (animating) return;
         const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
