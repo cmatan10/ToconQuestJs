@@ -115,18 +115,24 @@ const CustomNavbar = () => {
   return (
     <Navbar dark expand="sm" style={{ backgroundColor: '#001636' }}> {/* Adjust expand size here */}
       <Nav className="mr-auto" navbar>
-        {routes.map((route, index) => {
-          if (route.path.startsWith("/game")) {
-            return null;
-          }
-          return (
-            <NavItem key={index}>
-              <NavLink tag={Link} to={route.path} className="custom-link"> {/* Add custom-link class */}
-                {route.name}
-              </NavLink>
-            </NavItem>
-          );
-        })}
+      {routes.map((route, index) => {
+    if (route.path.startsWith("/game")) {
+        return null;
+    }
+    return (
+        <NavItem key={index}>
+            {route.name === "Home" ? (
+                <NavLink tag={Link} to={route.path} className="custom-link">
+                   <img src="/favicon.ico" alt="Home" style={{ width: '25px' }} />
+                </NavLink>
+            ) : (
+                <NavLink tag={Link} to={route.path} className="custom-link">
+                    {route.name}
+                </NavLink>
+            )}
+        </NavItem>
+    );
+})}
         <Dropdown nav isOpen={dropdownOpen} toggle={toggleDropdown} >
           <DropdownToggle nav caret >
             Games
