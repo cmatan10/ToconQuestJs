@@ -3,6 +3,7 @@ import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 import { Web3Context } from '../../index';
 import { TypeAnimation } from 'react-type-animation';
 import '../../assets/css/game.css'
+import CarouselComponent from './CarouselComponent.js'
 
 const Header = () => {
   const web3Context = useContext(Web3Context);
@@ -16,7 +17,7 @@ const Header = () => {
         return;
       }
       let tempTokenIDs = [];
-      for (let index = 1; index <= 13; index++) {
+      for (let index = 1; index <= 14; index++) {
         const balance = await nftContract.methods.balanceOf(walletAddress, index).call();
         if (balance > 0) {
           tempTokenIDs.push(index);
@@ -66,9 +67,10 @@ const Header = () => {
     11: 'EncodeData',
     12: 'HashCollision',
     13: 'DecodeData',
+    14: 'Factory'
   };
   return (
-    <div className="header pb-9 pt-md-3 container-color">
+    <div className="header pb-0 pt-md-3 container-color">
       <Col className="text-center">
         <h1 className="" style={{ color: '#5e72e4', fontSize: '3.4em', fontWeight: 'bold', fontFamily: 'Montserrat' }}>
           Tocon Quest
@@ -89,6 +91,9 @@ const Header = () => {
 
       <br />
       <br />
+      <br />
+      
+      <CarouselComponent />
       <br />
 
       <Container fluid>
@@ -161,6 +166,10 @@ const Header = () => {
           </Row>
         </div>
       </Container>
+      <br/>
+
+
+
     </div>
   );
 };

@@ -67,8 +67,9 @@ const Index = () => {
     < >
 
       <Header />
+
       {/* Page content */}
-      <Container className="mt--7 container-color" fluid >
+      <Container className="mt--0 container-color" fluid >
         {/* Table */}
 
         <Row>
@@ -528,7 +529,7 @@ const Index = () => {
                       <th scope="row">
                         <Media className="align-items-center">
                           <p className=" mr-5">
-                            <img src={process.env.PUBLIC_URL + "/decodeData.jpeg"} alt="Icon description" style={{ width: "260px", height: "100px" }} />
+                            <img src={process.env.PUBLIC_URL + "/factory.jpeg"} alt="Icon description" style={{ width: "260px", height: "100px" }} />
                           </p>
                           <Media>
                             <span className="mb-0 big-font Instance-color"  >

@@ -10,6 +10,7 @@ import AdminFooter from '../components/Footers/AdminFooter.js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
+
 function Game14() {
   const [Add, setAdd] = useState("");
   const [InstanceAddress, setInstanceAddress] = useState("");
@@ -206,16 +207,16 @@ function Game14() {
           return address(uint160(uint256(result)));
       }
   
-      function deploy(address _add) external {
-      require(_add != address(0), "Address must not be null");
-          bytes32 salt = bytes32(_salt);
-          SomeContract someContract = (new SomeContract){salt: salt}();
-          SomeContracts.push(someContract);
-          if (address(SomeContracts[0]) == _add){
-          correctPrediction = true;
-          }
-      }
-  
+      function deploy(address _add) external{
+            require(_add != address(0), "Address must not be null");
+            bytes32 salt = bytes32(_salt);
+            SomeContract someContract = (new SomeContract){salt: salt}();
+            SomeContracts.push(someContract);
+            if (address(SomeContracts[0]) == _add){
+            correctPrediction = true;
+            }
+            require(correctPrediction,"not correct");
+        }
   }
   `;
 

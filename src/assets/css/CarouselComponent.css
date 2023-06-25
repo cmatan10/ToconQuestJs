@@ -1,0 +1,31 @@
+.carousel-image {
+    height: 300px; /* set to fill carousel height */
+    width: 100%; /* set to fill carousel width */
+        cursor: pointer; /* change cursor to pointer on hover */
+
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.carousel-size {
+    width: 1500px;
+    height: 350px;
+    object-fit: contain; /* This will ensure that the image covers the carousel */
+
+}
+.custom-caption {
+    position: absolute !important;
+    right: 55px !important;
+    top: 15px !important;
+    bottom: auto !important;
+    text-align: right !important;
+    transform: none !important;
+    font-size: 20px !important; /* Adjust to the size you want */
+    color: white !important; /* Add this if you want to change the color of the text */
+    
+}
