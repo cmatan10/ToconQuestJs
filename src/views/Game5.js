@@ -85,8 +85,11 @@ function Game5() {
           from: walletAddress,
           gas: 500000,
         }).then(async () => {
-          console.log('Transaction sent successfully!');
-          toast.success("Transaction sent successfully!"); // Success toast
+          console.log('The Mission Is Complete');
+          toast("Well done! You have solved this level!", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 5000, 
+            }); 
           if (TokenBalance < 1) {
             try {
               await nftContract.methods.mint(5, InstanceAddress).send({
@@ -164,7 +167,7 @@ function Game5() {
             <br /><br />
             <b><strong> You need:</strong>  To complete this puzzle, you need to understand how block.timestamp works in Solidity and how to access it. </b></p>
           <div>
-            <Button color="primary" className="button-margin" onClick={createGame}>
+            <Button style={{backgroundColor: '#c97539' , color: 'white'}}  className="button-margin" onClick={createGame}>
               Create Instance
             </Button>
           </div>
@@ -174,8 +177,10 @@ function Game5() {
           <>
             <Card className="game-card"  style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
               <CardBody>
+              <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
+
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <Button color="primary" className="mt-1" onClick={() => success()}>
+                  <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => success()}>
                     success
                   </Button>
                   {successState !== null && 
@@ -185,7 +190,7 @@ function Game5() {
                   }
                 </div>
                 <br />
-                <Button color="info" className="mt-1" onClick={toggleHint}>
+                <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={toggleHint}>
                   {isHintVisible ? 'Hide Hint' : 'Show Hint'}
                 </Button>
               </CardBody>
@@ -203,7 +208,7 @@ function Game5() {
                 onChange={(e) => setTimestamp(e.target.value)}
               />
                 </FormGroup>
-                <Button color="primary" className="mt-1" onClick={() => timeReset(Timestamp)}>
+                <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => timeReset(Timestamp)}>
                   timeReset
                 </Button>
               </CardBody>

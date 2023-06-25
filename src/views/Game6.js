@@ -82,8 +82,11 @@ function Game6() {
         }).then(async () => {
           const gas = await instanceContract.methods.gasUsed().call()
           if (gas > 3000 && gas < 5000) {
-            console.log('Transaction sent successfully!');
-            toast.success("Transaction sent successfully!"); // Success toast
+            console.log('The Mission Is Complete');
+            toast("Well done! You have solved this level!", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 5000, 
+              }); 
             if (TokenBalance < 1) {
               try {
                 await nftContract.methods.mint(6, InstanceAddress).send({
@@ -180,7 +183,7 @@ function Game6() {
               <b><strong> You need:</strong> To solve this puzzle, you need to understand Ethereum's gas concept, how to use gasleft() to monitor gas consumption, and how to control and optimize gas usage in Solidity. </b>
             </p>
             <div>
-              <Button color="primary" className="button-margin" onClick={createGame}>
+              <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="button-margin" onClick={createGame}>
                 Create Instance
               </Button>
             </div>
@@ -191,8 +194,9 @@ function Game6() {
   <>
     <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
       <CardBody>
+      <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Button color="primary" className="mt-1" onClick={() => gasUsed()}>
+          <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => gasUsed()}>
             gasUsed
           </Button>
           {gasUsedValue !== null &&
@@ -203,7 +207,7 @@ function Game6() {
         </div>
         
         <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
-          <Button color="primary" className="mt-1" onClick={() => GasChecked()}>
+          <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => GasChecked()}>
             GasChecked
           </Button>
           {gasCheckedValue !== null &&
@@ -213,7 +217,7 @@ function Game6() {
           }
         </div>
         <br />
-        <Button color="info" className="mt-1" onClick={toggleHint}>
+        <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={toggleHint}>
           {isHintVisible ? 'Hide Hint' : 'Show Hint'}
         </Button>
       </CardBody>
@@ -231,7 +235,7 @@ function Game6() {
             onChange={(e) => setiterations(e.target.value)}
           />
         </FormGroup>
-        <Button color="primary" className="mt-1" onClick={() => complexOperation(iterations)}>
+        <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => complexOperation(iterations)}>
           complexOperation
         </Button>
       </CardBody>

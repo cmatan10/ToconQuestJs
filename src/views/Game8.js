@@ -63,7 +63,7 @@ function Game8() {
         }
       });
       setIsLoading(false);
-      toast.success("Game created successfully!"); 
+      toast.success("Game created successfully!");
     } catch (err) {
       setIsLoading(false);
       console.log(err);
@@ -85,8 +85,11 @@ function Game8() {
           const count = await instanceContract.methods.counter().call()
           console.log(count);
           if (count == 3) {
-            console.log('Transaction sent successfully!');
-            toast.success("Transaction sent successfully!"); // Success toast
+            console.log('The Mission Is Complete');
+            toast("Well done! You have solved this level!", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 5000,
+            });
             if (TokenBalance < 1) {
               try {
                 await nftContract.methods.mint(8, InstanceAddress).send({
@@ -150,113 +153,117 @@ function Game8() {
 
   return (
     <>
-    <Container className="game-container">
-      <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+      <Container className="game-container">
+        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
 
-        <CardBody>
-          <CardTitle className="game-title title-color" ><b>Overflow</b></CardTitle>
-          <div className="code-section">
-            <CopyToClipboard text={code}>
-              <Button className="button-copy">
-                Copy code
-              </Button>
-            </CopyToClipboard>
-            <SyntaxHighlighter language="javascript" style={a11yDark} ref={codeRef}>
-              {code}
-            </SyntaxHighlighter>
-          </div>
-        </CardBody>
-      </Card>
-
-      <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
-      <CardBody>
-          <CardTitle className="card-title title-color" ><b>Game Description</b></CardTitle>
-          <p><b>Your task is to trigger an overflow, navigating your way through a whirlwind of numbers.</b>
-            <br /><br />
-            <b><strong> You need:</strong> To solve this puzzle, you need to understand the concept of integer overflow and underflow, how the 'unchecked' keyword works in Solidity ^0.8.0, and how to induce an overflow situation. </b>
-          </p>
-          <div>
-            <Button color="primary" className="button-margin" onClick={createGame}>
-              Create Instance
-            </Button>
-          </div>
-        </CardBody>
-      </Card>
-
-      {!isLoading && InstanceAddress !== "" && (
-  <>
-    <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
-    <CardBody>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Button color="primary" className="mt-1" onClick={() => counter()}>
-                  counter
-                </Button>
-                {counterValue !== null && <p>Counter: {counterValue}</p>}
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Button color="primary" className="mt-1" onClick={() => overflowOccurred()}>
-                  overflowOccurred
-                </Button>
-                {overflowOccurredValue !== null &&
-            <p style={{ marginLeft: '10px', marginTop: '12px' }}>
-              {overflowOccurredValue ? "True" : "False"}
-            </p>
-          }
-              </div>
-              <Button color="info" className="mt-1" onClick={toggleHint}>
-                { isHintVisible ? 'Hide Hint' : 'Show Hint'}
-              </Button>
-            </CardBody>
-    </Card>
-
-    <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
-      <CardBody>
-        <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
-        <FormGroup>
-          <Input
-            className="form-control-alternative"
-            id="input-city"
-            placeholder="Enter ID"
-            type="text"
-            onChange={(e) => setvalue(e.target.value)}
-          />
-        </FormGroup>
-        <Button color="primary" className="mt-1" onClick={() => add(value)}>
-          add
-        </Button>
-      </CardBody>
-    </Card>
-  </>
-)}
-      {isHintVisible && (
-        <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
           <CardBody>
-            <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
-            <p>
-              <strong>
-                <a style={{ textDecoration: "underline" }} href={hintLink} target="_blank" rel="noopener noreferrer"> https://docs.soliditylang.org/en/latest/080-breaking-changes.html#silent-changes-of-the-semantics</a></strong>
-            </p>
+            <CardTitle className="game-title title-color" ><b>Overflow</b></CardTitle>
+            <div className="code-section">
+              <CopyToClipboard text={code}>
+                <Button className="button-copy">
+                  Copy code
+                </Button>
+              </CopyToClipboard>
+              <SyntaxHighlighter language="javascript" style={a11yDark} ref={codeRef}>
+                {code}
+              </SyntaxHighlighter>
+            </div>
           </CardBody>
         </Card>
-      )}
-      <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                {TokenBalance < 1 ? null : (
-                    <div>
-                        <img
-                            src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                            alt="got badge"
-                            style={{ width: "260px", height: "180px" }}
-                        />
-                        <strong>
-                            Congratulations! You Got A Badge{" "}
-                            <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
-                        </strong>
-                    </div>
-                )}
-            </p>  
-    </Container>
-    <AdminFooter/>
-    <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
+
+        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <CardBody>
+            <CardTitle className="card-title title-color" ><b>Game Description</b></CardTitle>
+            <p><b>Your task is to trigger an overflow, navigating your way through a whirlwind of numbers.</b>
+              <br /><br />
+              <b><strong> You need:</strong> To solve this puzzle, you need to understand the concept of integer overflow and underflow, how the 'unchecked' keyword works in Solidity ^0.8.0, and how to induce an overflow situation. </b>
+            </p>
+            <div>
+              <Button style={{ backgroundColor: '#c97539', color: 'white' }} className="button-margin" onClick={createGame}>
+                Create Instance
+              </Button>
+            </div>
+          </CardBody>
+        </Card>
+
+        {!isLoading && InstanceAddress !== "" && (
+          <>
+            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
+              <CardBody>
+              <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Button style={{ backgroundColor: '#355f7d', color: 'white' }} className="mt-1" onClick={() => counter()}>
+                    counter
+                  </Button>
+                  {counterValue !== null && <p>Counter: {counterValue}</p>}
+                </div>
+                <br />
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Button style={{ backgroundColor: '#355f7d', color: 'white' }} className="mt-1" onClick={() => overflowOccurred()}>
+                    overflowOccurred
+                  </Button>
+                  {overflowOccurredValue !== null &&
+                    <p style={{ marginLeft: '10px', marginTop: '12px' }}>
+                      {overflowOccurredValue ? "True" : "False"}
+                    </p>
+                  }
+
+                </div>
+                <br />
+                <Button style={{ backgroundColor: '#355f7d', color: 'white' }} className="mt-1" onClick={toggleHint}>
+                  {isHintVisible ? 'Hide Hint' : 'Show Hint'}
+                </Button>
+              </CardBody>
+            </Card>
+
+            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+              <CardBody>
+                <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
+                <FormGroup>
+                  <Input
+                    className="form-control-alternative"
+                    id="input-city"
+                    placeholder="Enter ID"
+                    type="text"
+                    onChange={(e) => setvalue(e.target.value)}
+                  />
+                </FormGroup>
+                <Button style={{ backgroundColor: '#c97539', color: 'white' }} className="mt-1" onClick={() => add(value)}>
+                  add
+                </Button>
+              </CardBody>
+            </Card>
+          </>
+        )}
+        {isHintVisible && (
+          <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <CardBody>
+              <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
+              <p>
+                <strong>
+                  <a style={{ textDecoration: "underline" }} href={hintLink} target="_blank" rel="noopener noreferrer"> https://docs.soliditylang.org/en/latest/080-breaking-changes.html#silent-changes-of-the-semantics</a></strong>
+              </p>
+            </CardBody>
+          </Card>
+        )}
+        <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          {TokenBalance < 1 ? null : (
+            <div>
+              <img
+                src={process.env.PUBLIC_URL + "/gotBadge.png"}
+                alt="got badge"
+                style={{ width: "260px", height: "180px" }}
+              />
+              <strong>
+                Congratulations! You Got A Badge{" "}
+                <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
+              </strong>
+            </div>
+          )}
+        </p>
+      </Container>
+      <AdminFooter />
+      <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </>
   );
 

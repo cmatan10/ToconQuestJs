@@ -62,8 +62,13 @@ function Game4() {
       toast.error("Game creation failed. Please make sure your Metamask wallet is properly connected.");
     }
   };
-
   const checkPayableGame = async () => {
+    const bal = await web3.eth.getBalance(InstanceAddress)
+    if (bal == 1){
+      toast("Well done! You have solved this level!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 5000, 
+      }) }
     if (TokenBalance < 1) {
       try {
         await nftContract.methods.mint(4, InstanceAddress).send({
@@ -82,9 +87,8 @@ function Game4() {
           });
       } catch (err) {
         console.error(err.message);
-        toast.error("Minting failed."); // Error toast
       }
-    }
+  }
   };
   
 
@@ -126,7 +130,7 @@ function Game4() {
             <b><strong> You need:</strong>  To accomplish this task, you need to understand the receive function in Solidity, its purpose, when it's triggered, and how to interact with it by sending Ether to the contract. </b>
           </p>
           <div>
-            <Button color="primary" className="button" onClick={createGame}>
+            <Button style={{backgroundColor: '#c97539' , color: 'white'}}  className="button" onClick={createGame}>
               Create Instance
             </Button>
           </div>
@@ -138,10 +142,10 @@ function Game4() {
         <Card className="card"  style={{ backgroundColor: '#001636', color: 'white' }}>
           <CardBody>
           <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
-            <Button color="success" className="button" onClick={checkPayableGame}>
+            <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="button" onClick={checkPayableGame}>
               Submit
             </Button>
-            <Button color="info" className="button" onClick={toggleHint}>
+            <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="button" onClick={toggleHint}>
               {isHintVisible ? 'Hide Hint' : 'Show Hint'}
             </Button>
           </CardBody>

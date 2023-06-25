@@ -83,8 +83,11 @@ function Game13() {
           from: walletAddress,
           gas: 500000,
         }).then(async () => {
-          console.log('Transaction sent successfully!');
-          toast.success("Transaction sent successfully!"); // Success toast
+          console.log('The Mission Is Complete');
+          toast("Well done! You have solved this level!", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 5000, 
+            }); 
           if (TokenBalance < 1) {
             try {
               console.log(TokenBalance);
@@ -171,10 +174,10 @@ function Game13() {
           <CardTitle className="card-title title-color" ><b>Game Description</b></CardTitle>
           <p><b>Your task is to decode an encoded string and a number. You'll need to correctly pass the decoded data to the encode function, which will verify if the transferred data is correct.</b>
             <br /><br />
-            <b><strong> You need:</strong> To complete this mission, you need to be familiar with the abi.encode function for encoding data in Solidity, understand how the keccak256 hash function works, and use these tools to decode data </b>
+            <b><strong> You need:</strong> To complete this mission, you need to be familiar with the abi.encode function for encoding data in Solidity, understand how the keccak256 hash function works, and use these tools to decode data. </b>
           </p>
           <div>
-            <Button color="primary" className="button-margin" onClick={createGame}>
+            <Button style={{backgroundColor: '#c97539' , color: 'white'}}  className="button-margin" onClick={createGame}>
               Create Instance
             </Button>
           </div>
@@ -185,22 +188,24 @@ function Game13() {
   <>
     <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
       <CardBody>
-          <Button color="success" className="mt-1" onClick={encodeStringAndUint}>
+      <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
+
+          <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={encodeStringAndUint}>
             encodeStringAndUint
           </Button>
           {_encodeStringAndUint !== null && 
             <p style={{ wordBreak: "break-all" }}> {JSON.stringify(_encodeStringAndUint)}</p>}
-   
-        <br/>
+            <br/>
+
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Button color="success" className="mt-1" onClick={player}>
+        
+          <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={player}>
             player
           </Button>
           {playerState !== null && 
             <p style={{ marginLeft: '10px', marginTop: '12px' }}>{JSON.stringify(playerState)}</p>}
         </div>
-        <br/>
-        <Button color="info" className="button" onClick={toggleHint}>
+        <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="button" onClick={toggleHint}>
           {isHintVisible ? 'Hide Hint' : 'Show Hint'}
         </Button>
       </CardBody>
@@ -226,7 +231,7 @@ function Game13() {
             onChange={(e) => set_num(e.target.value)}
           />
         </FormGroup>
-        <Button color="primary" className="mt-1" onClick={() => decode(_str, _num)}>
+        <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => decode(_str, _num)}>
           decode
         </Button>
       </CardBody>

@@ -85,8 +85,10 @@ function Game1() {
           gas: 500000,
         }).then(async () => {
           console.log('Transaction sent successfully!');
-          toast.success("Transaction sent successfully!"); // Success toast
-          if (TokenBalance < 1) {
+          toast("Well done! You have solved this level!", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 5000,
+          });          if (TokenBalance < 1) {
             try {
               await nftContract.methods.mint(1, InstanceAddress).send({
                 from: walletAddress,
@@ -163,7 +165,7 @@ function Game1() {
               <br /><br />
               <b><strong> You need:</strong>   To play this game, you need to understand Solidity's bytes data type, specifically bytes2, and how to use it in a contract function.</b></p>
             <div>
-              <Button color="primary" className="button-margin" onClick={createGame}>
+              <Button className="button-margin" onClick={createGame} style={{backgroundColor: '#c97539' , color: 'white'}}>
                 Create Instance
               </Button>
             </div>
@@ -174,14 +176,15 @@ function Game1() {
           <>
             <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
               <CardBody>
+              <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
                 <div style={{ display: 'flex', alignItems: 'flex-start', minHeight: '50px' }}>
-                  <Button color="primary" className="mt-1" onClick={() => num()}>
+                  <Button  className="mt-1" onClick={() => num()} style={{backgroundColor: '#355f7d' , color: 'white'}}>
                     num
                   </Button>
                   {Num !== '' && <p style={{ marginLeft: '10px', marginTop: '12px' }}>{Num}</p>}
                 </div>
                 <br />
-                <Button color="info" className="mt-1" onClick={toggleHint}>
+                <Button className="mt-1" onClick={toggleHint} style={{backgroundColor: '#355f7d' , color: 'white'}}>
                   {isHintVisible ? 'Hide Hint' : 'Show Hint'}
                 </Button>
               </CardBody>
@@ -200,7 +203,7 @@ function Game1() {
                     onChange={(e) => setBytes2(e.target.value)}
                   />
                 </FormGroup>
-                <Button color="primary" className="mt-1" onClick={() => increaseNum(Bytes2)}>
+                <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => increaseNum(Bytes2)}>
                   increaseNum
                 </Button>
               </CardBody>

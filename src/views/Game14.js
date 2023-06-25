@@ -85,8 +85,11 @@ function Game14() {
           from: walletAddress,
           gas: 500000,
         }).then(async () => {
-          console.log('Transaction sent successfully!');
-          toast.success("Transaction sent successfully!"); // Success toast
+          console.log('The Mission Is Complete');
+          toast("Well done! You have solved this level!", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 5000, 
+            }); 
           if (TokenBalance < 1) {
             try {
               await nftContract.methods.mint(14, InstanceAddress).send({
@@ -246,7 +249,7 @@ function Game14() {
               <br /><br />
               <b><strong> You need:</strong>understand how a smart contract address is calculated and calculate the address where the SomeContract contract will be deployed.</b></p>
             <div>
-              <Button color="primary" className="button-margin" onClick={createGame}>
+              <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="button-margin" onClick={createGame}>
                 Create Instance
               </Button>
             </div>
@@ -257,8 +260,10 @@ function Game14() {
           <>
             <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
               <CardBody>
+              <CardTitle className="card-title title-color" ><b>State Variables & Call Functions</b></CardTitle>
+
                 <div style={{ display: 'flex', alignItems: 'flex-start', minHeight: '50px' }}>
-                  <Button color="primary" className="mt-1" onClick={() => correctPrediction()}>
+                  <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => correctPrediction()}>
                     CorrectPrediction
                   </Button>
                   {CorrectPrediction !== null &&
@@ -268,20 +273,19 @@ function Game14() {
                   }                </div>
                 <br />
                 <div style={{ display: 'flex', alignItems: 'flex-start', minHeight: '50px' }}>
-                  <Button color="primary" className="mt-1" onClick={() => _Salt()}>
+                  <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => _Salt()}>
                     Salt
                   </Button>
                   {Salt !== '' && <p style={{ marginLeft: '10px', marginTop: '12px' }}>{Salt}</p>}
                 </div>
                 <br />
                 <div style={{ display: 'flex', alignItems: 'flex-start', minHeight: '50px' }}>
-                  <Button color="primary" className="mt-1" onClick={() => bytecode()}>
+                  <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => bytecode()}>
                     bytecode
                   </Button>
                   {Bytecode !== null &&
                     <p style={{ wordBreak: "break-all" }}> {JSON.stringify(Bytecode)}</p>}
                 </div>
-                <br />
                 <br />
                 <FormGroup>
                   <Input
@@ -308,12 +312,14 @@ function Game14() {
                     onChange={(e) => set_bytecode(e.target.value)}
                   />
                 </FormGroup>
-                <Button color="primary" className="mt-1" onClick={() => checkAddress(_addr, _sal, _bytecode)}>
+                <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => checkAddress(_addr, _sal, _bytecode)}>
                   checkAddress
                 </Button>
                 {_Address !== '' && <p style={{ marginLeft: '10px', marginTop: '12px' }}>{_Address}</p>}
                 <br />
-                <Button color="info" className="mt-1" onClick={toggleHint}>
+                <br />
+
+                <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={toggleHint}>
                   {isHintVisible ? 'Hide Hint' : 'Show Hint'}
                 </Button>
               </CardBody>
@@ -332,7 +338,7 @@ function Game14() {
                     onChange={(e) => setAdd(e.target.value)}
                   />
                 </FormGroup>
-                <Button color="primary" className="mt-1" onClick={() => _deploy(Add)}>
+                <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => _deploy(Add)}>
                   _deploy
                 </Button>
               </CardBody>

@@ -93,8 +93,11 @@ function Game10() {
           const ans = await instanceContract.methods.answer().call()
 
           if (ans == true) { 
-            console.log('Transaction sent successfully!');
-            toast.success("Transaction sent successfully!"); // Success toast
+            console.log('The Mission Is Complete');
+            toast("Well done! You have solved this level!", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 5000, 
+              }); 
             if (TokenBalance < 1) {
               try {
                 await nftContract.methods.mint(10, InstanceAddress).send({
@@ -173,7 +176,7 @@ function Game10() {
               <b><strong> You need:</strong> To solve this puzzle, you need to understand function signatures in Solidity, how to compute them using the keccak256 hash function, and how to convert them into the bytes4 type. </b>
             </p>
             <div>
-              <Button color="primary" className="button-margin" onClick={createGame}>
+              <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="button-margin" onClick={createGame}>
                 Create Instance
               </Button>
             </div>
@@ -184,8 +187,10 @@ function Game10() {
           <>
             <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
               <CardBody>
+              <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
+
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <Button color="primary" className="mt-1" onClick={() => answer()}>
+                  <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => answer()}>
                     answer
                   </Button>
                   {_answer !== null && 
@@ -194,7 +199,7 @@ function Game10() {
                   </p>}
                 </div>
                 <br />
-                <Button color="info" className="mt-1" onClick={toggleHint}>
+                <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={toggleHint}>
                   {isHintVisible ? 'Hide Hint' : 'Show Hint'}
                 </Button>
               </CardBody>
@@ -212,7 +217,7 @@ function Game10() {
                     onChange={(e) => setid(e.target.value)}
                   />
                 </FormGroup>
-                <Button color="primary" className="mt-1" onClick={() => CalcMe(id)}>
+                <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => CalcMe(id)}>
                   CalcMe
                 </Button>
               </CardBody>

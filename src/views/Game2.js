@@ -76,6 +76,12 @@ function Game2() {
         const fixMeValue = await instanceContract.methods.fixMe().call();
         console.log(fixMeValue);
         setFixMeState(fixMeValue);
+        if(fixMeValue == true){
+            console.log('The Mission Is Complete');
+            toast("Well done! You have solved this level!", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 5000, 
+              }); 
         if (TokenBalance < 1) {
             try {
                 await nftContract.methods.mint(2, InstanceAddress).send({
@@ -96,9 +102,7 @@ function Game2() {
                 console.error(err.message);
                 toast.error("Minting failed."); // Error toast
             }
-        }else if(fixMeValue == true){
-            console.log('The Mission Is Complete');
-            toast.success("The Mission Is Complete"); // Success toast
+        }
         }
     };
     const fixMe = async () => {
@@ -151,7 +155,7 @@ function Game2() {
                             <br /><br />
                             <b><strong> You need:</strong>  To complete this mission, you need to understand how Solidity's fallback function works, when it's triggered, and how to activate it. </b></p>
                         <div>
-                            <Button color="primary" className="button" onClick={createGame}>
+                            <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="button" onClick={createGame}>
                                 Create Instance
                             </Button>
                         </div>
@@ -163,14 +167,15 @@ function Game2() {
                     <>
                         <Card className="card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
                             <CardBody>
+                            <CardTitle className="card-title title-color" ><b>State Variables & Call Functions</b></CardTitle>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                                    <Button color="success" className="button" onClick={fixMe}>
+                                    <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="button" onClick={fixMe}>
                                         fixMe
                                     </Button>
                                     {isButtonClicked && fixMeState !== null && <p style={{ marginLeft: '10px', marginTop: '12px' }}>{fixMeState.toString()}</p>}
                                 </div>
                                 <br />
-                                <Button color="info" className="button" onClick={toggleHint}>
+                                <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="button" onClick={toggleHint}>
                                     {isHintVisible ? 'Hide Hint' : 'Show Hint'}
                                 </Button>
                             </CardBody>
@@ -180,7 +185,7 @@ function Game2() {
                         <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
                             <CardBody>
                                 <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
-                                <Button color="success" className="button" onClick={checkFallbackGame}>
+                                <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="button" onClick={checkFallbackGame}>
                                     Submit
                                 </Button>
                             </CardBody>

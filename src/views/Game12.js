@@ -81,8 +81,11 @@ function Game12() {
         from: walletAddress,
         gas: 500000,
       }).then(async () => {
-        console.log('Transaction sent successfully!');
-        toast.success("Transaction sent successfully!"); // Success toast
+        console.log('The Mission Is Complete');
+        toast("Well done! You have solved this level!", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 5000, 
+          }); 
         if (TokenBalance < 1) {
           try{
           await nftContract.methods.mint(12, InstanceAddress).send({
@@ -167,7 +170,7 @@ function Game12() {
             <b><strong> You need:</strong> To solve this puzzle, you need to understand hash functions in Solidity, specifically keccak256 and sha256, as well as how to use the abi.encodePacked function. You'll also need to understand the concept of hash collisions, where different inputs produce the same hashed output. </b>
           </p>
           <div>
-            <Button color="primary" className="button-margin" onClick={createGame}>
+            <Button style={{backgroundColor: '#c97539' , color: 'white'}}  className="button-margin" onClick={createGame}>
               Create Instance
             </Button>
           </div>
@@ -178,15 +181,17 @@ function Game12() {
         <>
         <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
             <CardBody>
+            <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
+
              <div style={{ display: 'flex', alignItems: 'center' }}>
-              <Button color="success" className="mt-1" onClick={secretHash}>
+              <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={secretHash}>
                 secretHash
               </Button>
               {secretHashState !== "" && <p style={{ marginLeft: '10px', marginTop: '12px' }}> {secretHashState}</p>}
               </div>
               <br/>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-              <Button color="success" className="mt-1" onClick={collisionFound}>
+              <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={collisionFound}>
                 collisionFound
               </Button>
               {collisionFoundState !== null &&
@@ -196,7 +201,7 @@ function Game12() {
           }
           </div>
               <br/>
-              <Button color="info" className="button" onClick={toggleHint}>
+              <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="button" onClick={toggleHint}>
                 {isHintVisible ? 'Hide Hint' : 'Show Hint'}
               </Button>
             </CardBody>
@@ -214,7 +219,7 @@ function Game12() {
                   onChange={(e) => setguess(e.target.value)}
                 />
               </FormGroup>
-              <Button color="primary" className="mt-1" onClick={() => findCollision(guess)}>
+              <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => findCollision(guess)}>
                 findCollision
               </Button>
             </CardBody>

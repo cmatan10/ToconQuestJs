@@ -87,8 +87,11 @@ function Game7() {
           from: walletAddress,
           gas: 500000,
         }).then(async () => {
-          console.log('Transaction sent successfully!');
-          toast.success("Transaction sent successfully!"); // Success toast
+          console.log('The Mission Is Complete');
+          toast("Well done! You have solved this level!", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 5000, 
+            }); 
           if (TokenBalance < 1) {
             try {
               console.log(TokenBalance);
@@ -180,7 +183,7 @@ function Game7() {
               <b><strong> You need:</strong>  To complete this mission, you need to understand Solidity's state variable visibility, especially private variables, and how to potentially expose or access these 'hidden' variables. </b>
             </p>
             <div>
-              <Button color="primary" className="button-margin" onClick={createGame}>
+              <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="button-margin" onClick={createGame}>
                 Create Instance
               </Button>
             </div>
@@ -191,8 +194,17 @@ function Game7() {
           <>
             <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
               <CardBody>
+              <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
+                  <Input
+                    className="form-control-alternative"
+                    id="input-city"
+                    placeholder="PreviousPassword Inedx"
+                    type="text"
+                    onChange={(e) => setPreviousPasswordState(e.target.value)}
+                  />
+                      <br/>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Button color="primary" className="mt-1" onClick={() => PreviousPassword(PreviousPasswordState)}>
+                <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => PreviousPassword(PreviousPasswordState)}>
                     PreviousPassword
                   </Button>
                   {previousPasswordValue !== null &&
@@ -202,18 +214,9 @@ function Game7() {
                   }
                   
                 </div>
-                  <br/>
-                  <Input
-                    className="form-control-alternative"
-                    id="input-city"
-                    placeholder="Password Inedx"
-                    type="text"
-                    onChange={(e) => setPreviousPasswordState(e.target.value)}
-                  />
-
 
                 <br />
-                <Button color="info" className="mt-1" onClick={toggleHint}>
+                <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={toggleHint}>
                   {isHintVisible ? 'Hide Hint' : 'Show Hint'}
                 </Button>
               </CardBody>
@@ -239,7 +242,7 @@ function Game7() {
                     onChange={(e) => setnewPassword(e.target.value)}
                   />
                 </FormGroup>
-                <Button color="primary" className="mt-1" onClick={() => changePassword(_password, newPassword)}>
+                <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => changePassword(_password, newPassword)}>
                   changePassword
                 </Button>
               </CardBody>

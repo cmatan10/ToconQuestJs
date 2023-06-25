@@ -89,8 +89,11 @@ function Game9() {
           const correctBlock = await instanceContract.methods.correctBlockHash().call()
           console.log(correctBlock);
           if (correctBlock == true) {
-            console.log('Transaction sent successfully!');
-            toast.success("Transaction sent successfully!"); // Success toast
+            console.log('The Mission Is Complete');
+            toast("Well done! You have solved this level!", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 5000, 
+              }); 
             if (TokenBalance < 1) {
               try {
                 console.log(TokenBalance);
@@ -173,7 +176,7 @@ function Game9() {
             <b><strong> You need:</strong>  To complete this puzzle, you need to understand Ethereum's block properties. </b>
           </p>
           <div>
-            <Button color="primary" className="button-margin" onClick={createGame}>
+            <Button style={{backgroundColor: '#c97539' , color: 'white'}}  className="button-margin" onClick={createGame}>
               Create Instance
             </Button>
           </div>
@@ -184,8 +187,10 @@ function Game9() {
         <>
           <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
             <CardBody>
+            <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
+
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Button color="primary" className="mt-1" onClick={() => correctBlockHash()}>
+                <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => correctBlockHash()}>
                   correctBlockHash
                 </Button>
                 {correctBlockHashValue !== null &&
@@ -195,7 +200,7 @@ function Game9() {
                   }
               </div>
               <br />
-              <Button color="info" className="mt-1" onClick={toggleHint}>
+              <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={toggleHint}>
                 { isHintVisible ? 'Hide Hint' : 'Show Hint'}
               </Button>
             </CardBody>
@@ -221,7 +226,7 @@ function Game9() {
                   onChange={(e) => setblockHash(e.target.value)}
                 />
               </FormGroup>
-              <Button color="primary" className="mt-1" onClick={() => blockHashCheck(blockNumber, blockHash)}>
+              <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => blockHashCheck(blockNumber, blockHash)}>
                 blockHashCheck
               </Button>
             </CardBody>

@@ -77,8 +77,11 @@ function Game11() {
         from: walletAddress,
         gas: 500000,
       }).then(async () => {
-        console.log('Transaction sent successfully!');
-        toast.success("Transaction sent successfully!"); // Success toast
+        console.log('The Mission Is Complete');
+        toast("Well done! You have solved this level!", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 5000, 
+          }); 
         if (TokenBalance < 1) {
           try {
           await nftContract.methods.mint(11, InstanceAddress).send({
@@ -161,7 +164,7 @@ function Game11() {
             <b><strong> You need:</strong> To complete this mission, you need to be familiar with the abi.encode function for encoding data in Solidity, understand how the keccak256 hash function works, and use these tools to encrypt data. </b>
           </p>
           <div>
-            <Button color="primary" className="button-margin" onClick={createGame}>
+            <Button style={{backgroundColor: '#c97539' , color: 'white'}}  className="button-margin" onClick={createGame}>
               Create Instance
             </Button>
           </div>
@@ -172,12 +175,14 @@ function Game11() {
         <>
         <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
             <CardBody>
-              <Button color="primary" className="mt-1" onClick={encodeStringAndUint}>
+            <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
+
+              <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={encodeStringAndUint}>
                 _encodeStringAndUint
               </Button>
               {_encodeStringAndUint !== null && <p style={{ wordBreak: "break-all" }}>{_encodeStringAndUint}</p>}
               <br />
-              <Button color="info" className="mt-1" onClick={toggleHint}>
+              <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={toggleHint}>
                 { isHintVisible ? 'Hide Hint' : 'Show Hint'}
               </Button>
             </CardBody>
@@ -195,7 +200,7 @@ function Game11() {
                   onChange={(e) => setencodedData(e.target.value)}
                 />
               </FormGroup>
-              <Button color="primary" className="mt-1" onClick={() => encode(encodedData)}>
+              <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => encode(encodedData)}>
                 encode
               </Button>
             </CardBody>
