@@ -1,6 +1,3 @@
-
-
-
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import React, { useState, createContext, useEffect } from 'react';
@@ -21,7 +18,6 @@ const App = () => {
    const [Chain, setChain] = useState("");
    const [factoryContract, setFactoryContract] = useState(null);
    const [nftContract, setNftContract] = useState(null);
-   const [isLoading, setIsLoading] = useState(true);  // <-- New state for managing loading
    const web3 = new Web3(window.ethereum);
 
    const contractAddresses = {
@@ -32,6 +28,10 @@ const App = () => {
     11155111: { // Sepolia network
       gameAddress: "0x3c61DdDF6096713DC3CcD78258B5d0eC7EAd49Db",
       nftAddress: "0xA97eb59f9bF66201C44AEf2BFd0eea22A8339C9E"
+    },
+    5: { // Goerli network
+      gameAddress: "0xb9F5440A01eF97Ac8e2A5803Ae9dECD2D810e552",
+      nftAddress: "0x87c954c2cDcD09ccF1B47edE0b2679338Cb1beAA"
     }
   };
 
@@ -45,7 +45,6 @@ const App = () => {
         console.log('nftContractInstance:', nftContractInstance);
         setFactoryContract(gameContract);
         setNftContract(nftContractInstance);
-        setIsLoading(false);  // <-- Set loading to false after contracts have been initialized
       } else {
         console.log(`No contract addresses available for chain ID: ${Chain}`);
       }

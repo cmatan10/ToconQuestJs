@@ -12,26 +12,23 @@ const Header = () => {
   const { nftContract } = useContext(Web3Context);
   const [tokenIDs, setTokenIDs] = useState([]);
 
-useEffect(() => {
-  const fetchData = async () => {
-    // Check if the chain is supported before making any contract calls
-    if (!walletAddress || !nftContract || ![/* your supported chain IDs */].includes(Chain)) {
-      return;
-    }
-    let tempTokenIDs = [];
-    for (let index = 1; index <= 14; index++) {
-      const balance = await nftContract.methods.balanceOf(walletAddress, index).call();
-      if (balance > 0) {
-        tempTokenIDs.push(index);
+  useEffect(() => {
+    const fetchData = async () => {
+      // Check if the chain is supported before making any contract calls
+      if (!walletAddress || !nftContract || ![/* your supported chain IDs */].includes(Chain)) {
+        return;
       }
-    }
-    setTokenIDs(tempTokenIDs);
-  };
-  fetchData();
-}, [Chain ,walletAddress, nftContract])
-
-
-
+      let tempTokenIDs = [];
+      for (let index = 1; index <= 14; index++) {
+        const balance = await nftContract.methods.balanceOf(walletAddress, index).call();
+        if (balance > 0) {
+          tempTokenIDs.push(index);
+        }
+      }
+      setTokenIDs(tempTokenIDs);
+    };
+    fetchData();
+  }, [Chain, walletAddress, nftContract])
 
 
   useEffect(() => {
@@ -48,10 +45,10 @@ useEffect(() => {
         const decimalChainId = parseInt(chainId, 16);
         setChain(decimalChainId);
       };
-  
+
       ethereum.on('accountsChanged', handleAccountsChanged);
       ethereum.on('chainChanged', handleChainChanged);
-  
+
       return () => {
         if (ethereum && ethereum.removeListener) {
           ethereum.removeListener('accountsChanged', handleAccountsChanged);
@@ -60,7 +57,12 @@ useEffect(() => {
       }
     }
   }, [web3Context.walletAddress, web3Context.Chain]);
-  
+
+  const ChainToNetwork = {
+    5: 'Goerli',
+    11155111: 'Sepolia',
+    80001: 'Mumbai'
+  };
 
   const tokenIDtoGame = {
     1: 'Bytes2',
@@ -129,8 +131,15 @@ useEffect(() => {
                         </div>
                       </div>
                       <span className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}>
-                          {Chain ? <p className="d-flex align-items-center justify-content-center">{Chain}</p> : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}> Meta Mask not detected </p>}
-                        </span>
+                        {Chain
+                          ? <p className="d-flex align-items-center justify-content-center">
+                            {ChainToNetwork[Chain] || `Network 0x${Chain} is not supported`}
+                          </p>
+                          : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}>
+                            Meta Mask not detected
+                          </p>
+                        }
+                      </span>
                     </div>
                   </Row>
                 </CardBody>
