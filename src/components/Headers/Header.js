@@ -89,9 +89,7 @@ const Header = () => {
         />
       </Col>
 
-      <br />
-      <br />
-      <br />
+
       
       <CarouselComponent />
       <br />
