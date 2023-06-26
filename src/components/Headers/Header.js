@@ -3,7 +3,6 @@ import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 import { Web3Context } from '../../index';
 import { TypeAnimation } from 'react-type-animation';
 import '../../assets/css/game.css'
-import CarouselComponent from './CarouselComponent.js'
 
 const Header = () => {
   const web3Context = useContext(Web3Context);
@@ -100,8 +99,6 @@ const Header = () => {
         />
       </Col>
 
-      <br />
-      <CarouselComponent />
       <br />
       <Container fluid>
 

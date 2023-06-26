@@ -23,7 +23,7 @@ const App = () => {
    const contractAddresses = {
     80001: { // Mumbai network
       gameAddress: "0x8f5952e0C7e13DEDaF39A16455eeA0408f0d7e2f",
-      nftAddress: "0xBBc6D21A2041F6C154f816A3da950eBe478bb295"
+      nftAddress: "0x5523c2264904B388bC4A1F612496727B073bae52"
     },
     11155111: { // Sepolia network
       gameAddress: "0x3c61DdDF6096713DC3CcD78258B5d0eC7EAd49Db",

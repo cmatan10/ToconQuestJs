@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { Web3Context } from '../index';
 import AdminFooter from '../components/Footers/AdminFooter.js'
-
+import CarouselComponent from '../components/Headers/CarouselComponent.js'
 import '../assets/css/game.css'
 
 
@@ -563,6 +563,7 @@ const Index = () => {
           </div>
         </Row>
       </Container>
+      <CarouselComponent/>
       <AdminFooter/> {/* This should be inside BrowserRouter but outside Routes */}
 
     </>
