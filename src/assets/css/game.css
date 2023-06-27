@@ -103,7 +103,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 7em; /* Size on large screens */
     position: relative; 
-    top: -100px; /* Adjust this value */
+    top:120px; /* Adjust this value */
 }
   
 /* When the screen size is 992px or smaller */
