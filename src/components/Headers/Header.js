@@ -102,7 +102,7 @@ const Header = () => {
   return (
     <div className="header header-component mt--5 pb-4 pt-md-8 header-background" >
       <Col className="text-center">
-      <h1 className="page-title ">
+      <h1 className="page-title">
   Tocon Quest
       </h1>
 
@@ -114,7 +114,7 @@ const Header = () => {
             ''
           ]}
           speed={50}
-          style={{ fontSize: '23px' }}
+          style={{ fontSize: '23px',  position: 'relative',top: '100px' }}
           repeat={Infinity}
         />
       </Col>
@@ -127,7 +127,7 @@ const Header = () => {
           <Row>
             <Col xl="1" />
             <Col lg="6" xl="4">
-              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white' }} responsive>
+              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white' ,  position: 'relative',top: '100px'}} responsive>
                 <CardBody>
                   <Row>
                     <div className="col">
@@ -163,7 +163,7 @@ const Header = () => {
               </Card>
             </Col>
             <Col lg="6" xl="6">
-              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white' }}>
+              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white' ,  position: 'relative',top: '100px'}}>
                 <CardBody>
                   <Row>
                     <div className="col">

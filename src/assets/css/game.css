@@ -93,38 +93,40 @@
   }
 
 .header-component{
-    padding-bottom: 20rem !important;
+    padding-bottom: 10rem !important;
 }
 
 
 .page-title {
-    color:  #ffffff;
+    color: #ffffff;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     font-size: 7em; /* Size on large screens */
-  }
+    position: relative; 
+    top: -100px; /* Adjust this value */
+}
   
-  /* When the screen size is 992px or smaller */
-  @media screen and (max-width: 992px) {
+/* When the screen size is 992px or smaller */
+@media screen and (max-width: 992px) {
     .page-title {
       font-size: 6em; /* slightly smaller font size */
     }
-  }
+}
   
-  /* When the screen size is 768px or smaller */
-  @media screen and (max-width: 768px) {
+/* When the screen size is 768px or smaller */
+@media screen and (max-width: 768px) {
     .page-title {
       font-size: 5em; /* even smaller font size for tablets */
+      top: 20px; 
     }
-  }
+}
   
-  /* When the screen size is 576px or smaller */
-  @media screen and (max-width: 576px) {
+/* When the screen size is 576px or smaller */
+@media screen and (max-width: 576px) {
     .page-title {
-      font-size: 3.5em; /* smallest font size for mobile phones */
+      font-size: 4em; /* smallest font size for mobile phones */
     }
-  }
-
+}
 
 
 
