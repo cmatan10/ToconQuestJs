@@ -12,22 +12,17 @@ const Header = () => {
   const [tokenIDs, setTokenIDs] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      // Check if the chain is supported before making any contract calls
-      if (!walletAddress || !nftContract || ![/* your supported chain IDs */].includes(Chain)) {
-        return;
-      }
-      let tempTokenIDs = [];
-      for (let index = 1; index <= 14; index++) {
-        const balance = await nftContract.methods.balanceOf(walletAddress, index).call();
-        if (balance > 0) {
-          tempTokenIDs.push(index);
-        }
-      }
-      setTokenIDs(tempTokenIDs);
-    };
-    fetchData();
-  }, [Chain, walletAddress, nftContract])
+    console.log('Chain:', Chain);  
+    console.log('tokenIDs:', tokenIDs);  
+    console.log('walletAddress:', walletAddress);
+    
+    if(nftContract !== null) {
+      console.log('nftContract:', nftContract);
+      console.log('nftContract _address:', nftContract._address);
+    } else {
+      console.log("nftContract is null");
+    }
+  }, [tokenIDs, walletAddress, nftContract,Chain]);
 
 
   useEffect(() => {
@@ -57,6 +52,31 @@ const Header = () => {
     }
   }, [web3Context.walletAddress, web3Context.Chain]);
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!walletAddress || !nftContract || ![5,11155111,80001].includes(Chain)) {
+        return;
+      }
+  
+      let tempTokenIDs = [];
+      for (let index = 1; index <= 14; index++) {
+        try {
+          const balance = await nftContract.methods.balanceOf(walletAddress, index).call();
+          if (balance > 0) {
+            tempTokenIDs.push(index);
+          }
+        } catch (e) {
+          console.error(`Failed to fetch balance for token ${index} on network ${Chain}. Error: ${e.message}`);
+        }
+      }
+        
+      setTokenIDs(tempTokenIDs);
+    };
+    
+    fetchData();
+  }, [Chain, walletAddress, nftContract])
+
   const ChainToNetwork = {
     5: 'Goerli',
     11155111: 'Sepolia',
@@ -80,11 +100,11 @@ const Header = () => {
     14: 'Factory'
   };
   return (
-    <div className="header mt--5 pb-0 pt-md-0 container-color">
+    <div className="header header-component mt--5 pb-4 pt-md-8 header-background" >
       <Col className="text-center">
-        <h1 style={{ color: '#5e72e4', fontSize: '3.4em', fontWeight: 'bold', fontFamily: 'Montserrat' }}>
-          Tocon Quest
-        </h1>
+      <h1 className="page-title ">
+  Tocon Quest
+      </h1>
 
         <TypeAnimation
           sequence={[
@@ -94,7 +114,7 @@ const Header = () => {
             ''
           ]}
           speed={50}
-          style={{ fontSize: '17px' }}
+          style={{ fontSize: '23px' }}
           repeat={Infinity}
         />
       </Col>
@@ -114,13 +134,13 @@ const Header = () => {
                       <CardTitle
                         tag="h5"
                         className="text-uppercase mb-0"
-                        style={{ color: '#5e72e4', fontFamily: 'Montserrat' }}
+                        style={{ color: '#5e72e4', fontFamily: 'Montserrat' ,fontSize: '18px'}}
                       >
                         Login
                       </CardTitle>
                       <br />
                       <div className="d-flex align-items-center justify-content-center">
-                        <span className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}>
+                        <span className="h2 font-weight-bold mb-0" style={{ fontSize: '15px', color: 'white' }}>
                           {walletAddress ? walletAddress : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}> You must connect a digital wallet to play the game </p>}
                         </span>
                         <div className="icon icon-shape bg-danger text-white rounded-circle shadow" style={{ marginLeft: '10px' }}>
@@ -150,7 +170,7 @@ const Header = () => {
                       <CardTitle
                         tag="h5"
                         className="text-uppercase mb-0 pb-2"
-                        style={{ color: '#5e72e4', fontFamily: 'Montserrat' }}
+                        style={{ color: '#5e72e4', fontFamily: 'Montserrat' , fontSize: '18px' }}
                       >
                         Achievements
                       </CardTitle>

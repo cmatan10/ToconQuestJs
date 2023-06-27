@@ -1,5 +1,5 @@
 .carousel-image {
-    height: 250px; /* set to fill carousel height */
+    height: 350px; /* set to fill carousel height */
     width: 100%; /* set to fill carousel width */
         cursor: pointer; /* change cursor to pointer on hover */
 
@@ -15,7 +15,7 @@
 
 .carousel-size {
     width: 1185px;
-    height: 250px;
+    height: 350px;
     object-fit: contain; /* This will ensure that the image covers the carousel */
 
 }

@@ -20,18 +20,20 @@ const App = () => {
    const [nftContract, setNftContract] = useState(null);
    const web3 = new Web3(window.ethereum);
 
+   
+
    const contractAddresses = {
     80001: { // Mumbai network
       gameAddress: "0x8f5952e0C7e13DEDaF39A16455eeA0408f0d7e2f",
-      nftAddress: "0x5523c2264904B388bC4A1F612496727B073bae52"
+      nftAddress: "0x4fE052E7De10A83919eED7ce87b5C050b0446C72"
     },
     11155111: { // Sepolia network
-      gameAddress: "0x3c61DdDF6096713DC3CcD78258B5d0eC7EAd49Db",
-      nftAddress: "0xA97eb59f9bF66201C44AEf2BFd0eea22A8339C9E"
+      gameAddress: "0x63c56AD7048f6C3880ba8d0e362982e9Ebab44C6",
+      nftAddress: "0xB89CB3523eD1615ACB9629DaCdCDc441539B4622"
     },
     5: { // Goerli network
       gameAddress: "0xb9F5440A01eF97Ac8e2A5803Ae9dECD2D810e552",
-      nftAddress: "0x87c954c2cDcD09ccF1B47edE0b2679338Cb1beAA"
+      nftAddress: "0x79227AfbC5357f02193D52510bb66ecAC25b9C08"
     }
   };
 

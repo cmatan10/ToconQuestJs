@@ -188,12 +188,17 @@
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
 				"internalType": "string",
-				"name": "_uriPrefix",
+				"name": "_uri",
 				"type": "string"
 			}
 		],
-		"name": "setUriPrefix",
+		"name": "setURI",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -470,7 +475,7 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "tokenId",
+				"name": "",
 				"type": "uint256"
 			}
 		],
