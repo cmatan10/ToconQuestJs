@@ -116,26 +116,23 @@ const CustomNavbar = () => {
 
   const gameRoutes = routes.filter(route => route.path.startsWith("/game"));
 
-  return (
+   return (
     <Navbar dark expand="md" style={{ backgroundColor: '#001636', position: 'fixed', width: '100%', top: 0, zIndex: 1029 }}>
       <NavbarToggler onClick={toggle} className="mr-2" style={{ zIndex: 2, position: 'relative' }} />
+      <NavLink tag={Link} to={'/'} className="custom-link">
+        <img src="/favicon.ico" alt="Home" style={{ width: '35px' }} />
+      </NavLink>
       <Collapse isOpen={isOpen} navbar style={{ backgroundColor: '#001636', zIndex: 1, position: 'relative' }}>
         <Nav className="navbar-nav" style={{ display: 'flex', justifyContent: 'center', width: '100%' }} navbar>
           {routes.map((route, index) => {
-            if (route.path.startsWith("/game")) {
+            if (route.name === "Home" || route.path.startsWith("/game")) {
               return null;
             }
             return (
               <NavItem className="nav-item" key={index}>
-                {route.name === "Home" ? (
-                  <NavLink tag={Link} to={route.path} className="custom-link" onClick={closeNavbar}>
-                    <img src="/favicon.ico" alt="Home" style={{ width: '25px' }} />
-                  </NavLink>
-                ) : (
-                  <NavLink tag={Link} to={route.path} className="custom-link" onClick={closeNavbar}>
-                    {route.name}
-                  </NavLink>
-                )}
+                <NavLink tag={Link} to={route.path} className="custom-link" onClick={closeNavbar}>
+                  {route.name}
+                </NavLink>
               </NavItem>
             );
           })}
