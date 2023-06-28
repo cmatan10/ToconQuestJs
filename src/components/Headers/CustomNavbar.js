@@ -113,7 +113,7 @@ const CustomNavbar = () => {
   const gameRoutes = routes.filter(route => route.path.startsWith("/game"));
 
   return (
-    <Navbar dark expand="sm" style={{ backgroundColor: '#001636' }}> {/* Adjust expand size here */}
+    <Navbar dark expand="sm" style={{ backgroundColor: '#001636', position: 'sticky', top: 0, zIndex: 100 }}>
       <Nav  style={{ display: 'flex', justifyContent: 'center', width: '100%' }} navbar >
       {routes.map((route, index) => {
     if (route.path.startsWith("/game")) {
