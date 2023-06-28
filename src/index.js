@@ -22,16 +22,7 @@ const App = () => {
    const [nftContract, setNftContract] = useState(null);
    const web3 = new Web3(window.ethereum);
 
-   new MetaMaskSDK({
-    useDeeplink: false,
-    communicationLayerPreference: "socket",
- });
 
- const MMSDK = new MetaMaskSDK();
-
-const ethereum = MMSDK.getProvider(window.ethereum);
-
- ethereum.request({ method: 'eth_requestAccounts'});
 
    const contractAddresses = {
     80001: { // Mumbai network
@@ -67,6 +58,17 @@ const ethereum = MMSDK.getProvider(window.ethereum);
 
    useEffect(() => {
      requestAccount();
+     
+     new MetaMaskSDK({
+      useDeeplink: false,
+      communicationLayerPreference: "socket",
+   });
+  
+   const MMSDK = new MetaMaskSDK();
+  
+  const ethereum = MMSDK.getProvider(window.ethereum);
+  
+   ethereum.request({ method: 'eth_requestAccounts'});
    }, []);
 
    useEffect(() => {
