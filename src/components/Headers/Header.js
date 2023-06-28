@@ -12,17 +12,17 @@ const Header = () => {
   const [tokenIDs, setTokenIDs] = useState([]);
 
   useEffect(() => {
-    console.log('Chain:', Chain);  
-    console.log('tokenIDs:', tokenIDs);  
+    console.log('Chain:', Chain);
+    console.log('tokenIDs:', tokenIDs);
     console.log('walletAddress:', walletAddress);
-    
-    if(nftContract !== null) {
+
+    if (nftContract !== null) {
       console.log('nftContract:', nftContract);
       console.log('nftContract _address:', nftContract._address);
     } else {
       console.log("nftContract is null");
     }
-  }, [tokenIDs, walletAddress, nftContract,Chain]);
+  }, [tokenIDs, walletAddress, nftContract, Chain]);
 
 
   useEffect(() => {
@@ -55,10 +55,10 @@ const Header = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!walletAddress || !nftContract || ![5,11155111,80001].includes(Chain)) {
+      if (!walletAddress || !nftContract || ![5, 11155111, 80001].includes(Chain)) {
         return;
       }
-  
+
       let tempTokenIDs = [];
       for (let index = 1; index <= 14; index++) {
         try {
@@ -70,10 +70,10 @@ const Header = () => {
           console.error(`Failed to fetch balance for token ${index} on network ${Chain}. Error: ${e.message}`);
         }
       }
-        
+
       setTokenIDs(tempTokenIDs);
     };
-    
+
     fetchData();
   }, [Chain, walletAddress, nftContract])
 
@@ -100,21 +100,21 @@ const Header = () => {
     14: 'Factory'
   };
   return (
-    <div className="header header-component mt--5 pb-4 pt-md-9 header-background" >
+    <div className="header header-component mt--5 pb-4 pt-md-8 header-background" >
       <Col className="text-center">
-      <h1 className="page-title">
-  Tocon Quest
-      </h1>
+        <h1 className="page-title">
+          Tocon Quest
+        </h1>
 
         <TypeAnimation
+          className='type-animation-container'
           sequence={[
             // Same substring at the start will only be typed once, initially
-            ' With Intriguing Games, We convert Complex Solidity Coding Learnings into a Thrilling Quest. Get ready to Learn, Play, and Thrive!',
+            'With Intriguing Games, We convert Complex Solidity Coding Learnings into a Thrilling Quest. Get ready to Learn, Play, and Thrive!',
             5000,
             ''
           ]}
           speed={50}
-          style={{ fontSize: '23px',  position: 'relative',top: '150px' }}
           repeat={Infinity}
         />
       </Col>
@@ -127,14 +127,14 @@ const Header = () => {
           <Row>
             <Col xl="1" />
             <Col lg="6" xl="4">
-              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white' ,  position: 'relative',top: '150px'}} responsive>
+              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white', position: 'relative', top: '120px' }} responsive>
                 <CardBody>
                   <Row>
                     <div className="col">
                       <CardTitle
                         tag="h5"
                         className="text-uppercase mb-0"
-                        style={{ color: '#5e72e4', fontFamily: 'Montserrat' ,fontSize: '18px'}}
+                        style={{ color: '#5e72e4', fontFamily: 'Montserrat', fontSize: '18px' }}
                       >
                         Login
                       </CardTitle>
@@ -163,14 +163,14 @@ const Header = () => {
               </Card>
             </Col>
             <Col lg="6" xl="6">
-              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white' ,  position: 'relative',top: '150px'}}>
+              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white', position: 'relative', top: '120px' }}>
                 <CardBody>
                   <Row>
                     <div className="col">
                       <CardTitle
                         tag="h5"
                         className="text-uppercase mb-0 pb-2"
-                        style={{ color: '#5e72e4', fontFamily: 'Montserrat' , fontSize: '18px' }}
+                        style={{ color: '#5e72e4', fontFamily: 'Montserrat', fontSize: '18px' }}
                       >
                         Achievements
                       </CardTitle>

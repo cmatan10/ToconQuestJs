@@ -110,22 +110,29 @@
 @media screen and (max-width: 992px) {
     .page-title {
       font-size: 6em; /* slightly smaller font size */
+      position: relative; 
+      top:120px; /* Adjust this value */
     }
 }
   
 /* When the screen size is 768px or smaller */
 @media screen and (max-width: 768px) {
     .page-title {
-      font-size: 4em; /* even smaller font size for tablets */
+      font-size: 5em; /* even smaller font size for tablets */
       top: 20px; 
+      position: relative; 
+      top:120px; /* Adjust this value */
     }
 }
   
 /* When the screen size is 576px or smaller */
 @media screen and (max-width: 576px) {
     .page-title {
-      font-size: 1.5em; /* smallest font size for mobile phones */
+      font-size: 4em; /* smallest font size for mobile phones */
+      position: relative; 
+      top:120px; /* Adjust this value */
     }
+    
 }
 
 
@@ -135,7 +142,7 @@
     background-image: url('../../../public/header.jpeg');
     background-repeat: no-repeat;
     background-size: cover; /* Cover the entire div */
-    background-position: center; /* Center the image */
+    background-position: top center; /* Center the image */
   }
   
   /* When the screen size is 992px or smaller */
@@ -149,7 +156,7 @@
   /* When the screen size is 768px or smaller */
   @media screen and (max-width: 768px) {
     .header-background {
-      background-size: auto 50%; /* Adjust the size of the background image */
+      background-size: auto 70%; /* Adjust the size of the background image */
       background-position: top center; /* Adjust the position of the background image */
     }
   }
@@ -157,8 +164,34 @@
   /* When the screen size is 576px or smaller */
   @media screen and (max-width: 576px) {
     .header-background {
-      background-size: auto 30%; /* Adjust the size of the background image */
+      background-size: auto 50%; /* Adjust the size of the background image */
       background-position: top center; /* Adjust the position of the background image */
+      position: relative; 
+      top:60px; /* Adjust this value */
+      
     }
   }
-  
+  .type-animation-container {
+    font-size: 23px;
+    position: relative;
+    top: 120px;
+  }
+
+    /* When the screen size is 768px or smaller */
+    @media screen and (max-width: 768px) {
+        .type-animation-container {
+            font-size: 20px;
+            position: relative;
+            top: 120px;
+        }
+      }
+      
+      /* When the screen size is 576px or smaller */
+      @media screen and (max-width: 576px) {
+        .type-animation-container {
+            font-size: 16px;
+            position: relative;
+            top: 120px;
+          
+        }
+      }

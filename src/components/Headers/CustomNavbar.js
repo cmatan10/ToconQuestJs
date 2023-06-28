@@ -115,13 +115,13 @@ const CustomNavbar = () => {
   const gameRoutes = routes.filter(route => route.path.startsWith("/game"));
 
   return (
-<Navbar dark expand="md" style={{ backgroundColor: '#001636', position: 'fixed', width: '100%', top: 0, zIndex: 1029 }}>
-      <NavbarToggler onClick={toggle} className="mr-2" style={{ zIndex: 2, position: 'relative' }}/>
+    <Navbar dark expand="md" style={{ backgroundColor: '#001636', position: 'fixed', width: '100%', top: 0, zIndex: 1029 }}>
+      <NavbarToggler onClick={toggle} className="mr-2" style={{ zIndex: 2, position: 'relative' }} />
       <Collapse isOpen={isOpen} navbar style={{ backgroundColor: '#001636', zIndex: 1, position: 'relative' }}>
         <Nav className="navbar-nav" style={{ display: 'flex', justifyContent: 'center', width: '100%' }} navbar>
           {routes.map((route, index) => {
             if (route.path.startsWith("/game")) {
-                return null;
+              return null;
             }
             return (
               <NavItem className="nav-item" key={index}>
@@ -141,7 +141,7 @@ const CustomNavbar = () => {
             <DropdownToggle nav caret>
               Games
             </DropdownToggle>
-            <DropdownMenu style={{ color: 'white', backgroundColor: '#001636' }}>
+            <DropdownMenu className="custom-dropdown-menu" style={{ color: 'white', backgroundColor: '#001636' }}>
               {gameRoutes.map((gameRoute, index) => (
                 <DropdownItem key={index} tag={Link} to={gameRoute.path} className="custom-link" style={{ color: 'white', backgroundColor: '#001636' }}>
                   {gameRoute.name}
@@ -152,7 +152,7 @@ const CustomNavbar = () => {
         </Nav>
       </Collapse>
     </Navbar>
-);
+  );
 
 };
 
