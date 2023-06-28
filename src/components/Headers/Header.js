@@ -111,8 +111,9 @@ const Header = () => {
           sequence={[
             // Same substring at the start will only be typed once, initially
             'With Intriguing Games, We convert Complex Solidity Coding Learnings into a Thrilling Quest. Get ready to Learn, Play, and Thrive!',
-            5000,
-            ''
+            6000,
+            'You Can Play In The Following Testnets: Mumbai, Goerli, Sepolia And BSC Testnet.',
+            6000,
           ]}
           speed={50}
           repeat={Infinity}
