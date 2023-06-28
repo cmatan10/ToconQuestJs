@@ -93,7 +93,7 @@
   }
 
 .header-component{
-    padding-bottom: 10rem !important;
+    padding-bottom: 15rem !important;
 }
 
 
@@ -116,7 +116,7 @@
 /* When the screen size is 768px or smaller */
 @media screen and (max-width: 768px) {
     .page-title {
-      font-size: 5em; /* even smaller font size for tablets */
+      font-size: 4em; /* even smaller font size for tablets */
       top: 20px; 
     }
 }
@@ -124,7 +124,7 @@
 /* When the screen size is 576px or smaller */
 @media screen and (max-width: 576px) {
     .page-title {
-      font-size: 4em; /* smallest font size for mobile phones */
+      font-size: 1.5em; /* smallest font size for mobile phones */
     }
 }
 

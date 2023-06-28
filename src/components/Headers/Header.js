@@ -100,7 +100,7 @@ const Header = () => {
     14: 'Factory'
   };
   return (
-    <div className="header header-component mt--5 pb-4 pt-md-8 header-background" >
+    <div className="header header-component mt--5 pb-4 pt-md-9 header-background" >
       <Col className="text-center">
       <h1 className="page-title">
   Tocon Quest
@@ -114,7 +114,7 @@ const Header = () => {
             ''
           ]}
           speed={50}
-          style={{ fontSize: '23px',  position: 'relative',top: '100px' }}
+          style={{ fontSize: '23px',  position: 'relative',top: '150px' }}
           repeat={Infinity}
         />
       </Col>
@@ -127,7 +127,7 @@ const Header = () => {
           <Row>
             <Col xl="1" />
             <Col lg="6" xl="4">
-              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white' ,  position: 'relative',top: '100px'}} responsive>
+              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white' ,  position: 'relative',top: '150px'}} responsive>
                 <CardBody>
                   <Row>
                     <div className="col">
@@ -163,7 +163,7 @@ const Header = () => {
               </Card>
             </Col>
             <Col lg="6" xl="6">
-              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white' ,  position: 'relative',top: '100px'}}>
+              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white' ,  position: 'relative',top: '150px'}}>
                 <CardBody>
                   <Row>
                     <div className="col">
@@ -185,7 +185,7 @@ const Header = () => {
                         ) : (
                           tokenIDs.map((id, index) => (
                             <Col md="3" key={index}>
-                              <span className="h2 font-weight-bold mb-0" style={{ color: 'white', fontSize: '12px' }}>
+                              <span className="h2 font-weight-bold mb-0" style={{ color: 'white', fontSize: '14px' }}>
                                 {tokenIDtoGame[id]}
                                 <i className="fas fa-medal" style={{ marginLeft: '5px', color: 'gold' }} />
                               </span>

@@ -1,19 +1,5 @@
-@media only screen and (max-width: 770px) {
-    .custom-navbar {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .custom-navbar-link {
-      white-space: nowrap;
-    }
-
+@media (min-width: 576px) and (max-width: 768px) {
+  .navbar-nav .nav-item {
+      display: block !important;
   }
-  .navbar-centered-items {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-.navbar-nav {
-  justify-content: center;
 }
