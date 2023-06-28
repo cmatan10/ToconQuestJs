@@ -16,15 +16,15 @@ import AdminLayout from "layouts/Admin.js";
 export const Web3Context = createContext();
 
 const App = () => {
-   const [walletAddress, setWalletAddress] = useState("");
-   const [Chain, setChain] = useState("");
-   const [factoryContract, setFactoryContract] = useState(null);
-   const [nftContract, setNftContract] = useState(null);
-   const web3 = new Web3(window.ethereum);
+  const [walletAddress, setWalletAddress] = useState("");
+  const [Chain, setChain] = useState("");
+  const [factoryContract, setFactoryContract] = useState(null);
+  const [nftContract, setNftContract] = useState(null);
+  const web3 = new Web3(window.ethereum);
 
 
 
-   const contractAddresses = {
+  const contractAddresses = {
     80001: { // Mumbai network
       gameAddress: "0x8f5952e0C7e13DEDaF39A16455eeA0408f0d7e2f",
       nftAddress: "0x4fE052E7De10A83919eED7ce87b5C050b0446C72"
@@ -54,50 +54,40 @@ const App = () => {
       }
     }
   }, [Chain]);
+
   
+  useEffect(() => {
+    requestAccount();
+    requestPermissions();
+  }, []);
 
-   useEffect(() => {
-     requestAccount();
-     
-     new MetaMaskSDK({
-      useDeeplink: false,
-      communicationLayerPreference: "socket",
-   });
-  
-   const MMSDK = new MetaMaskSDK();
-  
-  const ethereum = MMSDK.getProvider(window.ethereum);
-  
-   ethereum.request({ method: 'eth_requestAccounts'});
-   }, []);
+  useEffect(() => {
+    const handleAccountsChanged = async (accounts) => {
+      console.log(accounts);
+      console.log(accounts[0]);
+      setWalletAddress(accounts[0]);
+    };
 
-   useEffect(() => {
-     const handleAccountsChanged = async (accounts) => {
-       console.log(accounts);
-       console.log(accounts[0]);
-       setWalletAddress(accounts[0]);
-     };
+    const handleChainChanged = (chainId) => {
+      const decimalChainId = parseInt(chainId, 16);
+      setChain(decimalChainId);
+    };
 
-     const handleChainChanged = (chainId) => {
-       const decimalChainId = parseInt(chainId, 16);
-       setChain(decimalChainId);
-     };
+    if (window.ethereum) {
+      window.ethereum.on('accountsChanged', handleAccountsChanged);
+      window.ethereum.on('chainChanged', handleChainChanged);
+      requestAccount();
+    }
 
-     if (window.ethereum) {
-       window.ethereum.on('accountsChanged', handleAccountsChanged);
-       window.ethereum.on('chainChanged', handleChainChanged);
-       requestAccount();
-     }
+    return () => {
+      if (window.ethereum) {
+        window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+        window.ethereum.removeListener('chainChanged', handleChainChanged);
+      }
+    }
+  }, []);
 
-     return () => {
-       if (window.ethereum) {
-         window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
-         window.ethereum.removeListener('chainChanged', handleChainChanged);
-       }
-     }
-   }, []);
-
-   const requestAccount = async () => {
+  const requestAccount = async () => {
     console.log('Requesting account...');
     if (window.ethereum) {
       try {
@@ -117,21 +107,49 @@ const App = () => {
       alert('Meta Mask not detected');
     }
   };
-  
 
-   return (
-     <>
-       <Web3Context.Provider value={{Chain , walletAddress, factoryContract, nftContract, web3 }}>
-         <BrowserRouter>
-           <CustomNavbar />
-           <Routes>
-             <Route path="/*" element={<AdminLayout />} />
-             <Route path="*" element={<Navigate to="/" replace />} />
-           </Routes>
-         </BrowserRouter>
-       </Web3Context.Provider>
-     </>
-   );
+  const requestPermissions = () => {
+    new MetaMaskSDK({
+      useDeeplink: false,
+      communicationLayerPreference: "socket",
+    });
+    const MMSDK = new MetaMaskSDK();
+    const ethereum = MMSDK.getProvider(window.ethereum);
+    ethereum
+      .request({
+        method: 'wallet_requestPermissions',
+        params: [{ eth_accounts: {} }],
+      })
+      .then((permissions) => {
+        const accountsPermission = permissions.find(
+          (permission) => permission.parentCapability === 'eth_accounts'
+        );
+        if (accountsPermission) {
+          console.log('eth_accounts permission successfully requested!');
+        }
+      })
+      .catch((error) => {
+        if (error.code === 4001) {
+          // EIP-1193 userRejectedRequest error
+          console.log('Permissions needed to continue.');
+        } else {
+          console.error(error);
+        }
+      });
+  }
+  return (
+    <>
+      <Web3Context.Provider value={{ Chain, walletAddress, factoryContract, nftContract, web3 }}>
+        <BrowserRouter>
+          <CustomNavbar />
+          <Routes>
+            <Route path="/*" element={<AdminLayout />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </BrowserRouter>
+      </Web3Context.Provider>
+    </>
+  );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
