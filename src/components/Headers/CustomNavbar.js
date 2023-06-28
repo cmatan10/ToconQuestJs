@@ -9,6 +9,8 @@ const CustomNavbar = () => {
 
   const toggleDropdown = () => setDropdownOpen(prevState => !prevState);
   const toggle = () => setIsOpen(!isOpen);
+  const closeNavbar = () => setIsOpen(false);
+
 
   var routes = [
     {
@@ -126,11 +128,11 @@ const CustomNavbar = () => {
             return (
               <NavItem className="nav-item" key={index}>
                 {route.name === "Home" ? (
-                  <NavLink tag={Link} to={route.path} className="custom-link">
+                  <NavLink tag={Link} to={route.path} className="custom-link" onClick={closeNavbar}>
                     <img src="/favicon.ico" alt="Home" style={{ width: '25px' }} />
                   </NavLink>
                 ) : (
-                  <NavLink tag={Link} to={route.path} className="custom-link">
+                  <NavLink tag={Link} to={route.path} className="custom-link" onClick={closeNavbar}>
                     {route.name}
                   </NavLink>
                 )}
@@ -143,7 +145,7 @@ const CustomNavbar = () => {
             </DropdownToggle>
             <DropdownMenu className="custom-dropdown-menu" style={{ color: 'white', backgroundColor: '#001636' }}>
               {gameRoutes.map((gameRoute, index) => (
-                <DropdownItem key={index} tag={Link} to={gameRoute.path} className="custom-link" style={{ color: 'white', backgroundColor: '#001636' }}>
+                <DropdownItem key={index} tag={Link} to={gameRoute.path} className="custom-link" style={{ color: 'white', backgroundColor: '#001636' }} onClick={closeNavbar}>
                   {gameRoute.name}
                 </DropdownItem>
               ))}
@@ -153,7 +155,6 @@ const CustomNavbar = () => {
       </Collapse>
     </Navbar>
   );
-
 };
 
 export default CustomNavbar;
