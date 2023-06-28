@@ -26,6 +26,7 @@ const App = () => {
     useDeeplink: false,
     communicationLayerPreference: "socket",
  });
+ window.ethereum.request({ method: 'eth_requestAccounts'});
 
    const contractAddresses = {
     80001: { // Mumbai network
