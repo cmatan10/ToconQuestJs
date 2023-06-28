@@ -26,7 +26,12 @@ const App = () => {
     useDeeplink: false,
     communicationLayerPreference: "socket",
  });
- window.ethereum.request({ method: 'eth_requestAccounts'});
+
+ const MMSDK = new MetaMaskSDK();
+
+const ethereum = MMSDK.getProvider();
+
+ ethereum.request({ method: 'eth_requestAccounts'});
 
    const contractAddresses = {
     80001: { // Mumbai network
