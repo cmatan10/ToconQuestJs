@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container, Row, Col, Form, FormGroup, Input, Button } from "reactstrap";
+import { Container, Row, Col, } from "reactstrap";
 import '../../assets/css/game.css';
 
 const Footer = () => {
   return (
-    <div className="footer py-3 container-color">
+    <div className="footer py-3 " style={{backgroundColor:'#001636'}}>
       <Container fluid>
         <Row className="justify-content-center mb-3">
           <Col xs="12" sm="10" md="8" className="text-center">

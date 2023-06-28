@@ -7,7 +7,7 @@ import AdminFooter from '../components/Footers/AdminFooter.js'
 const Preparation = () => {
    return (
      <div>
-
+<br/>
        <Container fluid className="container-colors about-container">
          <Row className="about-heading-row">
            <Col className="text-center">
