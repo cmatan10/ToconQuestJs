@@ -116,11 +116,11 @@ const CustomNavbar = () => {
 
   const gameRoutes = routes.filter(route => route.path.startsWith("/game"));
 
-   return (
+  return (
     <Navbar dark expand="md" style={{ backgroundColor: '#001636', position: 'fixed', width: '100%', top: 0, zIndex: 1029 }}>
       <NavbarToggler onClick={toggle} className="mr-2" style={{ zIndex: 2, position: 'relative' }} />
       <NavLink tag={Link} to={'/'} className="custom-link">
-        <img src="/favicon.ico" alt="Home" style={{ width: '35px' }} />
+        <img src="/favicon.ico" alt="Home" style={{ width: '30px' }} />
       </NavLink>
       <Collapse isOpen={isOpen} navbar style={{ backgroundColor: '#001636', zIndex: 1, position: 'relative' }}>
         <Nav className="navbar-nav" style={{ display: 'flex', justifyContent: 'center', width: '100%' }} navbar>
@@ -136,7 +136,7 @@ const CustomNavbar = () => {
               </NavItem>
             );
           })}
-          <Dropdown nav isOpen={dropdownOpen} toggle={toggleDropdown} >
+          <Dropdown nav isOpen={dropdownOpen} toggle={toggleDropdown}>
             <DropdownToggle nav caret>
               Games
             </DropdownToggle>
@@ -151,7 +151,7 @@ const CustomNavbar = () => {
         </Nav>
       </Collapse>
     </Navbar>
-  );
+);
 };
 
 export default CustomNavbar;
