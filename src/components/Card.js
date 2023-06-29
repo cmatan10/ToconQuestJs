@@ -11,7 +11,7 @@ const Card = ({url, title, description, imageUrl, difficulty, stageNumber, statu
     </Link>
       <div className="card-content-custom">
         <p className="card-description-custom">{description}</p>
-        <p className="card-difficulty-custom">Difficulty: {difficulty}</p>
+        <p className="card-difficulty-custom" style={{color:'gray'}}>Difficulty: <span style={{color:'white'}}>{difficulty}</span></p>
         <p className="card-stage-custom"> {status}</p>
       </div>
     </div>

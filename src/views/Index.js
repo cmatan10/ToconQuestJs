@@ -67,7 +67,7 @@ const Index = () => {
           imageUrl={card.imageUrl}
           difficulty={card.difficulty}
           stageNumber={card.stageNumber}
-          status={stages[card.stageNumber] === 1 ? 'Successfully solved' : 'Unsolved'}
+          status={stages[card.stageNumber] === 1 ? <b style={{color:'green'}}>Successfully solved</b> : <b style={{color:'gray'}}>Unsolved</b>}
         />
         
       ))}
