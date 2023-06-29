@@ -108,7 +108,7 @@ export const cards = [
       title: 'Factory',
       description: 'Description 1',
       imageUrl: "/factory.jpeg",
-      difficulty: 'Hard',
+      difficulty: 'Medium',
       stageNumber: 13,
     }
     // Add more card objects as needed
