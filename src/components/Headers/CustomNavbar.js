@@ -136,7 +136,7 @@ const CustomNavbar = () => {
               </NavItem>
             );
           })}
-          <Dropdown nav isOpen={dropdownOpen} toggle={toggleDropdown}>
+          <Dropdown nav isOpen={dropdownOpen} toggle={toggleDropdown} className={(isOpen && window.innerWidth <= 768) ? "d-block" : ""}>
             <DropdownToggle nav caret>
               Games
             </DropdownToggle>
@@ -151,7 +151,7 @@ const CustomNavbar = () => {
         </Nav>
       </Collapse>
     </Navbar>
-);
+  );
 };
 
 export default CustomNavbar;
