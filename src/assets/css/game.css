@@ -100,7 +100,36 @@
 
 }
 
+.index-title{
+    color: #5e72e4;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 6em; /* Size on large screens */
+    position: relative; 
+    text-align: center;
+}
 
+/* When the screen size is 992px or smaller */
+@media screen and (max-width: 992px) {
+    .index-title {
+      font-size: 5em; /* slightly smaller font size */
+    }
+}
+  
+/* When the screen size is 768px or smaller */
+@media screen and (max-width: 768px) {
+    .index-title {
+      font-size: 4em; /* even smaller font size for tablets */
+    }
+}
+  
+/* When the screen size is 576px or smaller */
+@media screen and (max-width: 576px) {
+    .index-title {
+      font-size: 3em; /* smallest font size for mobile phones */
+    }
+    
+}
 .page-title {
     color: #ffffff;
     font-weight: bold;
