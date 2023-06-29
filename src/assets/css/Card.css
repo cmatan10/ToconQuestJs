@@ -46,5 +46,6 @@
   @media (max-width: 576px) {
     .card-custom {
       margin: auto; /* This is for centering the card */
+      margin-bottom: 80px;
     }
   }
