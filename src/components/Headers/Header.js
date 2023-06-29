@@ -100,13 +100,14 @@ const Header = () => {
     14: 'Factory'
   };
   return (
-    <div className="header header-component mt--5 pb-4 pt-md-8 header-background ">
-      <Col className="text-center">
+    <div className="header header-component mt--0  pt-md-9 header-background ">
+    
+      <Col className="text-center ">
         <h1 className="page-title">
           Tocon Quest
         </h1>
 
-        <div className='animation-media'>
+        <div className='animation-media '>
           <TypeAnimation
             className='type-animation-container'
             sequence={[

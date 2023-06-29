@@ -96,7 +96,7 @@
   }
 
 .header-component{
-    padding-bottom: 23rem !important;
+    padding-bottom: 20rem !important;
 
 }
 
@@ -107,7 +107,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 7em; /* Size on large screens */
     position: relative; 
-    top:120px; /* Adjust this value */
+    top:140px; /* Adjust this value */
 }
   
 /* When the screen size is 992px or smaller */
@@ -145,7 +145,7 @@
   .header-background {
     background-image: url('../../../public/header.jpeg');
     background-repeat: no-repeat;
-    background-size: cover ; /* Cover the entire div */
+    background-size: auto 95%; /* Adjust the size of the background image */
     background-position: top center; /* Center the image */
     
     
