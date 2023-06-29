@@ -99,6 +99,23 @@
     padding-bottom: 20rem !important;
 
 }
+@media screen and (max-width: 992px) {
+  .header-component{
+    padding-bottom: 5rem !important;
+
+}
+}
+@media screen and (max-width: 768px) {
+  .header-component{
+    padding-bottom: 7rem !important;
+
+}}
+@media screen and (max-width: 576px) {
+  .header-component{
+    padding-bottom: 10rem !important;
+
+}
+}
 
 .index-title{
     color: #5e72e4;
@@ -113,6 +130,7 @@
 @media screen and (max-width: 992px) {
     .index-title {
       font-size: 5em; /* slightly smaller font size */
+      padding-top:-6100px;
     }
 }
   
@@ -120,6 +138,7 @@
 @media screen and (max-width: 768px) {
     .index-title {
       font-size: 4em; /* even smaller font size for tablets */
+
     }
 }
   
@@ -127,6 +146,7 @@
 @media screen and (max-width: 576px) {
     .index-title {
       font-size: 3em; /* smallest font size for mobile phones */
+
     }
     
 }
@@ -183,7 +203,7 @@
   /* When the screen size is 992px or smaller */
   @media screen and (max-width: 992px) {
     .header-background {
-      background-size: auto 70%; /* Adjust the size of the background image */
+      background-size: auto 100%; /* Adjust the size of the background image */
       background-position: top center; /* Adjust the position of the background image */
     }
   }
@@ -191,7 +211,7 @@
   /* When the screen size is 768px or smaller */
   @media screen and (max-width: 768px) {
     .header-background {
-      background-size: auto 70%; /* Adjust the size of the background image */
+      background-size: auto 100%; /* Adjust the size of the background image */
       background-position: top center; /* Adjust the position of the background image */
     }
   }
@@ -199,7 +219,7 @@
   /* When the screen size is 576px or smaller */
   @media screen and (max-width: 576px) {
     .header-background {
-      background-size: auto 50%; /* Adjust the size of the background image */
+      background-size: auto 40%; /* Adjust the size of the background image */
       background-position: top center; /* Adjust the position of the background image */
       position: relative; 
       top:60px; /* Adjust this value */
