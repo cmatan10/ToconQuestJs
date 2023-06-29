@@ -100,7 +100,7 @@ const Header = () => {
     14: 'Factory'
   };
   return (
-    <div className="header header-component mt--5 pb-4 pt-md-8 header-background" >
+    <div className="header header-component mt--5 pb-4 pt-md-8 header-background ">
       <Col className="text-center">
         <h1 className="page-title">
           Tocon Quest

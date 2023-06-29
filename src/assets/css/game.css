@@ -96,7 +96,8 @@
   }
 
 .header-component{
-    padding-bottom: 30rem !important;
+    padding-bottom: 23rem !important;
+
 }
 
 
@@ -144,8 +145,9 @@
   .header-background {
     background-image: url('../../../public/header.jpeg');
     background-repeat: no-repeat;
-    background-size: cover; /* Cover the entire div */
+    background-size: 85% ; /* Cover the entire div */
     background-position: top center; /* Center the image */
+    
     
   }
   
