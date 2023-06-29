@@ -190,8 +190,26 @@
       @media screen and (max-width: 576px) {
         .type-animation-container {
             font-size: 16px;
+            top: 100px;
             position: relative;
-            top: 120px;
-          
+
+        }
+      }
+      @media screen and (max-width: 992px) {
+        .animation-media {
+height: 70px;
+
+        }
+      }
+      @media screen and (max-width: 768px) {
+        .animation-media {
+height: 70px;
+
+        }
+      }
+      @media screen and (max-width: 576px) {
+        .animation-media {
+height: 40px;
+
         }
       }
