@@ -3,8 +3,3 @@
       display: block !important;
   }
 }
-.custom-dropdown-menu {
-  max-height: none;
-  overflow-y: auto;
-}
-
