@@ -196,6 +196,8 @@
     background-repeat: no-repeat;
     background-size: auto 95%; /* Adjust the size of the background image */
     background-position: top center; /* Center the image */
+      top:10px; /* Adjust this value */
+
     
     
   }
@@ -213,16 +215,18 @@
     .header-background {
       background-size: auto 100%; /* Adjust the size of the background image */
       background-position: top center; /* Adjust the position of the background image */
+      top:20px; /* Adjust this value */
+
     }
   }
   
   /* When the screen size is 576px or smaller */
   @media screen and (max-width: 576px) {
     .header-background {
-      background-size: auto 40%; /* Adjust the size of the background image */
+      background-size: auto 50%; /* Adjust the size of the background image */
       background-position: top center; /* Adjust the position of the background image */
       position: relative; 
-      top:60px; /* Adjust this value */
+      top:70px; /* Adjust this value */
       
     }
   }
