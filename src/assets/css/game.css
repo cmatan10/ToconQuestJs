@@ -121,7 +121,7 @@
     color: #5e72e4;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
-    font-size: 6em; /* Size on large screens */
+    font-size: 5em; /* Size on large screens */
     position: relative; 
     text-align: center;
 }
