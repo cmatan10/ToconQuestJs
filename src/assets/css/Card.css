@@ -1,6 +1,6 @@
 .card-custom {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
     overflow: hidden;
@@ -19,7 +19,10 @@
   }
   
   .card-title-custom {
-    margin-top: 0;
+    margin-top: 10px;
+    text-align: center;
+    color: #5e72e4;
+
   }
   
   .card-description-custom {
