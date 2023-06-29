@@ -8,7 +8,7 @@ const Preparation = () => {
    return (
      <div>
 <br/>
-       <Container fluid className="container-colors about-container">
+       <Container fluid className="container-colors about-container container-padding-fix">
          <Row className="about-heading-row">
            <Col className="text-center">
              <h1 className="about-heading" style={{color: '#5e72e4'}}>Your Quest Preparation</h1>

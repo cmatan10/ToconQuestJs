@@ -59,8 +59,11 @@
 
 .container-color {
     background-image: linear-gradient(to right, #f77449, #1C244B 70%);
-    padding: 3rem 0;
     color: white;
+}
+.container-padding-fix{
+    padding: 6rem 0;
+
 }
 
 .title-color{
@@ -93,7 +96,7 @@
   }
 
 .header-component{
-    padding-bottom: 15rem !important;
+    padding-bottom: 30rem !important;
 }
 
 
@@ -143,6 +146,7 @@
     background-repeat: no-repeat;
     background-size: cover; /* Cover the entire div */
     background-position: top center; /* Center the image */
+    
   }
   
   /* When the screen size is 992px or smaller */

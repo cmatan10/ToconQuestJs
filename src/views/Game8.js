@@ -153,7 +153,7 @@ function Game8() {
 
   return (
     <>
-      <Container className="game-container">
+      <Container className="game-container container-padding-fix">
         <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
 
           <CardBody>
