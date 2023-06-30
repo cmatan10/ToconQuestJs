@@ -34,7 +34,7 @@ export const cards = [
     {
       url: "/game5",
       title: "Timestamp",
-      description: "Time travel on the blockchain! Adjust the contract's timestamp to mirror the exact block's timestamp",
+      description: "Time travel on the blockchain! Adjust the contract's timestamp to mirror the exact block's timestamp.",
       imageUrl: "/timeStamp.jpeg",
       difficulty: 'Medium',
       stageNumber: 4,
@@ -66,7 +66,7 @@ export const cards = [
     {
       url: "/game9",
       title: 'BlockHash',
-      description: "Venture into the blockchain's memory lane! Authenticate a past block hash using its associated block numberץ",
+      description: "Venture into the blockchain's memory lane! Authenticate a past block hash using its associated block number.",
       imageUrl: "/blockhash.jpeg",
       difficulty: 'Medium',
       stageNumber: 8,

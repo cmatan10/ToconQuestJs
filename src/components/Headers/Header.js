@@ -141,22 +141,22 @@ const Header = () => {
                       <CardTitle
                         tag="h5"
                         className="text-uppercase mb-0"
-                        style={{ color: '#5e72e4', fontFamily: 'Montserrat', fontSize: '18px' }}
+                        style={{ color: '#ffffff', fontFamily: 'Montserrat', fontSize: '18px' }}
                       >
                         Login
                       </CardTitle>
                       <br />
                       <div className="d-flex align-items-center justify-content-center">
-                        <span className="h2 font-weight-bold mb-0" style={{ fontSize: '15px', color: 'white' }}>
-                          {walletAddress ? walletAddress : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}> You must connect a digital wallet to play the game </p>}
-                        </span>
+                        <span className="h2 font-weight-bold mb-0" style={{ fontSize: '15px' }}>
+                          {walletAddress ?<p style={{color:'#a3a4af'}}>{walletAddress}</p>  : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: '#a3a4af' }}> You must connect a digital wallet to play the game </p>}
+                        </span> 
                         <div className="icon icon-shape bg-danger text-white rounded-circle shadow" style={{ marginLeft: '10px' }}>
                           <i className="fas fa-wallet" />
                         </div>
                       </div>
-                      <span className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}>
+                      <span className="h2 font-weight-bold mb-0" style={{ fontSize: '14px' }}>
                         {Chain
-                          ? <p className="d-flex align-items-center justify-content-center">
+                          ? <p className="d-flex align-items-center justify-content-center" style={{color:'##a3a4af'}}>
                             {ChainToNetwork[Chain] || `Network 0x${Chain} is not supported`}
                           </p>
                           : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}>
@@ -177,7 +177,7 @@ const Header = () => {
                       <CardTitle
                         tag="h5"
                         className="text-uppercase mb-0 pb-2"
-                        style={{ color: '#5e72e4', fontFamily: 'Montserrat', fontSize: '18px' }}
+                        style={{ color: '#ffffff', fontFamily: 'Montserrat', fontSize: '18px' }}
                       >
                         Achievements
                       </CardTitle>
@@ -192,7 +192,7 @@ const Header = () => {
                         ) : (
                           tokenIDs.map((id, index) => (
                             <Col md="3" key={index}>
-                              <span className="h2 font-weight-bold mb-0" style={{ color: 'white', fontSize: '14px' }}>
+                              <span className="h2 font-weight-bold mb-0" style={{ color: '#a3a4af', fontSize: '14px' }}>
                                 {tokenIDtoGame[id]}
                                 <i className="fas fa-medal" style={{ marginLeft: '5px', color: '#f2a23dba' }} />
                               </span>
