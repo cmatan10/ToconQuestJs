@@ -154,7 +154,7 @@ const Header = () => {
                           <i className="fas fa-wallet" />
                         </div>
                       </div>
-                      <span className="h2 font-weight-bold mb-0" style={{ fontSize: '14px' }}>
+                      <span className="h2 font-weight-bold mb-0 " style={{ fontSize: '14px' }}>
                         {Chain
                           ? <p className="d-flex align-items-center justify-content-center" style={{color:'##a3a4af'}}>
                             {ChainToNetwork[Chain] || `Network 0x${Chain} is not supported`}

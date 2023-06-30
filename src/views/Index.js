@@ -15,7 +15,7 @@ const Index = () => {
   const { nftContract } = useContext(Web3Context);
   const [stages, setStages] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
-  
+
   // Function to get stage status
   const getStageStatus = async (id) => {
     if (!walletAddress) {
@@ -56,24 +56,25 @@ const Index = () => {
     < >
       <Header />
 
-  <div className="card-container-custom">
-    <p className="index-title" >welcome to solidity games world</p>
-      {cards.map((card, index) => (
-        <Card
-          key={index}
-          url={card.url}
-          title={card.title}
-          description={card.description}
-          imageUrl={card.imageUrl}
-          difficulty={card.difficulty}
-          stageNumber={card.stageNumber}
-          status={stages[card.stageNumber] === 1 ? <b style={{color:'green'}}>Successfully solved</b> : <b style={{color:'gray'}}>Unsolved</b>}
-        />
-        
-      ))}
-    </div>   
-    <CarouselComponent/>
-      <AdminFooter/>           
+      <div className="title-container">
+        <p className="index-title" >welcome to solidity games world</p>
+      </div>
+      <div className="card-container-custom">
+        {cards.map((card, index) => (
+          <Card
+            key={index}
+            url={card.url}
+            title={card.title}
+            description={card.description}
+            imageUrl={card.imageUrl}
+            difficulty={card.difficulty}
+            stageNumber={card.stageNumber}
+            status={stages[card.stageNumber] === 1 ? <b style={{ color: 'green' }}>Successfully solved</b> : <b style={{ color: 'gray' }}>Unsolved</b>}
+          />
+        ))}
+      </div>
+      <CarouselComponent />
+      <AdminFooter />
     </>
   );
 };
