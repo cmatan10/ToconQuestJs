@@ -176,7 +176,7 @@ const Header = () => {
                     <div className="col">
                       <CardTitle
                         tag="h5"
-                        className="text-uppercase mb-0 pb-2"
+                        className="text-uppercase mb--3 "
                         style={{ color: '#ffffff', fontFamily: 'Montserrat', fontSize: '18px' }}
                       >
                         Achievements
@@ -185,14 +185,14 @@ const Header = () => {
                       <Row>
                         {tokenIDs.length === 0 ? (
                           <Col className="d-flex align-items-center justify-content-center">
-                            <span className="h2 font-weight-bold mb-0" style={{ color: 'white', fontSize: '16px' }}>
+                            <span className="h2 font-weight-bold mb-0" style={{ color: 'white', fontSize: '15px' }}>
                               There is no achievements
                             </span>
                           </Col>
                         ) : (
                           tokenIDs.map((id, index) => (
                             <Col md="3" key={index}>
-                              <span className="h2 font-weight-bold mb-0" style={{ color: '#a3a4af', fontSize: '14px' }}>
+                              <span className="h2 font-weight-bold mb-0" style={{ color: '#a3a4af', fontSize: '13px' }}>
                                 {tokenIDtoGame[id]}
                                 <i className="fas fa-medal" style={{ marginLeft: '5px', color: '#f2a23dba' }} />
                               </span>
