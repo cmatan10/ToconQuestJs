@@ -222,19 +222,10 @@ function Game5() {
             <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
             <p>
               <strong>
-                <a style={{ textDecoration: "underline" }} href={hintLink} target="_blank" rel="noopener noreferrer"> https://web3js.readthedocs.io/en/v1.2.11/web3-eth.html?highlight=getTransaction#gettransaction</a>
+                <p style={{ wordBreak: "break-all" }}> You will find the block number in the block explorer by the contract address created for you.</p>
                 <br />
-                +
-                <br />
+                <p style={{ wordBreak: "break-all" }}>Then use this function:</p>
                 <a style={{ textDecoration: "underline" }} href={hintLink2} target="_blank" rel="noopener noreferrer"> https://web3js.readthedocs.io/en/v1.2.11/web3-eth.html?highlight=getBlock#getblock</a>
-                <br />
-                OR
-                <br />
-                <a style={{ textDecoration: "underline" }} href={hintLink3} target="_blank" rel="noopener noreferrer"> https://web3js.readthedocs.io/en/v1.2.11/web3-eth.html?highlight=getStorageAt#getstorageat</a>
-                <br />
-                +
-                <br />
-                <a style={{ textDecoration: "underline" }} href={hintLink4} target="_blank" rel="noopener noreferrer"> https://web3js.readthedocs.io/en/v1.2.11/web3-utils.html?highlight=todecimal#hextonumber</a>
               </strong>.
             </p>
           </CardBody>
