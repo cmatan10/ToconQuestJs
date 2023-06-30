@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import React, { useState, createContext, useEffect } from 'react';
-import { MetaMaskSDK } from '@metamask/sdk';
 
 import Web3 from "web3";
 import gameABI from "./interfaces/GameFactory.json"
@@ -21,15 +20,6 @@ const App = () => {
    const [factoryContract, setFactoryContract] = useState(null);
    const [nftContract, setNftContract] = useState(null);
    const web3 = new Web3(window.ethereum);
-
-   new MetaMaskSDK({
-    useDeeplink: false,
-    communicationLayerPreference: "socket",
- });
-
-
-
-
 
    const contractAddresses = {
     80001: { // Mumbai network

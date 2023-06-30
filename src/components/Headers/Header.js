@@ -148,10 +148,10 @@ const Header = () => {
                       <br />
                       <div className="d-flex align-items-center justify-content-center">
                         <span className="h2 font-weight-bold mb-0" style={{ fontSize: '15px' }}>
-                          {walletAddress ?<p className="mb--1" style={{color:'#a3a4af'}}>{walletAddress}</p>  : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: '#a3a4af' }}> You must connect a digital wallet to play the game </p>}
+                          {walletAddress ?<p className="mb-1" style={{color:'#a3a4af'}}>{walletAddress}</p>  : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: '#a3a4af' }}> You must connect a digital wallet to play the game </p>}
                         </span> 
                         <div className="icon icon-shape bg-danger text-white rounded-circle shadow" style={{ marginLeft: '10px' }}>
-                          <i className="fas fa-wallet" />
+                          <i className="fas fa-wallet mb-1" />
                         </div>
                       </div>
                       <span className="h2 font-weight-bold mb-0 " style={{ fontSize: '14px' }}>
@@ -159,7 +159,7 @@ const Header = () => {
                           ? <p className="d-flex align-items-center justify-content-center" style={{color:'white'}}>
                             {ChainToNetwork[Chain] || `Network 0x${Chain} is not supported`}
                           </p>
-                          : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: 'white' }}>
+                          : <p className="d-flex align-items-center justify-content-center" style={{ fontSize: '14px', color: 'white' }}>
                             Meta Mask not detected
                           </p>
                         }
@@ -185,14 +185,14 @@ const Header = () => {
                       <Row>
                         {tokenIDs.length === 0 ? (
                           <Col className="d-flex align-items-center justify-content-center">
-                            <span className="h2 font-weight-bold mb-0" style={{ color: 'white', fontSize: '15px' }}>
+                            <span className="h2 font-weight-bold mb-0 mb--6" style={{ color: '#a3a4af', fontSize: '15px' }}>
                               There is no achievements
                             </span>
                           </Col>
                         ) : (
                           tokenIDs.map((id, index) => (
                             <Col md="3" key={index}>
-                              <span className="h2 font-weight-bold mb-0" style={{ color: '#a3a4af', fontSize: '13px' }}>
+                              <span className="h2 font-weight-bold mb-0 " style={{ color: '#a3a4af', fontSize: '13px' }}>
                                 {tokenIDtoGame[id]}
                                 <i className="fas fa-medal" style={{ marginLeft: '5px', color: '#f2a23dba' }} />
                               </span>
