@@ -10,7 +10,7 @@ const Card = ({url, title, description, imageUrl, difficulty, stageNumber, statu
       <h3 className="card-title-custom">{title}</h3>
     
       <div className="card-content-custom">
-        <p className="card-description-custom">{description}</p>
+        <p className="card-description-custom" style={{textAlign: 'center'}}>{description}</p>
         <p className="card-difficulty-custom" style={{color:'gray'}}>Difficulty: <span style={{color:'white'}}>{difficulty}</span></p>
         <p className="card-stage-custom"> {status}</p>
       </div>

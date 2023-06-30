@@ -194,7 +194,7 @@ const Header = () => {
                             <Col md="3" key={index}>
                               <span className="h2 font-weight-bold mb-0" style={{ color: 'white', fontSize: '14px' }}>
                                 {tokenIDtoGame[id]}
-                                <i className="fas fa-medal" style={{ marginLeft: '5px', color: 'gold' }} />
+                                <i className="fas fa-medal" style={{ marginLeft: '5px', color: '#f2a23dba' }} />
                               </span>
                             </Col>
                           ))
