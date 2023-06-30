@@ -57,7 +57,7 @@ const Index = () => {
       <Header />
 
       <div className="title-container">
-        <p className="index-title" >welcome to solidity games world</p>
+        <p className="index-title" style={{ fontFamily: 'Montserrat'}}>welcome to solidity games world</p>
       </div>
       <div className="card-container-custom">
         {cards.map((card, index) => (

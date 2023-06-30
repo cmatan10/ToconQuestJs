@@ -103,7 +103,7 @@ const Header = () => {
     <div className="header header-component mt--0  pt-md-9 header-background ">
     
       <Col className="text-center ">
-        <h1 className="page-title">
+        <h1 className="page-title" style={{ fontFamily: 'Montserrat'}}>
           Tocon Quest
         </h1>
 
