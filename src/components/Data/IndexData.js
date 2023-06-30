@@ -58,7 +58,7 @@ export const cards = [
     {
       url: "/game8",
       title: 'Overflow',
-      description:  "Let the counter overflow! Push it to its maximum limit and beyond!",
+      description: "Let the counter overflow! Push it to its maximum limit and beyond!",
       imageUrl: "/overflow.jpeg",
       difficulty: 'Easy',
       stageNumber: 7,

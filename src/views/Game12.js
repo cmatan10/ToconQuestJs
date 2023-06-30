@@ -187,7 +187,7 @@ function Game12() {
               <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={secretHash}>
                 secretHash
               </Button>
-              {secretHashState !== "" && <p style={{ marginLeft: '10px', marginTop: '12px' }}> {secretHashState}</p>}
+              {secretHashState !== "" && <p style={{ marginLeft: '10px', marginTop: '12px', wordBreak: "break-all"  }}> {secretHashState}</p>}
               </div>
               <br/>
               <div style={{ display: 'flex', alignItems: 'center' }}>

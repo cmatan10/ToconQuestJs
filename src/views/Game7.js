@@ -208,7 +208,7 @@ function Game7() {
                     PreviousPassword
                   </Button>
                   {previousPasswordValue !== null &&
-                    <p style={{ marginLeft: '10px', marginTop: '12px' }}>
+                    <p style={{ marginLeft: '10px', marginTop: '12px', wordBreak: "break-all" }}>
                       {previousPasswordValue.toString()}
                     </p>
                   }

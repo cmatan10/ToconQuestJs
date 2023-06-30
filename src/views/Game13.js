@@ -203,7 +203,7 @@ function Game13() {
             player
           </Button>
           {playerState !== null && 
-            <p style={{ marginLeft: '10px', marginTop: '12px' }}>{JSON.stringify(playerState)}</p>}
+            <p style={{ marginLeft: '10px', marginTop: '12px', wordBreak: "break-all"  }}>{JSON.stringify(playerState)}</p>}
         </div>
         <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="button" onClick={toggleHint}>
           {isHintVisible ? 'Hide Hint' : 'Show Hint'}

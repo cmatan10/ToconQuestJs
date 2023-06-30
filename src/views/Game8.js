@@ -195,7 +195,7 @@ function Game8() {
                   <Button style={{ backgroundColor: '#355f7d', color: 'white' }} className="mt-1" onClick={() => counter()}>
                     counter
                   </Button>
-                  {counterValue !== null && <p>Counter: {counterValue}</p>}
+                  {counterValue !== null && <p style={{ wordBreak: "break-all" }}>{counterValue}</p>}
                 </div>
                 <br />
                 <div style={{ display: 'flex', alignItems: 'center' }}>
