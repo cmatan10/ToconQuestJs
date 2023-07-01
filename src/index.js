@@ -26,7 +26,7 @@ const App = () => {
     useDeeplink: true,
     communicationLayerPreference: "socket",
     dappMetadata:{name: "ToconQuest", url: "https://quest.tocon.io/"},
-    openDeeplink:'https://quest.tocon.io/'
+    openDeeplink:'https://metamask.app.link/dapp/https://quest.tocon.io/'
  })
 
 
