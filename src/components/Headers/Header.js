@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 import { Web3Context } from '../../index';
 import { TypeAnimation } from 'react-type-animation';
@@ -10,6 +10,8 @@ const Header = () => {
   const [Chain, setChain] = useState(web3Context.Chain);
   const { nftContract } = useContext(Web3Context);
   const [tokenIDs, setTokenIDs] = useState([]);
+  const walletAddressRef = useRef(walletAddress);
+  const chainRef = useRef(Chain);
 
   useEffect(() => {
     console.log('Chain:', Chain);
@@ -32,7 +34,6 @@ const Header = () => {
     if (ethereum && ethereum.on) {
       const handleAccountsChanged = function (accounts) {
         setWalletAddress(accounts[0]);
-        // setChain(Chain); remove this line
       };
       const handleChainChanged = (chainId) => {
         // this line will convert chainId to decimal from hexadecimal
@@ -53,29 +54,28 @@ const Header = () => {
   }, [web3Context.walletAddress, web3Context.Chain]);
 
 
-  useEffect(() => {
+useEffect(() => {
+    walletAddressRef.current = walletAddress;
+    chainRef.current = Chain;
+}, [walletAddress, Chain]);
+
+useEffect(() => {
     const fetchData = async () => {
-      if (!walletAddress || !nftContract || ![5, 11155111, 80001].includes(Chain)) {
-        return;
-      }
-
-      let tempTokenIDs = [];
-      for (let index = 1; index <= 14; index++) {
-        try {
-          const balance = await nftContract.methods.balanceOf(walletAddress, index).call();
-          if (balance > 0) {
-            tempTokenIDs.push(index);
-          }
-        } catch (e) {
-          console.error(`Failed to fetch balance for token ${index} on network ${Chain}. Error: ${e.message}`);
+        let tempTokenIDs = [];
+        for (let index = 1; index <= 14; index++) {
+            try {
+                const balance = await nftContract.methods.balanceOf(walletAddressRef.current, index).call();
+                if (balance > 0) {
+                    tempTokenIDs.push(index);
+                }
+            } catch (e) {
+                console.error(`Failed to fetch balance for token ${index} on network ${chainRef.current}. Error: ${e.message}`);
+            }
         }
-      }
-
-      setTokenIDs(tempTokenIDs);
+        setTokenIDs(tempTokenIDs);
     };
-
-    fetchData();
-  }, [Chain, walletAddress, nftContract])
+        fetchData();
+}, [nftContract]);
 
   const ChainToNetwork = {
     5: 'Goerli',
