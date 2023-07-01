@@ -25,7 +25,8 @@ const App = () => {
    new MetaMaskSDK({
     useDeeplink: true,
     communicationLayerPreference: "socket",
-    dappMetadata:{name: "ToconQuest", url: "https://quest.tocon.io/"}
+    dappMetadata:{name: "ToconQuest", url: "https://quest.tocon.io/"},
+    openDeeplink:'https://quest.tocon.io/'
  })
 
 
