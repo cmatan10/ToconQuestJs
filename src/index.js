@@ -22,15 +22,10 @@ const App = () => {
    const [nftContract, setNftContract] = useState(null);
    const web3 = new Web3(window.ethereum);
 
-   const MMSDK = new MetaMaskSDK({
-    useDeeplink: false,
+   new MetaMaskSDK({
+    useDeeplink: true,
     communicationLayerPreference: "socket",
- });
-
-
-
-
-
+ })
 
 
    const contractAddresses = {
@@ -94,12 +89,12 @@ const App = () => {
        }
      }
    }, []);
-   const ethereum = MMSDK.getProvider();
+
    const requestAccount = async () => {
     console.log('Requesting account...');
     if (window.ethereum) {
       try {
-        const accounts = await ethereum.request({
+        const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
         const chainId = parseInt(window.ethereum.chainId, 16);
