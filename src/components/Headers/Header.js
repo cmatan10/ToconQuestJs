@@ -103,7 +103,7 @@ useEffect(() => {
     <div className="header header-component mt--0  pt-md-9 header-background ">
     
       <Col className="text-center ">
-        <h1 className="page-title" style={{ fontFamily: 'Montserrat'}}>
+        <h1 className="page-title" style={{ fontFamily: 'Montserrat',color:'#a3a4af'}}>
           Tocon Quest
         </h1>
 
