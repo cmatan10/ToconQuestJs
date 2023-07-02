@@ -215,7 +215,7 @@ function Game11() {
                         <p>
                             <strong>Use the encodeparameters function from the web3js library. You can read more </strong> <a style={{textDecoration: "underline"}} href={hintLink} target="_blank" rel="noopener noreferrer"><strong>Here</strong></a>.
                            <br/>
-                           <strong><strong>or</strong></strong>
+                           <strong><strong>Or</strong></strong>
                             <br/>
                             <strong>Write a function according to the following interface:<br/> <strong> function encode(string memory _str, uint256 _num) external pure returns (bytes memory);</strong></strong>
                         </p>

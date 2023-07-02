@@ -246,7 +246,7 @@ function Game13() {
             <p>
               <strong>Use the decodeparameters function from the web3js library. You can read more </strong> <a style={{ textDecoration: "underline" }} href={hintLink} target="_blank" rel="noopener noreferrer"><strong>Here</strong></a>.
               <br />
-              <strong><strong>or</strong></strong>
+              <strong><strong>Or</strong></strong>
               <br />
               <strong>Write a function according to the following interface:<br /> <strong> function decode(bytes memory encodedData) external pure returns (string memory, uint256);</strong></strong>
             </p>

@@ -333,13 +333,13 @@ function Game14() {
                   <Input
                     className="form-control-alternative"
                     id="input-city"
-                    placeholder="_biggerSalt "
+                    placeholder="_add"
                     type="text"
                     onChange={(e) => setAdd(e.target.value)}
                   />
                 </FormGroup>
                 <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => _deploy(Add)}>
-                  _deploy
+                  deploy
                 </Button>
               </CardBody>
             </Card>

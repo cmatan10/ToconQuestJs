@@ -29,9 +29,9 @@ const Preparation = () => {
                 <h2 className="about-subheading" style={{ color: '#5e72e4' }}>Fuel your wallet</h2>
                 <p className="about-text">
                   We highly recommend fueling your wallet with tokens from the following test network faucets:
-                  <a style={{ textDecoration: "underline" }} href={alchemyFaucet} target="_blank" rel="noopener noreferrer"><strong> alchemy Faucet</strong></a>
+                  <a href={alchemyFaucet} target="_blank" rel="noopener noreferrer"><strong> alchemy Faucet </strong></a>
                  and
-                  <a style={{ textDecoration: "underline" }} href={QuickNode} target="_blank" rel="noopener noreferrer"><strong> QuickNode Faucet</strong></a>.
+                  <a href={QuickNode} target="_blank" rel="noopener noreferrer"><strong> QuickNode Faucet. </strong></a>
                   Remember, you are not required to create an instance on the Ethereum mainnet - we have deployed the contract on various testnets (Mumbai, Goerli, Sepolia) so you can play for free!
                 </p>
 

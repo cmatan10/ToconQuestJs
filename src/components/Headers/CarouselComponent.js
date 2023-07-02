@@ -95,9 +95,9 @@ const CarouselComponent = () => {
             path: '/game14'
         },
         {
-            src: 'factory.jpeg',
-            altText: 'factory',
-            caption: 'factory',
+            src: 'SupportInterface.jpeg',
+            altText: 'SupportInterface',
+            caption: 'SupportInterface',
             path: '/game15'
         }
     ];

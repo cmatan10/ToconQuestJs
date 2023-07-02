@@ -231,7 +231,7 @@ function Game10() {
               <p>
                 <strong>Calculate the function signature </strong> <a style={{ textDecoration: "underline" }} href={hintLink} target="_blank" rel="noopener noreferrer"><strong>Here</strong></a>.
                 <br />
-                <strong><strong>or</strong></strong>
+                <strong><strong>Or</strong></strong>
                 <br />
                 <strong>Write a function according to the following interface:<strong> function Calc() external pure returns (bytes4);</strong></strong>
               </p>

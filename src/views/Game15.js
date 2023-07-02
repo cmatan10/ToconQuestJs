@@ -23,7 +23,8 @@ function Game15() {
   const [ContractInterface, setContractInterface] = useState(null);
   const [Selector1, setSelector1] = useState(null);
   const [Selector2, setSelector2] = useState(null);
-
+  const hintLink = 'https://emn178.github.io/online-tools/keccak_256.html'
+  const hintLink2 = 'https://xor.pw/#'
 
 
 
@@ -186,9 +187,9 @@ function Game15() {
         <Card className="game-card card-color" style={{ backgroundColor: '#001636', color: 'white' }}>
           <CardBody>
             <CardTitle className="game-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to find out the address of the contract that will be deployed by calling the deploy function. </b>
+            <p><b>Your task is to uncover the correct signature that represents the interface of this smart contract. </b>
               <br /><br />
-              <b><strong> You need:</strong>understand how a smart contract address is calculated and calculate the address where the SomeContract contract will be deployed.</b></p>
+              <b><strong> You need:</strong> Understand the keccak256 hash functions, Bytes4 data type, and XOR operations, which are used to calculate a function's signature.</b></p>
             <div>
               <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="button-margin" onClick={createGame}>
                 Create Instance
@@ -201,7 +202,7 @@ function Game15() {
           <>
             <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
               <CardBody>
-              <CardTitle className="card-title title-color" ><b>State Variables & Call Functions</b></CardTitle>
+              <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', minHeight: '50px' }}>
                   <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => contractInterface()}>
@@ -257,17 +258,25 @@ function Game15() {
           </>
         )}
 
-        <Collapse isOpen={isHintVisible}>
-          <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
-            <CardBody>
-              <CardTitle className="game-title title-color" >Hint</CardTitle>
-              <p>
-                calc the deployed address: keccak256(abi.encodePacked(bytes1(0xff), address(this), salt, keccak256(bytecode)))
-                .
-              </p>
-            </CardBody>
-          </Card>
-        </Collapse>
+        {isHintVisible && (
+        <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <CardBody>
+            <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
+            <p>
+              <strong>Calculate the function signatures </strong> <a style={{ textDecoration: "underline" }} href={hintLink} target="_blank" rel="noopener noreferrer"><strong>Here</strong></a>.
+              <br />
+              <strong><strong>And</strong></strong>
+              <br/>
+              <strong>Calculate the XOR value of function signatures  </strong> <a style={{ textDecoration: "underline" }} href={hintLink2} target="_blank" rel="noopener noreferrer"><strong>Here</strong></a>.
+              <br />
+              <strong><strong>Or</strong></strong>
+              <br />
+              <strong>Write a function according to the following interface:<br /> <strong> function calculateXOR() public pure returns(bytes4);</strong></strong>
+            </p>
+          </CardBody>
+        </Card>
+      )}
+
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           {TokenBalance < 1 ? null : (
             <div>
