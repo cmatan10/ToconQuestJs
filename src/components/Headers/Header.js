@@ -80,7 +80,8 @@ useEffect(() => {
   const ChainToNetwork = {
     5: 'Goerli',
     11155111: 'Sepolia',
-    80001: 'Mumbai'
+    80001: 'Mumbai',
+    97: 'Bsc Testnet'
   };
 
   const tokenIDtoGame = {

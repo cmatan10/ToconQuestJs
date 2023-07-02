@@ -30,16 +30,20 @@ const App = () => {
 
    const contractAddresses = {
     80001: { // Mumbai network
-      gameAddress: "0x8f5952e0C7e13DEDaF39A16455eeA0408f0d7e2f",
-      nftAddress: "0x4fE052E7De10A83919eED7ce87b5C050b0446C72"
+      gameAddress: "0x1a67ebb9C9B793ebC5Da05a6F36F7395263F6c21",
+      nftAddress: "0x1bB3baE59016a9FF3CFbb8EE7BC60ED688303A73"
     },
     11155111: { // Sepolia network
-      gameAddress: "0x63c56AD7048f6C3880ba8d0e362982e9Ebab44C6",
-      nftAddress: "0xB89CB3523eD1615ACB9629DaCdCDc441539B4622"
+      gameAddress: "0x92F9eB5824211aA291EadDb3755220AC68Ef2BF1",
+      nftAddress: "0xA8cD928a8346FB37D8d5D4f4EC867f6c4073dedB"
     },
     5: { // Goerli network
-      gameAddress: "0xb9F5440A01eF97Ac8e2A5803Ae9dECD2D810e552",
-      nftAddress: "0x79227AfbC5357f02193D52510bb66ecAC25b9C08"
+      gameAddress: "0xa7169fDC282c990b510E2d6428bBC0ED1F7f1EfE",
+      nftAddress: "0x1319a2fff9189496b5420256a0b19bBD36aed6eB"
+    },
+    97: { // Goerli network
+      gameAddress: "0x110A5E7F651730Ca3631a0980cE57533d866a6ba",
+      nftAddress: "0x72Bb9DD759ffaC48ff2A2Aa55C3cF8404a761E5d"
     }
   };
 
