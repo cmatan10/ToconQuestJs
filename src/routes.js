@@ -14,6 +14,7 @@ import Game11 from "views/Game11.js";
 import Game12 from "views/Game12.js";
 import Game13 from "views/Game13.js";
 import Game14 from "views/Game14.js";
+import Game15 from "views/Game15.js";
 import About from "views/About";
 import Preparation from "views/Preparation";
 
@@ -140,6 +141,13 @@ var routes = [
     path: "/game14",
     name: "Factory",
     component: <Game14 />,
+    layout: "/",
+    showInSidebar: false,  
+  },
+  {
+    path: "/game15",
+    name: "SupportInterface",
+    component: <Game15 />,
     layout: "/",
     showInSidebar: false,  
   } 

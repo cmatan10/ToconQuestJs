@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Web3Context } from '../index';
-import InstanceABI from '../interfaces/LevelFactory.json'
+import InstanceABI from '../interfaces/SupportInterface.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle, Collapse } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import AdminFooter from '../components/Footers/AdminFooter.js'
@@ -11,8 +11,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 
-function Game14() {
-  const [Add, setAdd] = useState("");
+function Game15() {
+  const [id, setId] = useState("");
   const [InstanceAddress, setInstanceAddress] = useState("");
   const [TokenBalance, setTokenBalance] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -20,13 +20,10 @@ function Game14() {
   const { walletAddress, factoryContract, nftContract, web3 } = useContext(Web3Context);
   const [instanceContract, setInstanceContract] = useState(null);
   const [isHintVisible, setIsHintVisible] = useState(false);
-  const [CorrectPrediction, setCorrectPrediction] = useState(null);
-  const [Salt, setSalt] = useState(null);
-  const [Bytecode, setBytecode] = useState(null);
-  const [_addr, set_addr] = useState("");
-  const [_sal, set_sal] = useState("");
-  const [_bytecode, set_bytecode] = useState("");
-  const [_Address, set_Address] = useState("");
+  const [ContractInterface, setContractInterface] = useState(null);
+  const [Selector1, setSelector1] = useState(null);
+  const [Selector2, setSelector2] = useState(null);
+
 
 
 
@@ -45,7 +42,7 @@ function Game14() {
       if (!walletAddress || !nftContract) {
         return;
       }
-      const balance = await nftContract.methods.balanceOf(walletAddress, 14).call();
+      const balance = await nftContract.methods.balanceOf(walletAddress, 15).call();
       setTokenBalance(balance);
     };
     fetchData();
@@ -54,9 +51,9 @@ function Game14() {
   const createGame = async () => {
     try {
       setIsLoading(true);
-      const receipt = await factoryContract.methods.deploy(14).send({
+      const receipt = await factoryContract.methods.deploy(15).send({
         from: walletAddress,
-        gas: 1200000,
+        gas: 800000,
       });
 
       const deployInstanceEvent = receipt.events.DeployInstance;
@@ -76,12 +73,12 @@ function Game14() {
   };
 
 
-  const _deploy = async (Add) => {
+  const calculateXOR = async (id) => {
 
     if (instanceContract) {
       try {
 
-        await instanceContract.methods.deploy(Add).send({
+        await instanceContract.methods.calculateXOR(id).send({
           from: walletAddress,
           gas: 500000,
         }).then(async () => {
@@ -92,7 +89,7 @@ function Game14() {
             }); 
           if (TokenBalance < 1) {
             try {
-              await nftContract.methods.mint(14, InstanceAddress).send({
+              await nftContract.methods.mint(15, InstanceAddress).send({
                 from: walletAddress,
                 gas: 700000,
               })
@@ -101,7 +98,7 @@ function Game14() {
                   toast.error("Minting failed."); // Error toast
                 })
                 .once("receipt", async () => {
-                  const balance = await nftContract.methods.balanceOf(walletAddress, 14).call();
+                  const balance = await nftContract.methods.balanceOf(walletAddress, 15).call();
                   setTokenBalance(balance);
                   console.log(balance);
                   toast.success("Minting completed successfully!"); // Success toast
@@ -120,107 +117,51 @@ function Game14() {
     }
   };
 
-  const correctPrediction = async () => {
-    const correctPrediction = await instanceContract.methods.correctPrediction().call()
-    setCorrectPrediction(correctPrediction)
-    console.log(correctPrediction);
+  const contractInterface = async () => {
+    const contractInterface = await instanceContract.methods.contractInterface().call()
+    setContractInterface(contractInterface)
+    console.log(contractInterface);
   }
 
 
-  const _Salt = async () => {
-    const _Salt = await instanceContract.methods._salt().call()
-    setSalt(_Salt)
-    console.log(_Salt);
+  const selector1 = async () => {
+    const selector1 = await instanceContract.methods.selector1().call()
+    setSelector1(selector1)
+    console.log(selector1);
   }
 
-  const bytecode = async () => {
-    const bytecode = await instanceContract.methods.bytecode().call()
-    setBytecode(bytecode)
-    console.log(bytecode);
+  const selector2 = async () => {
+    const selector2 = await instanceContract.methods.selector2().call()
+    setSelector2(selector2)
+    console.log(selector2);
   }
 
-  const checkAddress = async (_addr, _sal, _bytecode) => {
-    if (instanceContract) {
-      try {
-        const _address = await instanceContract.methods.checkAddress(_addr, Number(_sal), _bytecode).call();
-        console.log(_address);
-        set_Address(_address)
-        toast.success("Transaction sent successfully!"); // Success toast
-      } catch (err) {
-        console.error(err.message);
-        toast.error("Transaction failed."); // Error toast
-      }
-    }
-  };
 
-  const code = `
-  
-  // SPDX-License-Identifier: MIT
-
+  const code = `// SPDX-License-Identifier: MIT
   pragma solidity ^0.8.10;
   
-  contract SomeContract {
-    /*
-          ~~~~                                       ~~~~ 
-      ~~                                           ~~
-        ~~                                           ~~
-      ~~                                            ~~
-        ~~                                           ~~
-      ________                                    _______
-     /  |   | \\                                  / |   | \\
-    / __|___|__\\                                /__|___|__\\
-   / ||_|___|_||\\                              /||_|___|_||\\
-  /              \\                            /             \\
- /                \\                          /               \\
-/__________________\\ ______________________ /_________________\\
-|   ____________    ||   ____    ____     ||   ____________    |
-|  |            |   ||  |    |  |    |    ||  |            |   |
-|  |____________|   ||  |____|  |____|    ||  |____________|   |
-|                   ||                    ||                   |
-|   _____________   ||   _____________    ||   _____________   |
-|  |             |  ||  |             |   ||  |             |  |
-|  |   _     _   |  ||  |   _     _   |   ||  |   _     _   |  |
-|  |  | |   | |  |  ||  |  | |   | |  |   ||  |  | |   | |  |  |
-|__|__| |___| |__|__||__|__| |___| |__|___||__|__| |___| |__|__|        
-                                                                 */
-  }
+  contract SupportInterface {
   
-  contract Factory {
-      SomeContract[] public SomeContracts;
+      bool public contractInterface;
   
-      bool public correctPrediction;
-  
-      uint256 public _salt = 1;
-  
-      bytes public bytecode = type(SomeContract).creationCode;
-  
-      function checkAddress(address _addr, uint256 _sal, bytes memory _bytecode)
-          external
-          pure
-          returns (address)
-      {
-          bytes32 result = keccak256(
-              abi.encodePacked(
-                  bytes1(0xff),
-                  address(_addr),
-                  _sal,
-                  keccak256(_bytecode)
-              )
-          );
-          return address(uint160(uint256(result)));
+      bytes4 public selector1 = bytes4(keccak256("calcFunc1(uint)"));
+      
+      bytes4 public selector2 = bytes4(keccak256("calcFunc2(bool)"));
+      
+      function calcFunc1(uint number) private {
       }
   
-      function deploy(address _add) external{
-            require(_add != address(0), "Address must not be null");
-            bytes32 salt = bytes32(_salt);
-            SomeContract someContract = (new SomeContract){salt: salt}();
-            SomeContracts.push(someContract);
-            if (address(SomeContracts[0]) == _add){
-            correctPrediction = true;
-            }
-            require(correctPrediction,"not correct");
-        }
+      function calcFunc2(bool Boolean) private {
+      }
+  
+      function calculateXOR(bytes4 id) external {
+          bytes4 xorValue = selector1 ^ selector2 ^ bytes4(keccak256("calculateXOR(bytes4)"));
+          require(id == xorValue, "This is not the interface of the contract");
+              contractInterface = true;
+      }
   }
+  
+  
   `;
 
   return (
@@ -228,7 +169,7 @@ function Game14() {
       <Container className="game-container container-padding-fix" >
         <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
           <CardBody>
-            <CardTitle className="game-title title-color" ><b>Factory</b></CardTitle>
+            <CardTitle className="game-title title-color" ><b>SupportInterface</b></CardTitle>
             <div className="code-section">
               <CopyToClipboard text={code}>
                 <Button className="button-copy">
@@ -263,59 +204,29 @@ function Game14() {
               <CardTitle className="card-title title-color" ><b>State Variables & Call Functions</b></CardTitle>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', minHeight: '50px' }}>
-                  <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => correctPrediction()}>
-                    CorrectPrediction
+                  <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => contractInterface()}>
+                    ContractInterface
                   </Button>
-                  {CorrectPrediction !== null &&
+                  {ContractInterface !== null &&
                     <p style={{ marginLeft: '10px', marginTop: '12px' }}>
-                      {CorrectPrediction ? "True" : "False"}
+                      {ContractInterface ? "True" : "False"}
                     </p>
                   }                </div>
                 <br />
                 <div style={{ display: 'flex', alignItems: 'flex-start', minHeight: '50px' }}>
-                  <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => _Salt()}>
-                    Salt
+                  <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => selector1()}>
+                  selector1
                   </Button>
-                  {Salt !== '' && <p style={{ marginLeft: '10px', marginTop: '12px' }}>{Salt}</p>}
+                  {Selector1 !== '' && <p style={{ marginLeft: '10px', marginTop: '12px' }}>{Selector1}</p>}
                 </div>
                 <br />
                 <div style={{ display: 'flex', alignItems: 'flex-start', minHeight: '50px' }}>
-                  <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => bytecode()}>
-                    bytecode
+                <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => selector2()}>
+                  selector2
                   </Button>
-                  {Bytecode !== null &&
-                    <p style={{ wordBreak: "break-all" }}> {JSON.stringify(Bytecode)}</p>}
+                  {Selector2 !== '' && <p style={{ marginLeft: '10px', marginTop: '12px' }}>{Selector2}</p>}
                 </div>
-                <br />
-                <FormGroup>
-                  <Input
-                    className="form-control-alternative"
-                    id="input-city"
-                    placeholder="_addr"
-                    type="text"
-                    onChange={(e) => set_addr(e.target.value)}
-                  />
-                  <br />
-                  <Input
-                    className="form-control-alternative"
-                    id="input-city"
-                    placeholder="_sal"
-                    type="text"
-                    onChange={(e) => set_sal(e.target.value)}
-                  />
-                  <br />
-                  <Input
-                    className="form-control-alternative"
-                    id="input-city"
-                    placeholder="_bytecode"
-                    type="text"
-                    onChange={(e) => set_bytecode(e.target.value)}
-                  />
-                </FormGroup>
-                <Button style={{backgroundColor: '#355f7d' , color: 'white'}} className="mt-1" onClick={() => checkAddress(_addr, _sal, _bytecode)}>
-                  checkAddress
-                </Button>
-                {_Address !== '' && <p style={{ marginLeft: '10px', marginTop: '12px' }}>{_Address}</p>}
+
                 <br />
                 <br />
 
@@ -333,13 +244,13 @@ function Game14() {
                   <Input
                     className="form-control-alternative"
                     id="input-city"
-                    placeholder="_biggerSalt "
+                    placeholder="calculateXOR"
                     type="text"
-                    onChange={(e) => setAdd(e.target.value)}
+                    onChange={(e) => setId(e.target.value)}
                   />
                 </FormGroup>
-                <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => _deploy(Add)}>
-                  _deploy
+                <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="mt-1" onClick={() => calculateXOR(id)}>
+                calculateXOR
                 </Button>
               </CardBody>
             </Card>
@@ -384,4 +295,4 @@ function Game14() {
 
 }
 
-export default Game14;
+export default Game15;

@@ -110,6 +110,14 @@ export const cards = [
       imageUrl: "/factory.jpeg",
       difficulty: 'Medium',
       stageNumber: 13,
+    },
+    {
+      url: "/game15",
+      title: 'SupportInterface',
+      description: "desc",
+      imageUrl: "/factory.jpeg",
+      difficulty: 'Hard',
+      stageNumber: 14,
     }
     // Add more card objects as needed
   ];

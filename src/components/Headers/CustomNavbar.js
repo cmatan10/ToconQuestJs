@@ -111,6 +111,12 @@ const CustomNavbar = () => {
       name: "Factory",
       layout: "/",
       showInSidebar: false,
+    },
+    {
+      path: "/game15",
+      name: "SupportInterface",
+      layout: "/",
+      showInSidebar: false,
     }
   ];
 
