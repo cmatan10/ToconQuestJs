@@ -114,7 +114,7 @@ export const cards = [
     {
       url: "/game15",
       title: 'SupportInterface',
-      description: "Like a little sibling of the ERC165 standard. In the big world of Ethereum, ERC165 helps contracts ask each other, “Hey, what can you do?”",
+      description: "Let's learn how to identify the behavior of smart contracts.",
       imageUrl: "/SupportInterface.jpeg",
       difficulty: 'Hard',
       stageNumber: 14,
