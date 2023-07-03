@@ -11,24 +11,24 @@ import CustomNavbar from './components/Headers/CustomNavbar';
 import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
-
+import { Helmet } from 'react-helmet';
 import AdminLayout from "layouts/Admin.js";
 export const Web3Context = createContext();
 
 const App = () => {
-   const [walletAddress, setWalletAddress] = useState("");
-   const [Chain, setChain] = useState("");
-   const [factoryContract, setFactoryContract] = useState(null);
-   const [nftContract, setNftContract] = useState(null);
-   const web3 = new Web3(window.ethereum);
+  const [walletAddress, setWalletAddress] = useState("");
+  const [Chain, setChain] = useState("");
+  const [factoryContract, setFactoryContract] = useState(null);
+  const [nftContract, setNftContract] = useState(null);
+  const web3 = new Web3(window.ethereum);
 
-   new MetaMaskSDK({
+  new MetaMaskSDK({
     useDeeplink: true,
     communicationLayerPreference: "socket",
- })
+  })
 
 
-   const contractAddresses = {
+  const contractAddresses = {
     80001: { // Mumbai network
       gameAddress: "0x1a67ebb9C9B793ebC5Da05a6F36F7395263F6c21",
       nftAddress: "0xe4F1dAA63489114Ad240A3481232fB10740fD358"
@@ -62,39 +62,39 @@ const App = () => {
       }
     }
   }, [Chain]);
-  
 
-   useEffect(() => {
-     requestAccount();
-   }, []);
 
-   useEffect(() => {
-     const handleAccountsChanged = async (accounts) => {
-       console.log(accounts);
-       console.log(accounts[0]);
-       setWalletAddress(accounts[0]);
-     };
+  useEffect(() => {
+    requestAccount();
+  }, []);
 
-     const handleChainChanged = (chainId) => {
-       const decimalChainId = parseInt(chainId, 16);
-       setChain(decimalChainId);
-     };
+  useEffect(() => {
+    const handleAccountsChanged = async (accounts) => {
+      console.log(accounts);
+      console.log(accounts[0]);
+      setWalletAddress(accounts[0]);
+    };
 
-     if (window.ethereum) {
-       window.ethereum.on('accountsChanged', handleAccountsChanged);
-       window.ethereum.on('chainChanged', handleChainChanged);
-       requestAccount();
-     }
+    const handleChainChanged = (chainId) => {
+      const decimalChainId = parseInt(chainId, 16);
+      setChain(decimalChainId);
+    };
 
-     return () => {
-       if (window.ethereum) {
-         window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
-         window.ethereum.removeListener('chainChanged', handleChainChanged);
-       }
-     }
-   }, []);
+    if (window.ethereum) {
+      window.ethereum.on('accountsChanged', handleAccountsChanged);
+      window.ethereum.on('chainChanged', handleChainChanged);
+      requestAccount();
+    }
 
-   const requestAccount = async () => {
+    return () => {
+      if (window.ethereum) {
+        window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+        window.ethereum.removeListener('chainChanged', handleChainChanged);
+      }
+    }
+  }, []);
+
+  const requestAccount = async () => {
     console.log('Requesting account...');
     if (window.ethereum) {
       try {
@@ -114,21 +114,32 @@ const App = () => {
       alert('Meta Mask not detected');
     }
   };
-  
 
-   return (
-     <>
-       <Web3Context.Provider value={{Chain , walletAddress, factoryContract, nftContract, web3 }}>
-         <BrowserRouter>
-           <CustomNavbar />
-           <Routes>
-             <Route path="/*" element={<AdminLayout />} />
-             <Route path="*" element={<Navigate to="/" replace />} />
-           </Routes>
-         </BrowserRouter>
-       </Web3Context.Provider>
-     </>
-   );
+
+  return (
+    <>
+      <div>
+        <Helmet>
+          <meta property="og:title" content="ToconQuest" />
+          <meta property="og:description" content="With Intriguing Games, We convert Complex Solidity Coding Learnings into a Thrilling Quest." />
+          <meta property="og:image" content="../public/header.jpeg" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:url" content="https://quest.tocon.io/" />
+          <meta property="og:type" content="website" />
+        </Helmet>
+      </div>
+      <Web3Context.Provider value={{ Chain, walletAddress, factoryContract, nftContract, web3 }}>
+        <BrowserRouter>
+          <CustomNavbar />
+          <Routes>
+            <Route path="/*" element={<AdminLayout />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </BrowserRouter>
+      </Web3Context.Provider>
+    </>
+  );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
