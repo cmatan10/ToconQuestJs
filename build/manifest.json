@@ -8,13 +8,13 @@
       "type": "image/x-icon"
     },
     {
-      "src": "header.jpeg",
-      "type": "image/jpeg",
+      "src": "gotBadge.png",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "header.jpeg",
-      "type": "image/jpeg",
+      "src": "gotBadge.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],
