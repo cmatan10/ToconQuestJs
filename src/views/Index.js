@@ -73,7 +73,6 @@ const Index = () => {
           />
         ))}
       </div>
-      <CarouselComponent />
       <AdminFooter />
     </>
   );
