@@ -11,7 +11,6 @@ import CustomNavbar from './components/Headers/CustomNavbar';
 import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
-import { Helmet } from 'react-helmet';
 import AdminLayout from "layouts/Admin.js";
 export const Web3Context = createContext();
 
@@ -118,17 +117,6 @@ const App = () => {
 
   return (
     <>
-      <div>
-        <Helmet>
-          <meta property="og:title" content="ToconQuest" />
-          <meta property="og:description" content="With Intriguing Games, We convert Complex Solidity Coding Learnings into a Thrilling Quest." />
-          <meta property="og:image" content="../public/header.jpeg" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-          <meta property="og:url" content="https://quest.tocon.io/" />
-          <meta property="og:type" content="website" />
-        </Helmet>
-      </div>
       <Web3Context.Provider value={{ Chain, walletAddress, factoryContract, nftContract, web3 }}>
         <BrowserRouter>
           <CustomNavbar />
