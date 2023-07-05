@@ -156,7 +156,8 @@ function Game4() {
           <CardBody>
             <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
             <p>
-              <strong>The receive function is executed on a call to the contract with empty calldata. This is the function that is executed on plain Ether transfers.
+              <strong>Interact with the contract using Remix, and remember that the receive function is executed by calling the contract with empty call data. 
+              This is the function that is executed on plain Ether transfers.
                 You Can Read More  </strong> <a style={{ textDecoration: "underline" }} href={hintLink} target="_blank" rel="noopener noreferrer"><strong>Here</strong></a>.
             </p>
           </CardBody>

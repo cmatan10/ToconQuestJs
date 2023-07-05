@@ -198,7 +198,8 @@ function Game2() {
                         <CardBody>
                             <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
                             <p>
-                                <strong>The fallback function is executed on a call to the contract if none of the other functions match the given function signature, or if no data was supplied at all and there is no receive Ether function. The fallback function always receives data, but in order to also receive Ether it must be marked payable.
+                                <strong>Interact with the contract using Remix, and remember that the fallback function is executed on a call to the contract if none of the other functions match the given function signature or if no data was supplied at all and there is no receive Ether function. 
+                                The fallback function always receives data, but in order to also receive Ether it must be marked payable.
                                     You Can Read More  </strong> <a style={{ textDecoration: "underline" }} href={hintLink} target="_blank" rel="noopener noreferrer"><strong>Here</strong></a>.
                             </p>
                         </CardBody>

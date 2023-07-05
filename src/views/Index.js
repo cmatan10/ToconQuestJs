@@ -73,6 +73,9 @@ const Index = () => {
           />
         ))}
       </div>
+      <div className="title-container">
+        <p className="index-title" style={{ fontFamily: 'Montserrat', fontSize: '3em'}}>More levels are coming soon . . .</p>
+      </div>
       <AdminFooter />
     </>
   );
