@@ -51,7 +51,7 @@ function Game3() {
       setIsLoading(true);
       const receipt = await factoryContract.methods.deploy(3).send({
         from: walletAddress,
-        gas: 500000,
+        gas: 700000,
       });
       const blockNumber = await web3.eth.getBlockNumber();
       await factoryContract.getPastEvents('DeployInstance', {
@@ -84,7 +84,7 @@ function Game3() {
       try {
         await instanceContract.methods.checkBalance(_account, _amount).send({
           from: walletAddress,
-          gas: 500000,
+          gas: 700000,
         }).then(async () => {
           console.log('The Mission Is Complete');
           toast("Well done! You have solved this level!", {
@@ -96,7 +96,7 @@ function Game3() {
             try {
               await nftContract.methods.mint(3, InstanceAddress).send({
                 from: walletAddress,
-                gas: 500000,
+                gas: 700000,
               })
                 .once("error", (err) => {
                   console.log(err);

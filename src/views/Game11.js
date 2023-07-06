@@ -75,7 +75,7 @@ function Game11() {
       try {
       await instanceContract.methods.encode(encodedData).send({
         from: walletAddress,
-        gas: 500000,
+        gas: 700000,
       }).then(async () => {
         console.log('The Mission Is Complete');
         toast("Well done! You have solved this level!", {
@@ -86,7 +86,7 @@ function Game11() {
           try {
           await nftContract.methods.mint(11, InstanceAddress).send({
             from: walletAddress,
-            gas: 500000,
+            gas: 700000,
           })
             .once("error", (err) => {
               console.log(err);

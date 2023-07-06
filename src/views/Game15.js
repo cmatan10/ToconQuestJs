@@ -81,7 +81,7 @@ function Game15() {
 
         await instanceContract.methods.calculateXOR(id).send({
           from: walletAddress,
-          gas: 500000,
+          gas: 700000,
         }).then(async () => {
           console.log('The Mission Is Complete');
           toast("Well done! You have solved this level!", {

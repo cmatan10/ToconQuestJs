@@ -62,7 +62,7 @@ useEffect(() => {
 useEffect(() => {
     const fetchData = async () => {
         let tempTokenIDs = [];
-        for (let index = 1; index <= 14; index++) {
+        for (let index = 1; index <= 15; index++) {
             try {
                 const balance = await nftContract.methods.balanceOf(walletAddressRef.current, index).call();
                 if (balance > 0) {
@@ -98,7 +98,8 @@ useEffect(() => {
     11: 'EncodeData',
     12: 'HashCollision',
     13: 'DecodeData',
-    14: 'Factory'
+    14: 'Factory',
+    15: 'SupportInterface'
   };
   return (
     <div className="header header-component mt--0  pt-md-9 header-background ">

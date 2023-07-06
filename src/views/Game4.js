@@ -41,7 +41,7 @@ function Game4() {
       setIsLoading(true); // set loading before starting the operation
       const receipt = await factoryContract.methods.deploy(4).send({
         from: walletAddress,
-        gas: 500000,
+        gas: 700000,
       });
       const blockNumber = await web3.eth.getBlockNumber();
       await factoryContract.getPastEvents('DeployInstance', {
@@ -73,7 +73,7 @@ function Game4() {
       try {
         await nftContract.methods.mint(4, InstanceAddress).send({
           from: walletAddress,
-          gas: 500000,
+          gas: 700000,
         })
           .once("error", (err) => {
             console.log(err);

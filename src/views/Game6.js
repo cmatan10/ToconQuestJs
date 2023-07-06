@@ -46,7 +46,7 @@ function Game6() {
       setIsLoading(true); // set loading before starting the operation
       const receipt = await factoryContract.methods.deploy(6).send({
         from: walletAddress,
-        gas: 500000,
+        gas: 700000,
       });
       const blockNumber = await web3.eth.getBlockNumber();
       await factoryContract.getPastEvents('DeployInstance', {
@@ -78,7 +78,7 @@ function Game6() {
       try {
         await instanceContract.methods.complexOperation(iterations).send({
           from: walletAddress,
-          gas: 500000,
+          gas: 700000,
         }).then(async () => {
           const gas = await instanceContract.methods.gasUsed().call()
           if (gas > 3000 && gas < 5000) {
@@ -91,7 +91,7 @@ function Game6() {
               try {
                 await nftContract.methods.mint(6, InstanceAddress).send({
                   from: walletAddress,
-                  gas: 500000,
+                  gas: 700000,
                 })
                   .once("error", (err) => {
                     console.log(err);

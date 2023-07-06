@@ -51,7 +51,7 @@ function Game9() {
       setIsLoading(true); // set loading before starting the operation
       const receipt = await factoryContract.methods.deploy(9).send({
         from: walletAddress,
-        gas: 500000,
+        gas: 700000,
       });
       const blockNumber = await web3.eth.getBlockNumber();
       await factoryContract.getPastEvents('DeployInstance', {
@@ -83,7 +83,7 @@ function Game9() {
       try {
         await instanceContract.methods.blockHashCheck(blockNumber, blockHash).send({
           from: walletAddress,
-          gas: 500000,
+          gas: 700000,
         })
         .then(async () => {
           const correctBlock = await instanceContract.methods.correctBlockHash().call()
@@ -100,7 +100,7 @@ function Game9() {
   
                 await nftContract.methods.mint(9, InstanceAddress).send({
                   from: walletAddress,
-                  gas: 500000,
+                  gas: 800000,
                 })
                 .once("error", (err) => {
                   console.log(err.message);

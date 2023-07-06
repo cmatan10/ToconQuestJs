@@ -47,7 +47,7 @@ function Game12() {
       setIsLoading(true); // set loading before starting the operation
       const receipt = await factoryContract.methods.deploy(12).send({
         from: walletAddress,
-        gas: 500000,
+        gas: 700000,
       });
       const blockNumber = await web3.eth.getBlockNumber();
       await factoryContract.getPastEvents('DeployInstance', {
@@ -79,7 +79,7 @@ function Game12() {
       try{
       await instanceContract.methods.findCollision(guess).send({
         from: walletAddress,
-        gas: 500000,
+        gas: 700000,
       }).then(async () => {
         console.log('The Mission Is Complete');
         toast("Well done! You have solved this level!", {
@@ -90,7 +90,7 @@ function Game12() {
           try{
           await nftContract.methods.mint(12, InstanceAddress).send({
             from: walletAddress,
-            gas: 500000,
+            gas: 700000,
           })
             .once("error", (err) => {
               console.log(err);

@@ -49,7 +49,7 @@ function Game8() {
       setIsLoading(true); // set loading before starting the operation
       const receipt = await factoryContract.methods.deploy(8).send({
         from: walletAddress,
-        gas: 500000,
+        gas: 800000,
       });
       const blockNumber = await web3.eth.getBlockNumber();
       await factoryContract.getPastEvents('DeployInstance', {
@@ -80,7 +80,7 @@ function Game8() {
       try {
         await instanceContract.methods.add(Number(value)).send({
           from: walletAddress,
-          gas: 500000,
+          gas: 800000,
         }).then(async () => {
           const count = await instanceContract.methods.counter().call()
           console.log(count);
@@ -94,7 +94,7 @@ function Game8() {
               try {
                 await nftContract.methods.mint(8, InstanceAddress).send({
                   from: walletAddress,
-                  gas: 500000,
+                  gas: 700000,
                 })
                   .once("error", (err) => {
                     console.log(err);

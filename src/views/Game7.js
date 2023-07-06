@@ -53,7 +53,7 @@ function Game7() {
       setIsLoading(true); // set loading before starting the operation
       const receipt = await factoryContract.methods.deploy(7).send({
         from: walletAddress,
-        gas: 500000,
+        gas: 700000,
       });
       const blockNumber = await web3.eth.getBlockNumber();
       await factoryContract.getPastEvents('DeployInstance', {
@@ -85,7 +85,7 @@ function Game7() {
       try {
         await instanceContract.methods.changePassword(_password, newPassword).send({
           from: walletAddress,
-          gas: 500000,
+          gas: 700000,
         }).then(async () => {
           console.log('The Mission Is Complete');
           toast("Well done! You have solved this level!", {
@@ -98,7 +98,7 @@ function Game7() {
 
               await nftContract.methods.mint(7, InstanceAddress).send({
                 from: walletAddress,
-                gas: 500000,
+                gas: 700000,
               })
                 .once("error", (err) => {
                   console.log(err);
