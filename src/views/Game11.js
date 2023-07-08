@@ -1,4 +1,5 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
+import SocialNetworkShare from '../components/SocialNetworkShare.js'
 import { Link } from 'react-router-dom';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -223,19 +224,22 @@ function Game11() {
                 </Card>
             )}
             <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                {TokenBalance < 1 ? null : (
-                    <div>
-                        <img
-                            src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                            alt="got badge"
-                            style={{ width: "260px", height: "180px" }}
-                        />
-                        <strong>
-                            Congratulations! You Got A Badge{" "}
-                            <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
-                        </strong>
-                    </div>
-                )}
+            {TokenBalance < 1 ? null : (
+            <div>
+              <img
+                src={process.env.PUBLIC_URL + "/gotBadge.png"}
+                alt="got badge"
+                style={{ width: "260px", height: "180px" }}
+              />
+              <br/>
+              <strong>
+                Congratulations! You Got A Badge{" "}
+                <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
+              </strong>
+              <br/><br/><br/>
+              <SocialNetworkShare />
+            </div>
+          )}
             </p>  
     </Container>
     <AdminFooter/>

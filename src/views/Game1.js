@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import SocialNetworkShare from '../components/SocialNetworkShare.js'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Web3Context } from '../index';
@@ -157,7 +157,6 @@ function Game1() {
             </div>
           </CardBody>
         </Card>
-
         <Card className="game-card card-color" style={{ backgroundColor: '#001636', color: 'white' }}>
           <CardBody>
             <CardTitle className="game-title title-color" ><b>Game Description</b></CardTitle>
@@ -233,10 +232,13 @@ function Game1() {
                 alt="got badge"
                 style={{ width: "260px", height: "180px" }}
               />
+              <br/>
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
               </strong>
+              <br/><br/><br/>
+              <SocialNetworkShare />
             </div>
           )}
         </p>
