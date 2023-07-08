@@ -10,7 +10,7 @@ import {
     WhatsappIcon
 } from 'react-share';
 
-const SocialNetworkShare = () => {
+const SocialNetworkShare = ({description}) => {
     const currentPageUrl = window.location.href;
 
     return (
@@ -20,7 +20,7 @@ const SocialNetworkShare = () => {
             <div style={{ display: 'flex', justifyContent: 'center' }}>
 
                 <WhatsappShareButton
-                    title={'I Solved This Level:'}
+                    title={`I Solved The ${description} Minigame In ToconQuest.`}
                     url={currentPageUrl}
                     separator={' '}
                     style={{ margin: '0 10px' }}
@@ -29,7 +29,7 @@ const SocialNetworkShare = () => {
                 </WhatsappShareButton>
 
                 <TwitterShareButton
-                    title={'I Solved This Level:'}
+                    title={`I Solved The ${description} Minigame In ToconQuest.`}
                     url={currentPageUrl}
                     hashtags={["developer", "blockchain", "solidity", "web3", "education", "games"]}
                     style={{ margin: '0 10px' }}

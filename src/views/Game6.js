@@ -266,8 +266,8 @@ function Game6() {
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
               </strong>
-              <br/><br/><br/>
-              <SocialNetworkShare />
+              <br/><br/>
+              <SocialNetworkShare description={'Gas Checker'}/>
             </div>
           )}
         </p>

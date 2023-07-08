@@ -20,7 +20,7 @@ function Game1() {
   const [instanceContract, setInstanceContract] = useState(null);
   const [isHintVisible, setIsHintVisible] = useState(false);
   const [Num, setNum] = useState("");
-
+  const name = 'bbbbbbb'
 
   const toggleHint = () => {
     setIsHintVisible(!isHintVisible);
@@ -237,8 +237,8 @@ function Game1() {
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
               </strong>
-              <br/><br/><br/>
-              <SocialNetworkShare />
+              <br/><br/>
+              <SocialNetworkShare description={'Bytes2'} />
             </div>
           )}
         </p>
