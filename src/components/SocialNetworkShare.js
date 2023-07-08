@@ -38,7 +38,8 @@ const SocialNetworkShare = ({description}) => {
                 </TwitterShareButton>
 
                 <LinkedinShareButton
-                    title={'I Solved This Level:'}
+                    title={`I Solved The ${description} Minigame In ToconQuest.`}
+                    summary={`I Solved The ${description} Minigame In ToconQuest.`}
                     url={currentPageUrl}
                     source={'Tocon Quest'}
                     style={{ margin: '0 10px' }}
@@ -47,7 +48,7 @@ const SocialNetworkShare = ({description}) => {
                 </LinkedinShareButton>
 
                 <FacebookShareButton
-                    quote={'I Solved This Level:'}
+                    quote={`I Solved The ${description} Minigame In ToconQuest.`}
                     url={currentPageUrl}
                     hashtag={'#blockchain'}
                     style={{ margin: '0 10px' }}
