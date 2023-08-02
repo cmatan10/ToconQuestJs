@@ -1,16 +1,50 @@
-import React, { useState } from 'react';
+import React, {  useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarToggler, Collapse } from 'reactstrap';
+import {Button, Navbar, Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarToggler, Collapse } from 'reactstrap';
 import '../../assets/css/navbar.css'
+import { Web3Context } from '../../index';
 
 const CustomNavbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
+  const web3Context = useContext(Web3Context);
+  const [walletAddress, setWalletAddress] = useState(web3Context.walletAddress);
   const toggleDropdown = () => setDropdownOpen(prevState => !prevState);
   const toggle = () => setIsOpen(!isOpen);
   const closeNavbar = () => setIsOpen(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 620);
 
+  const shortAddress = `${walletAddress.substring(0, 4)}......${walletAddress.substring(walletAddress.length - 4)}`;
+  const handleResize = () => {
+    setIsSmallScreen(window.innerWidth < 620);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    requestAccount();
+  }, []);
+  
+  const requestAccount = async () => {
+    console.log('Requesting account...');
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        setWalletAddress(accounts[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert('Meta Mask not detected');
+    }
+  };
 
   var routes = [
     {
@@ -141,9 +175,9 @@ const CustomNavbar = () => {
         <img src="/favicon.ico" alt="Home" style={{ width: '30px' }} />
       </NavLink>
       <Collapse isOpen={isOpen} navbar style={{ backgroundColor: '#001636', zIndex: 1, position: 'relative' }}>
-        <Nav className="navbar-nav" style={{display: 'flex',  justifyContent: 'center', width: '100%' }} navbar>
+        <Nav className="navbar-nav" style={{ width: '100%' }} navbar>
           {routes.map((route, index) => {
-            if ( route.path.startsWith("/game")) {
+            if ( route.name === "Home" || route.path.startsWith("/game")) {
               return null;
             }
             return (
@@ -168,6 +202,10 @@ const CustomNavbar = () => {
           </Dropdown>
         </Nav>
       </Collapse>
+      {!isOpen && <p className="m-2" style={{color:'white'}}>{isSmallScreen ? shortAddress : walletAddress}</p>}
+    {!isOpen && <div className="ext-white shadow" style={{  marginLeft: '10px' }}>
+      <Button onClick={requestAccount} style={{ backgroundColor:'rgba(235, 167, 104, 0.8)' }} className="fas fa-wallet mb-1" />
+    </div>}
     </Navbar>
 );
 };

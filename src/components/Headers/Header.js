@@ -155,43 +155,8 @@ useEffect(() => {
 
           <Row>
             <Col xl="1" />
-            <Col lg="6" xl="4">
-              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white', position: 'relative', top: '120px' }} responsive>
-                <CardBody>
-                  <Row>
-                    <div className="col">
-                      <CardTitle
-                        tag="h5"
-                        className="text-uppercase mb-0"
-                        style={{ color: '#ffffff', fontFamily: 'Montserrat', fontSize: '18px' }}
-                      >
-                        Login
-                      </CardTitle>
-                      <br />
-                      <div className="d-flex align-items-center justify-content-center">
-                        <span className="h2 font-weight-bold mb-0" style={{ fontSize: '15px' }}>
-                          {walletAddress ?<p className="mb-1" style={{color:'#a3a4af'}}>{walletAddress}</p>  : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: '#a3a4af' }}> You must connect a digital wallet to play the game </p>}
-                        </span> 
-                        <div className="ext-white shadow" style={{  marginLeft: '10px' }}>
-                       <Button onClick={requestAccount} style={{ backgroundColor:'rgba(235, 167, 104, 0.8)' }} className="fas fa-wallet mb-1" />
-                        </div>
-                      </div>
-                      <span className="h2 font-weight-bold mb-0 " style={{ fontSize: '14px' }}>
-                        {Chain
-                          ? <p className="d-flex align-items-center justify-content-center" style={{color:'white'}}>
-                            {ChainToNetwork[Chain] || `Network 0x${Chain} is not supported`}
-                          </p>
-                          : <p className="d-flex align-items-center justify-content-center" style={{ fontSize: '14px', color: 'white' }}>
-                            Meta Mask not detected
-                          </p>
-                        }
-                      </span>
-                    </div>
-                  </Row>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col lg="6" xl="6">
+
+            <Col lg="6" xl="10">
               <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white', position: 'relative', top: '120px' }}>
                 <CardBody>
                   <Row>
@@ -213,7 +178,7 @@ useEffect(() => {
                           </Col>
                         ) : (
                           tokenIDs.map((id, index) => (
-                            <Col md="3" key={index}>
+                            <Col md="2" key={index}>
                               <span className="h2 font-weight-bold mb-0 " style={{ color: '#a3a4af', fontSize: '13px' }}>
                                 {tokenIDtoGame[id]}
                                 <i className="fas fa-medal" style={{ marginLeft: '5px', color: '#f2a23dba' }} />

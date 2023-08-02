@@ -1,5 +1,17 @@
-@media (min-width: 576px) and (max-width: 768px) {
-  .navbar-nav .nav-item {
-      display: block !important;
+
+.full-address {
+  display: none;
+}
+
+.short-address {
+  display: inline;
+}
+
+@media (min-width: 576px) {
+  .full-address {
+    display: inline;
+  }
+  .short-address {
+    display: none;
   }
 }
