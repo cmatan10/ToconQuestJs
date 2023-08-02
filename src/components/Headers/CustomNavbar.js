@@ -28,8 +28,21 @@ const CustomNavbar = () => {
 
   useEffect(() => {
     requestAccount();
-  }, []);
-  
+    setWalletAddress(web3Context.walletAddress);
+    const ethereum = window.ethereum;
+    if (ethereum && ethereum.on) {
+      const handleAccountsChanged = function (accounts) {
+        setWalletAddress(accounts[0]);
+      };
+
+      ethereum.on('accountsChanged', handleAccountsChanged);
+      return () => {
+        if (ethereum && ethereum.removeListener) {
+          ethereum.removeListener('accountsChanged', handleAccountsChanged);
+        }
+      }
+    }
+  }, [web3Context.walletAddress, web3Context.Chain]);
   const requestAccount = async () => {
     console.log('Requesting account...');
     if (window.ethereum) {
