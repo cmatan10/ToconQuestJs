@@ -117,6 +117,18 @@ const CustomNavbar = () => {
       name: "SupportInterface",
       layout: "/",
       showInSidebar: false,
+    },
+    {
+      path: "/game16",
+      name: "LimitedTickets",
+      layout: "/",
+      showInSidebar: false,
+    },
+    {
+      path: "/game17",
+      name: "EducatedGuess",
+      layout: "/",
+      showInSidebar: false,
     }
   ];
 
@@ -131,7 +143,7 @@ const CustomNavbar = () => {
       <Collapse isOpen={isOpen} navbar style={{ backgroundColor: '#001636', zIndex: 1, position: 'relative' }}>
         <Nav className="navbar-nav" style={{display: 'flex',  justifyContent: 'center', width: '100%' }} navbar>
           {routes.map((route, index) => {
-            if (route.name === "Home" || route.path.startsWith("/game")) {
+            if ( route.path.startsWith("/game")) {
               return null;
             }
             return (

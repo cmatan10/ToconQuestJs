@@ -87,7 +87,7 @@
 }
 
 .card-fixed {
-    height: 180px; /* or whatever shorter height you desire */
+    height: 210px; /* or whatever shorter height you desire */
     overflow-y: auto;
   }
 

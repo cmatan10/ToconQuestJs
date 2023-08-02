@@ -6,14 +6,13 @@ import { cards } from "components/Data/IndexData.js";
 import { useContext, useState, useEffect } from 'react';
 import { Web3Context } from '../index';
 import AdminFooter from '../components/Footers/AdminFooter.js'
-import CarouselComponent from '../components/Headers/CarouselComponent.js'
 import '../assets/css/game.css'
 
 const Index = () => {
   const web3Context = useContext(Web3Context);
   const [walletAddress, setWalletAddress] = useState(web3Context.walletAddress);
   const { nftContract } = useContext(Web3Context);
-  const [stages, setStages] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [stages, setStages] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
 
   // Function to get stage status
@@ -22,7 +21,7 @@ const Index = () => {
       return "Unsolved";
     }
     const balance = await nftContract.methods.balanceOf(walletAddress, id).call();
-    // console.log(`Balance of token ${id} in wallet ${walletAddress}: ${balance}`);
+    console.log(`Balance of token ${id} in wallet ${walletAddress}: ${balance}`);
     // console.log(stages);
     return balance > 0 ? 1 : 0;
   };
@@ -69,6 +68,7 @@ const Index = () => {
             imageUrl={card.imageUrl}
             difficulty={card.difficulty}
             stageNumber={card.stageNumber}
+            type={card.type}
             status={stages[card.stageNumber] === 1 ? <b style={{ color: 'green' }}>Successfully solved</b> : <b style={{ color: 'gray' }}>Unsolved</b>}
           />
         ))}

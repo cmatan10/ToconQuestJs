@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useRef } from 'react';
-import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
+import { Card, CardBody, CardTitle, Container, Row, Col, Button } from "reactstrap";
 import { Web3Context } from '../../index';
 import { TypeAnimation } from 'react-type-animation';
 import '../../assets/css/game.css'
@@ -13,18 +13,36 @@ const Header = () => {
   const walletAddressRef = useRef(walletAddress);
   const chainRef = useRef(Chain);
 
-  useEffect(() => {
-    console.log('Chain:', Chain);
-    console.log('tokenIDs:', tokenIDs);
-    console.log('walletAddress:', walletAddress);
+  // useEffect(() => {
+  //   console.log('Chain:', Chain);
+  //   console.log('tokenIDs:', tokenIDs);
+  //   console.log('walletAddress:', walletAddress);
 
-    if (nftContract !== null) {
-      console.log('nftContract:', nftContract);
-      console.log('nftContract _address:', nftContract._address);
+  //   if (nftContract !== null) {
+  //     console.log('nftContract:', nftContract);
+  //     console.log('nftContract _address:', nftContract._address);
+  //   } else {
+  //     console.log("nftContract is null");
+  //   }
+  // }, [tokenIDs, walletAddress, nftContract, Chain]);
+
+  const requestAccount = async () => {
+    console.log('Requesting account...');
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const chainId = parseInt(window.ethereum.chainId, 16);
+        setChain(chainId);
+        setWalletAddress(accounts[0]);
+      } catch (error) {
+        console.log(error);
+      }
     } else {
-      console.log("nftContract is null");
+      alert('Meta Mask not detected');
     }
-  }, [tokenIDs, walletAddress, nftContract, Chain]);
+  };
 
 
   useEffect(() => {
@@ -62,7 +80,7 @@ useEffect(() => {
 useEffect(() => {
     const fetchData = async () => {
         let tempTokenIDs = [];
-        for (let index = 1; index <= 15; index++) {
+        for (let index = 1; index <= 17; index++) {
             try {
                 const balance = await nftContract.methods.balanceOf(walletAddressRef.current, index).call();
                 if (balance > 0) {
@@ -99,7 +117,9 @@ useEffect(() => {
     12: 'HashCollision',
     13: 'DecodeData',
     14: 'Factory',
-    15: 'SupportInterface'
+    15: 'SupportInterface',
+    16: 'LimitedTickets',
+    17: 'EducatedGuess'
   };
   return (
     <div className="header header-component mt--0  pt-md-9 header-background ">
@@ -152,8 +172,8 @@ useEffect(() => {
                         <span className="h2 font-weight-bold mb-0" style={{ fontSize: '15px' }}>
                           {walletAddress ?<p className="mb-1" style={{color:'#a3a4af'}}>{walletAddress}</p>  : <p className="h2 font-weight-bold mb-0" style={{ fontSize: '14px', color: '#a3a4af' }}> You must connect a digital wallet to play the game </p>}
                         </span> 
-                        <div className="icon icon-shape bg-danger text-white rounded-circle shadow" style={{ marginLeft: '10px' }}>
-                          <i className="fas fa-wallet mb-1" />
+                        <div className="ext-white shadow" style={{  marginLeft: '10px' }}>
+                       <Button onClick={requestAccount} style={{ backgroundColor:'rgba(235, 167, 104, 0.8)' }} className="fas fa-wallet mb-1" />
                         </div>
                       </div>
                       <span className="h2 font-weight-bold mb-0 " style={{ fontSize: '14px' }}>

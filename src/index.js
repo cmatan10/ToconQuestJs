@@ -63,9 +63,9 @@ const App = () => {
   }, [Chain]);
 
 
-  useEffect(() => {
-    requestAccount();
-  }, []);
+  // useEffect(() => {
+  //   requestAccount();
+  // }, []);
 
   useEffect(() => {
     const handleAccountsChanged = async (accounts) => {
@@ -101,13 +101,10 @@ const App = () => {
           method: "eth_requestAccounts",
         });
         const chainId = parseInt(window.ethereum.chainId, 16);
-        console.log('chainId:', chainId);
         setChain(chainId);
-        console.log(accounts);
-        console.log(accounts[0]);
         setWalletAddress(accounts[0]);
       } catch (error) {
-        console.log('Error connecting...');
+        console.log(error);
       }
     } else {
       alert('Meta Mask not detected');

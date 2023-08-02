@@ -15,6 +15,9 @@ import Game12 from "views/Game12.js";
 import Game13 from "views/Game13.js";
 import Game14 from "views/Game14.js";
 import Game15 from "views/Game15.js";
+import Game16 from "views/Game16.js";
+import Game17 from "views/Game17.js";
+
 import About from "views/About";
 import Preparation from "views/Preparation";
 
@@ -150,7 +153,21 @@ var routes = [
     component: <Game15 />,
     layout: "/",
     showInSidebar: false,  
-  } 
+  },
+  {
+    path: "/game16",
+    name: "LimitedTickets",
+    component: <Game16 />,
+    layout: "/",
+    showInSidebar: false,  
+  },
+  {
+    path: "/game17",
+    name: "EducatedGuess",
+    component: <Game17 />,
+    layout: "/",
+    showInSidebar: false,  
+  }   
 ];
 export default routes;
 

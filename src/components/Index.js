@@ -25,10 +25,10 @@ const Index = () => {
   const [walletAddress, setWalletAddress] = useState(web3Context.walletAddress);
   const { nftContract } = useContext(Web3Context);
 
-  const [stages, setStages] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [stages, setStages] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
   
-  // Function to get stage status
+  // Function to get stage statusz
   const getStageStatus = async (id) => {
     if (!walletAddress) {
       return "Unsolved";

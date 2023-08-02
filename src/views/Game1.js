@@ -20,7 +20,6 @@ function Game1() {
   const [instanceContract, setInstanceContract] = useState(null);
   const [isHintVisible, setIsHintVisible] = useState(false);
   const [Num, setNum] = useState("");
-  const name = 'bbbbbbb'
 
   const toggleHint = () => {
     setIsHintVisible(!isHintVisible);
