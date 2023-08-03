@@ -112,13 +112,14 @@ export const Web3Provider = ({ children }) => {
         // Create a MetaMask deep link
         const metaMaskDeepLink = 'https://metamask.app.link/dapp/quest.tocon.io/';
   
-        // Show a popup or modal with instructions and the deep link
-        alert(`Please open MetaMask app to continue. You can use the following link: ${metaMaskDeepLink}`);
+        // Open the MetaMask app in a new tab
+        window.open(metaMaskDeepLink, '_blank');
       } else {
         alert('MetaMask not detected');
       }
     }
   };
+  
 
   return (
     <Web3Context.Provider value={{ Chain, walletAddress, factoryContract, nftContract, web3, requestAccount  }}>
