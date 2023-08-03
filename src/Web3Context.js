@@ -112,8 +112,18 @@ export const Web3Provider = ({ children }) => {
         // Create a MetaMask deep link
         const metaMaskDeepLink = 'https://metamask.app.link/dapp/quest.tocon.io/';
   
-        // Open the MetaMask app in a new tab
-        window.open(metaMaskDeepLink, '_blank');
+        // Display a modal or popup with a button and instructions
+        const modalHTML = `
+          <div>
+            <p>Please open the MetaMask app to continue.</p>
+            <a href="${metaMaskDeepLink}" target="_blank">
+              <button>Open MetaMask</button>
+            </a>
+          </div>
+        `;
+  
+        // You'll need to replace this with code to display the modal or popup in your app
+        document.body.innerHTML += modalHTML;
       } else {
         alert('MetaMask not detected');
       }
