@@ -93,32 +93,32 @@ export const Web3Provider = ({ children }) => {
     }
   }, [walletAddress]);
 
-const requestAccount = async () => {
-  console.log('Requesting account...');
-  if (window.ethereum) {
-    try {
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      const chainId = parseInt(window.ethereum.chainId, 16);
-      setChain(chainId);
-      setWalletAddress(accounts[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  } else {
-    // Check if the user is on a mobile device
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      // Create a MetaMask deep link
-      const metaMaskDeepLink = 'https://metamask.app.link/dapp/quest.tocon.io/';
-
-      // Redirect to the MetaMask app
-      window.location.href = metaMaskDeepLink;
+  const requestAccount = async () => {
+    console.log('Requesting account...');
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const chainId = parseInt(window.ethereum.chainId, 16);
+        setChain(chainId);
+        setWalletAddress(accounts[0]);
+      } catch (error) {
+        console.log(error);
+      }
     } else {
-      alert('MetaMask not detected');
+      // Check if the user is on a mobile device
+      if (/Mobi|Android/i.test(navigator.userAgent)) {
+        // Create a MetaMask deep link
+        const metaMaskDeepLink = 'https://metamask.app.link/dapp/quest.tocon.io/';
+  
+        // Show a popup or modal with instructions and the deep link
+        alert(`Please open MetaMask app to continue. You can use the following link: ${metaMaskDeepLink}`);
+      } else {
+        alert('MetaMask not detected');
+      }
     }
-  }
-};
+  };
 
   return (
     <Web3Context.Provider value={{ Chain, walletAddress, factoryContract, nftContract, web3, requestAccount  }}>
