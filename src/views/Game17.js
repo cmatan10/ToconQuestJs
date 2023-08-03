@@ -2,7 +2,7 @@ import React, { useState, useRef, useContext, useEffect } from 'react';
 import SocialNetworkShare from '../components/SocialNetworkShare.js'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Web3Context } from '../index';
+import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/EducatedGuess.json'
 import InstanceABI_2 from '../interfaces/EducatedGuessHack.json'
 

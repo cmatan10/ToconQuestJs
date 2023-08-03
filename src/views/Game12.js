@@ -1,9 +1,8 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
 import SocialNetworkShare from '../components/SocialNetworkShare.js'
-import { Link } from 'react-router-dom';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Web3Context } from '../index';
+import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/HashCollision.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';

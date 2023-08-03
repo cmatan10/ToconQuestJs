@@ -2,7 +2,7 @@ import React, {  useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {Button, Navbar, Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarToggler, Collapse } from 'reactstrap';
 import '../../assets/css/navbar.css'
-import { Web3Context } from '../../index';
+import { Web3Context } from '../../Web3Context';
 
 const CustomNavbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -13,8 +13,13 @@ const CustomNavbar = () => {
   const toggle = () => setIsOpen(!isOpen);
   const closeNavbar = () => setIsOpen(false);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 620);
+  const [Chain, setChain] = useState(web3Context.Chain);
+  const { requestAccount } = web3Context;
+  
+  const shortAddress = walletAddress
+    ? `${walletAddress.substring(0, 4)}......${walletAddress.substring(walletAddress.length - 4)}`
+    : "Not Connected";
 
-  const shortAddress = `${walletAddress.substring(0, 4)}......${walletAddress.substring(walletAddress.length - 4)}`;
   const handleResize = () => {
     setIsSmallScreen(window.innerWidth < 620);
   };
@@ -27,7 +32,6 @@ const CustomNavbar = () => {
   }, []);
 
   useEffect(() => {
-    requestAccount();
     setWalletAddress(web3Context.walletAddress);
     const ethereum = window.ethereum;
     if (ethereum && ethereum.on) {
@@ -43,21 +47,8 @@ const CustomNavbar = () => {
       }
     }
   }, [web3Context.walletAddress, web3Context.Chain]);
-  const requestAccount = async () => {
-    console.log('Requesting account...');
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setWalletAddress(accounts[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      alert('Meta Mask not detected');
-    }
-  };
+  
+
 
   var routes = [
     {

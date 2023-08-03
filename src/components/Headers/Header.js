@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useRef } from 'react';
 import { Card, CardBody, CardTitle, Container, Row, Col, Button } from "reactstrap";
-import { Web3Context } from '../../index';
+import { Web3Context } from '../../Web3Context';
 import { TypeAnimation } from 'react-type-animation';
 import '../../assets/css/game.css'
 
@@ -9,41 +9,63 @@ const Header = () => {
   const [walletAddress, setWalletAddress] = useState(web3Context.walletAddress);
   const [Chain, setChain] = useState(web3Context.Chain);
   const { nftContract } = useContext(Web3Context);
-  const [tokenIDs, setTokenIDs] = useState([]);
+  const [tokenIDs, setTokenIDs] = useState(JSON.parse(localStorage.getItem('achievements')) || []);
   const walletAddressRef = useRef(walletAddress);
   const chainRef = useRef(Chain);
+  const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   console.log('Chain:', Chain);
-  //   console.log('tokenIDs:', tokenIDs);
-  //   console.log('walletAddress:', walletAddress);
+  useEffect(() => {
+    console.log('Chain:', Chain);
+    console.log('tokenIDs:', tokenIDs);
+    console.log('walletAddress:', walletAddress);
 
-  //   if (nftContract !== null) {
-  //     console.log('nftContract:', nftContract);
-  //     console.log('nftContract _address:', nftContract._address);
-  //   } else {
-  //     console.log("nftContract is null");
-  //   }
-  // }, [tokenIDs, walletAddress, nftContract, Chain]);
-
-  const requestAccount = async () => {
-    console.log('Requesting account...');
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        const chainId = parseInt(window.ethereum.chainId, 16);
-        setChain(chainId);
-        setWalletAddress(accounts[0]);
-      } catch (error) {
-        console.log(error);
-      }
+    if (nftContract !== null) {
+      console.log('nftContract:', nftContract);
+      console.log('nftContract _address:', nftContract._address);
     } else {
-      alert('Meta Mask not detected');
+      console.log("nftContract is null");
     }
+  }, [tokenIDs, walletAddress, nftContract, Chain]);
+  
+  useEffect(() => {
+    if (nftContract) {
+      updateAchievements(walletAddress);
+    }
+  }, [nftContract, walletAddress]);
+
+  const updateAchievements = async (address) => {
+    if (!nftContract) {
+      console.error("nftContract is null");
+      return;
+    }
+  
+    let tempTokenIDs = [];
+    for (let index = 1; index <= 17; index++) {
+      try {
+        const balance = await nftContract.methods.balanceOf(address, index).call();
+        if (balance > 0) {
+          tempTokenIDs.push(index);
+        }
+      } catch (e) {
+        console.error(`Failed to fetch balance for token ${index} on network ${chainRef.current}. Error: ${e.message}`);
+      }
+    }
+    setTokenIDs(tempTokenIDs);
   };
 
+  
+  useEffect(() => {
+    if (tokenIDs.length > 0) {
+      localStorage.setItem('achievements', JSON.stringify(tokenIDs));
+    }
+  }, [tokenIDs]);
+
+  useEffect(() => {
+    walletAddressRef.current = walletAddress;
+    chainRef.current = Chain;
+    // Trigger the update of achievements when the wallet address changes
+    updateAchievements(walletAddress);
+  }, [walletAddress, Chain]);
 
   useEffect(() => {
     setWalletAddress(web3Context.walletAddress);
@@ -52,6 +74,7 @@ const Header = () => {
     if (ethereum && ethereum.on) {
       const handleAccountsChanged = function (accounts) {
         setWalletAddress(accounts[0]);
+        
       };
       const handleChainChanged = (chainId) => {
         // this line will convert chainId to decimal from hexadecimal

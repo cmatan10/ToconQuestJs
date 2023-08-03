@@ -4,7 +4,7 @@ import Header from "components/Headers/Header.js";
 import Card from "components/Card.js";
 import { cards } from "components/Data/IndexData.js";
 import { useContext, useState, useEffect } from 'react';
-import { Web3Context } from '../index';
+import { Web3Context } from '../Web3Context';
 import AdminFooter from '../components/Footers/AdminFooter.js'
 import '../assets/css/game.css'
 
