@@ -32,6 +32,10 @@ export const Web3Provider = ({ children }) => {
     59140: { // Goerli network
       gameAddress: "0xeC7cF964fFFA203337Dd33Da532515fD9c8d6EF5",
       nftAddress: "0x1D5885c87cf64cBcf99eDdb3A3A3Ef823C266aE0"
+    },
+    1440002: { // Goerli network
+      gameAddress: "0xa837aa583B8c4Ad0396058F82984A13F98a22677",
+      nftAddress: "0x2a830154207486eBe93d62A096f2834e1d72Ddeb"
     }
   };
 
