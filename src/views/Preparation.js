@@ -7,6 +7,7 @@ import AdminFooter from '../components/Footers/AdminFooter.js'
 const Preparation = () => {
   const alchemyFaucet = 'https://goerlifaucet.com/'
   const QuickNode = 'https://faucet.quicknode.com/ethereum'
+  const infuraFaucet = 'https://www.infura.io/faucet/linea'
   return (
     <div>
       <br />
@@ -30,9 +31,11 @@ const Preparation = () => {
                 <p className="about-text">
                   We highly recommend fueling your wallet with tokens from the following test network faucets:
                   <a href={alchemyFaucet} target="_blank" rel="noopener noreferrer"><strong> alchemy Faucet </strong></a>
+                  ,
+                  <a href={infuraFaucet} target="_blank" rel="noopener noreferrer"><strong> infura Faucet. </strong></a>
                  and
                   <a href={QuickNode} target="_blank" rel="noopener noreferrer"><strong> QuickNode Faucet. </strong></a>
-                  Remember, you are not required to create an instance on the Ethereum mainnet - we have deployed the contract on various testnets (Mumbai, Goerli, Sepolia) so you can play for free!
+                  Remember, you are not required to create an instance on the Ethereum mainnet - we have deployed the contract on various testnets (Mumbai, Goerli, Sepolia, Liena Testnet And BSC Testnet) so you can play for free!
                 </p>
 
 

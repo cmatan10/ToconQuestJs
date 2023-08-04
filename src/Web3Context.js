@@ -28,6 +28,10 @@ export const Web3Provider = ({ children }) => {
     97: { // Goerli network
       gameAddress: "0x110A5E7F651730Ca3631a0980cE57533d866a6ba",
       nftAddress: "0x3150D2C079C49077942536C40fba8a378897aD07"
+    },
+    59140: { // Goerli network
+      gameAddress: "0xeC7cF964fFFA203337Dd33Da532515fD9c8d6EF5",
+      nftAddress: "0x1D5885c87cf64cBcf99eDdb3A3A3Ef823C266aE0"
     }
   };
 

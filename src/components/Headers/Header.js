@@ -159,7 +159,7 @@ useEffect(() => {
               // Same substring at the start will only be typed once, initially
               'With Intriguing Games, We convert Complex Solidity Coding Learnings into a Thrilling Quest.',
               6000, 
-              'You Can Play In The Following Test networks: Mumbai, Goerli, Sepolia And BSC Testnet.',
+              'You Can Play In The Following Test networks: Mumbai, Goerli, Sepolia, Liena Testnet And BSC Testnet.',
               6000,
               'Get ready to Learn, Play, and Thrive!',
               6000,
