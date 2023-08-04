@@ -35,7 +35,7 @@ const Preparation = () => {
                   <a href={infuraFaucet} target="_blank" rel="noopener noreferrer"><strong> infura Faucet. </strong></a>
                  and
                   <a href={QuickNode} target="_blank" rel="noopener noreferrer"><strong> QuickNode Faucet. </strong></a>
-                  Remember, you are not required to create an instance on the Ethereum mainnet - we have deployed the contract on various testnets (Mumbai, Goerli, Sepolia, Liena, Xrpl And BSC) so you can play for free!
+                  Remember, you are not required to create an instance on the Ethereum mainnet - we have deployed the contract on various testnets (Mumbai, Goerli, Sepolia, Liena, Xrp And BSC) so you can play for free!
                 </p>
 
 

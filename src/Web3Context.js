@@ -25,15 +25,15 @@ export const Web3Provider = ({ children }) => {
       gameAddress: "0xa7169fDC282c990b510E2d6428bBC0ED1F7f1EfE",
       nftAddress: "0x049a10aBa794e009D3F5F221150c33d21f345090"
     },
-    97: { // Goerli network
+    97: { // BSC network
       gameAddress: "0x110A5E7F651730Ca3631a0980cE57533d866a6ba",
       nftAddress: "0x3150D2C079C49077942536C40fba8a378897aD07"
     },
-    59140: { // Goerli network
+    59140: { // Linea network
       gameAddress: "0xeC7cF964fFFA203337Dd33Da532515fD9c8d6EF5",
       nftAddress: "0x1D5885c87cf64cBcf99eDdb3A3A3Ef823C266aE0"
     },
-    1440002: { // Goerli network
+    1440002: { // Xrp network
       gameAddress: "0xa837aa583B8c4Ad0396058F82984A13F98a22677",
       nftAddress: "0x2a830154207486eBe93d62A096f2834e1d72Ddeb"
     }
