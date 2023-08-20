@@ -16,7 +16,6 @@ const App = () => {
   const [stages, setStages] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const scrollToRef = useRef(null);
 
-
   // Function to get stage status
   const getStageStatus = async (id) => {
     if (!walletAddress) {

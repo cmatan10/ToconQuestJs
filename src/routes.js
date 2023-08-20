@@ -17,7 +17,6 @@ import Game14 from "views/Game14.js";
 import Game15 from "views/Game15.js";
 import Game16 from "views/Game16.js";
 import Game17 from "views/Game17.js";
-
 import About from "views/About";
 import Preparation from "views/Preparation";
 import Achievements from "views/Achievements";
