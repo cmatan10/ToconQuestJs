@@ -8,6 +8,7 @@ import { Web3Context } from './Web3Context';
 import './assets/css/game.css'
 import Certificate from "components/Certificate.js";
 
+
 const App = () => {
   const web3Context = useContext(Web3Context);
   const [walletAddress, setWalletAddress] = useState(web3Context.walletAddress);
