@@ -6,8 +6,7 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/ChangePassword.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 function Game7() {
@@ -15,7 +14,7 @@ function Game7() {
   const [newPassword, setnewPassword] = useState("");
   const [InstanceAddress, setInstanceAddress] = useState("");
   const [TokenBalance, setTokenBalance] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // new loading state
+  const [isLoading, setIsLoading] = useState(false); 
   const codeRef = useRef(null);
   const { walletAddress, factoryContract, nftContract, web3 } = useContext(Web3Context);
   const [instanceContract, setInstanceContract] = useState(null);
@@ -50,7 +49,7 @@ function Game7() {
 
   const createGame = async () => {
     try {
-      setIsLoading(true); // set loading before starting the operation
+      setIsLoading(true);
       const receipt = await factoryContract.methods.deploy(7).send({
         from: walletAddress,
         gas: 700000,
@@ -126,7 +125,7 @@ function Game7() {
   const PreviousPassword = async (num) => {
     try {
       const PreviousPass = await instanceContract.methods.PreviousPassword(num).call();
-      setPreviousPasswordValue(PreviousPass); // Set the state value here
+      setPreviousPasswordValue(PreviousPass); 
     } catch (err) {
       console.error(err);
       toast.error("Failed to get previous password."); // Error toast
@@ -158,10 +157,10 @@ function Game7() {
   return (
     <>
       <Container className="game-container container-padding-fix" >
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
 
           <CardBody>
-            <CardTitle className="game-title title-color" ><b>Change Password</b></CardTitle>
+            <CardTitle className="game-title title-color" ><b>Password Learning Lab</b></CardTitle>
             <div className="code-section">
               <CopyToClipboard text={code}>
                 <Button className="button-copy">
@@ -175,10 +174,10 @@ function Game7() {
           </CardBody>
         </Card>
 
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="card-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to unveil the hidden 'private' state variables within a contract.</b>
+            <p><b>Dive into Solidity's 'private' state variables. Discover and master state variable intricacies.</b>
               <br /><br />
               <b><strong> You need:</strong>  To complete this mission, you need to understand Solidity's state variable visibility, especially private variables, and how to potentially expose or access these 'hidden' variables. </b>
             </p>
@@ -192,7 +191,7 @@ function Game7() {
 
         {!isLoading && InstanceAddress !== "" && (
           <>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white', minHeight: '150px' }}>
               <CardBody>
               <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
                   <Input
@@ -222,7 +221,7 @@ function Game7() {
               </CardBody>
             </Card>
 
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                 <FormGroup>
@@ -251,7 +250,7 @@ function Game7() {
         )}
 
         {isHintVisible && (
-          <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
               <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
               <p>
@@ -264,12 +263,7 @@ function Game7() {
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -280,7 +274,7 @@ function Game7() {
           )}
         </p>
       </Container>
-      <AdminFooter />
+       
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </>
   );

@@ -6,21 +6,20 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/InterfaceId.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 function Game10() {
   const [id, setid] = useState("");
   const [InstanceAddress, setInstanceAddress] = useState("");
   const [TokenBalance, setTokenBalance] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // new loading state
+  const [isLoading, setIsLoading] = useState(false); 
   const codeRef = useRef(null);
   const { walletAddress, factoryContract, nftContract, web3 } = useContext(Web3Context);
   const [instanceContract, setInstanceContract] = useState(null);
   const [isHintVisible, setIsHintVisible] = useState(false);
   const hintLink = 'https://emn178.github.io/online-tools/keccak_256.html'
-  const [_answer, setAnswer] = useState(null); // added a new state variable to hold the answer
+  const [_answer, setAnswer] = useState(null); 
 
   const toggleHint = () => {
     setIsHintVisible(!isHintVisible);
@@ -45,7 +44,7 @@ function Game10() {
 
   const createGame = async () => {
     try {
-      setIsLoading(true); // set loading before starting the operation
+      setIsLoading(true); 
       const receipt = await factoryContract.methods.deploy(10).send({
         from: walletAddress,
         gas: 700000,
@@ -72,16 +71,14 @@ function Game10() {
 
 
   const CalcMe = async (id) => {
-    // Check if id is a valid integer or hexadecimal
     let inputid = id.startsWith('0x') ? id.slice(2) : id;
 
-    // Check if inputBytes2 is a valid hex string
     if (!web3.utils.isHex(id) && isNaN(id) || !/^([0-9A-Fa-f]{8})$/.test(inputid)) {
       alert('Invalid input! Please provide a valid integer or hexadecimal');
       return;
     }
 
-    // Convert to hex if the input is an integer
+
     let inputId = isNaN(id) ? id : web3.utils.toHex(id);
 
     if (instanceContract) {
@@ -132,7 +129,7 @@ function Game10() {
   const answer = async () => {
     const ans = await instanceContract.methods.answer().call()
     console.log(ans);
-    setAnswer(ans); // update the answer state
+    setAnswer(ans); 
   }
 
   const code = `// SPDX-License-Identifier: MIT
@@ -151,10 +148,10 @@ function Game10() {
   return (
     <>
       <Container className="game-container container-padding-fix">
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
 
           <CardBody>
-            <CardTitle className="game-title title-color" ><b>Interfaceid</b></CardTitle>
+            <CardTitle className="game-title title-color" ><b>Signature Learning Lab</b></CardTitle>
             <div className="code-section">
               <CopyToClipboard text={code}>
                 <Button className="button-copy">
@@ -168,10 +165,10 @@ function Game10() {
           </CardBody>
         </Card>
 
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="card-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to decipher what a function signature looks like and how to find it.</b>
+            <p><b>Decipher function signatures in Solidity. Compute and match using cryptographic functions.</b>
               <br /><br />
               <b><strong> You need:</strong> To solve this puzzle, you need to understand function signatures in Solidity, how to compute them using the keccak256 hash function, and how to convert them into the bytes4 type. </b>
             </p>
@@ -185,7 +182,7 @@ function Game10() {
 
         {!isLoading && InstanceAddress !== "" && (
           <>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white', minHeight: '150px' }}>
               <CardBody>
               <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
 
@@ -205,14 +202,14 @@ function Game10() {
               </CardBody>
             </Card>
 
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                 <FormGroup>
                   <Input
                     className="form-control-alternative"
                     id="input-city"
-                    placeholder="Enter ID"
+                    placeholder="ID"
                     type="text"
                     onChange={(e) => setid(e.target.value)}
                   />
@@ -225,7 +222,7 @@ function Game10() {
           </>
         )}
         {isHintVisible && (
-          <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
               <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
               <p>
@@ -241,12 +238,7 @@ function Game10() {
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -257,7 +249,7 @@ function Game10() {
           )}
         </p>
       </Container>
-      <AdminFooter />
+       
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </>
   );

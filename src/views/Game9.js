@@ -6,8 +6,7 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/BlockHash.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 
@@ -17,12 +16,13 @@ function Game9() {
   const [blockHash, setblockHash] = useState("");
   const [InstanceAddress, setInstanceAddress] = useState("");
   const [TokenBalance, setTokenBalance] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // new loading state
+  const [isLoading, setIsLoading] = useState(false); 
   const codeRef = useRef(null);
   const { walletAddress, factoryContract, nftContract, web3 } = useContext(Web3Context);
   const [instanceContract, setInstanceContract] = useState(null);
   const [isHintVisible, setIsHintVisible] = useState(false);
-  const [correctBlockHashValue, setCorrectBlockHashValue] = useState(null); // added a new state variable to hold the correctBlockHash value
+  const [correctBlockHashValue, setCorrectBlockHashValue] = useState(null); 
+  const [Hash, setHash] = useState("");
 
   const toggleHint = () => {
     setIsHintVisible(!isHintVisible);
@@ -48,7 +48,7 @@ function Game9() {
 
   const createGame = async () => {
     try {
-      setIsLoading(true); // set loading before starting the operation
+      setIsLoading(true); 
       const receipt = await factoryContract.methods.deploy(9).send({
         from: walletAddress,
         gas: 700000,
@@ -61,6 +61,7 @@ function Game9() {
         for (let index = 0; index < events.length; index++) {
           if (receipt.transactionHash === events[index].transactionHash) {
             setInstanceAddress(events[index].returnValues.Instance);
+            setHash(receipt.transactionHash)
           }
         }
       });
@@ -130,7 +131,7 @@ function Game9() {
   const correctBlockHash = async () => {
     const correctBlockHash = await instanceContract.methods.correctBlockHash().call()
     console.log(correctBlockHash);
-    setCorrectBlockHashValue(correctBlockHash); // update the correctBlockHashValue state
+    setCorrectBlockHashValue(correctBlockHash); 
   }  
 
   const code = `// SPDX-License-Identifier: MIT
@@ -151,10 +152,10 @@ function Game9() {
   return (
     <>
     <Container className="game-container container-padding-fix">
-      <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+      <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
 
         <CardBody>
-          <CardTitle className="game-title title-color" ><b>Blockhash</b></CardTitle>
+          <CardTitle className="game-title title-color" ><b>BlockHash Learning Lab</b></CardTitle>
           <div className="code-section">
             <CopyToClipboard text={code}>
               <Button className="button-copy">
@@ -168,10 +169,10 @@ function Game9() {
         </CardBody>
       </Card>
 
-      <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+      <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
       <CardBody>
           <CardTitle className="card-title title-color" ><b>Game Description</b></CardTitle>
-          <p><b>Your task is to find the hash of a specific block and match it with its corresponding block number.</b>
+          <p><b>Embark on a journey with Solidity's block properties. Match hashes and validate findings.</b>
             <br /><br />
             <b><strong> You need:</strong>  To complete this puzzle, you need to understand Ethereum's block properties. </b>
           </p>
@@ -185,7 +186,7 @@ function Game9() {
 
       {!isLoading && InstanceAddress !== "" && (
         <>
-          <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
+          <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white', minHeight: '150px' }}>
             <CardBody>
             <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
 
@@ -206,7 +207,7 @@ function Game9() {
             </CardBody>
           </Card>
 
-          <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
               <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
               <FormGroup>
@@ -234,12 +235,13 @@ function Game9() {
         </>
       )}
       {isHintVisible && (
-        <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
             <p>
               <strong>
-              You can find the answer in the block explorer of the network you play on.</strong>
+              <p style={{ wordBreak: "break-all" }}> You will find the block number in the block explorer by this hash: "{Hash}".</p>
+              </strong>
             </p>
           </CardBody>
         </Card>
@@ -247,12 +249,7 @@ function Game9() {
       <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -263,7 +260,7 @@ function Game9() {
           )}
             </p>  
     </Container>
-    <AdminFooter/>
+     
     <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </>
   );

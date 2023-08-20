@@ -1,5 +1,5 @@
 
-import Index from "views/Index.js";
+import App from "./App.js";
 import Game1 from "views/Game1.js";
 import Game2 from "views/Game2.js";
 import Game3 from "views/Game3.js";
@@ -20,6 +20,7 @@ import Game17 from "views/Game17.js";
 
 import About from "views/About";
 import Preparation from "views/Preparation";
+import Achievements from "views/Achievements";
 
 
 
@@ -28,7 +29,7 @@ var routes = [
     path: "/",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
-    component: <Index />,
+    component: <App />,
     layout: "/",
   },
   {
@@ -45,6 +46,14 @@ var routes = [
     name: "Preparation",
     icon: "ni ni-tv-2 text-primary",
     component: <Preparation />,
+    layout: "/",
+    showInSidebar: false,  
+
+  },{
+    path: "/achievements",
+    name: "Achievements",
+    icon: "ni ni-tv-2 text-primary",
+    component: <Achievements />,
     layout: "/",
     showInSidebar: false,  
 

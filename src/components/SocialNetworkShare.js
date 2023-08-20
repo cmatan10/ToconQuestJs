@@ -20,7 +20,7 @@ const SocialNetworkShare = ({description}) => {
             <div style={{ display: 'flex', justifyContent: 'center' }}>
 
                 <WhatsappShareButton
-                    title={`I Solved The ${description} Minigame In ToconQuest.`}
+                    title={`I Solved The ${description} Minigame In XRPL Learning Lab.`}
                     url={currentPageUrl}
                     separator={' '}
                     style={{ margin: '0 10px' }}
@@ -29,7 +29,7 @@ const SocialNetworkShare = ({description}) => {
                 </WhatsappShareButton>
 
                 <TwitterShareButton
-                    title={`I Solved The ${description} Minigame In ToconQuest.`}
+                    title={`I Solved The ${description} Minigame In XRPL Learning Lab.`}
                     url={currentPageUrl}
                     hashtags={["developer", "blockchain", "solidity", "web3", "education", "games"]}
                     style={{ margin: '0 10px' }}
@@ -38,17 +38,17 @@ const SocialNetworkShare = ({description}) => {
                 </TwitterShareButton>
 
                 <LinkedinShareButton
-                    title={`I Solved The ${description} Minigame In ToconQuest.`}
-                    summary={`I Solved The ${description} Minigame In ToconQuest.`}
+                    title={`I Solved The ${description} Minigame In XRPL Learning Lab.`}
+                    summary={`I Solved The ${description} Minigame In XRPL Learning Lab.`}
                     url={currentPageUrl}
-                    source={'Tocon Quest'}
+                    source={'XRPL Learning Lab'}
                     style={{ margin: '0 10px' }}
                 >
                     <LinkedinIcon size={40} round={true} />
                 </LinkedinShareButton>
 
                 <FacebookShareButton
-                    quote={`I Solved The ${description} Minigame In ToconQuest.`}
+                    quote={`I Solved The ${description} Minigame In XRPL Learning Lab.`}
                     url={currentPageUrl}
                     hashtag={'#blockchain'}
                     style={{ margin: '0 10px' }}

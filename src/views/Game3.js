@@ -6,8 +6,7 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/BalanceChecker.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import '../assets/css/game.css';
@@ -16,7 +15,7 @@ function Game3() {
   const [_amount, set_amount] = useState("");
   const [InstanceAddress, setInstanceAddress] = useState("");
   const [TokenBalance, setTokenBalance] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // new loading state
+  const [isLoading, setIsLoading] = useState(false); 
   const codeRef = useRef(null);
   const { walletAddress, factoryContract, nftContract, web3 } = useContext(Web3Context);
   const [instanceContract, setInstanceContract] = useState(null);
@@ -142,10 +141,10 @@ function Game3() {
   return (
     <>
       <Container className="game-container container-padding-fix">
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
 
           <CardBody>
-            <CardTitle className="game-title title-color" ><b>Balance Checker</b></CardTitle>
+            <CardTitle className="game-title title-color" ><b>Balance Learning Lab</b></CardTitle>
             <div className="code-section">
               <CopyToClipboard text={code}>
                 <Button className="button-copy">
@@ -158,10 +157,10 @@ function Game3() {
             </div>
           </CardBody>
         </Card>
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="game-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to master the skill of checking a digital wallet's balance and converting that balance from Ether to Wei.</b>
+            <p><b>Perfect the art of balance verification in Solidity. Convert and ensure digital wallet balances align.</b>
               <br /><br />
               <b><strong> You need:</strong> To solve this puzzle, you need to know how to check Ethereum account balances in Solidity and how to convert balances between Ether and Wei. </b></p>
             <div>
@@ -173,7 +172,7 @@ function Game3() {
         </Card>
         {!isLoading && InstanceAddress !== "" && (
           <>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white', minHeight: '150px' }}>
               <CardBody>
               <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -193,7 +192,7 @@ function Game3() {
               </CardBody>
             </Card>
 
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                 <FormGroup>
@@ -223,7 +222,7 @@ function Game3() {
         )}
 
         {isHintVisible && (
-          <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
               <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
               <p>
@@ -236,12 +235,7 @@ function Game3() {
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -252,7 +246,7 @@ function Game3() {
           )}
         </p>
       </Container>
-      <AdminFooter />
+       
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </>
   );

@@ -13,31 +13,39 @@ export const Web3Provider = ({ children }) => {
   const web3 = new Web3(window.ethereum);
 
   const contractAddresses = {
-    80001: { // Mumbai network
-      gameAddress: "0x1a67ebb9C9B793ebC5Da05a6F36F7395263F6c21",
-      nftAddress: "0xe4F1dAA63489114Ad240A3481232fB10740fD358"
-    },
-    11155111: { // Sepolia network
-      gameAddress: "0x92F9eB5824211aA291EadDb3755220AC68Ef2BF1",
-      nftAddress: "0x25aeF2397aCd724D0B448d9c87B7083b33282d59"
-    },
-    5: { // Goerli network
-      gameAddress: "0xa7169fDC282c990b510E2d6428bBC0ED1F7f1EfE",
-      nftAddress: "0x049a10aBa794e009D3F5F221150c33d21f345090"
-    },
-    97: { // BSC network
-      gameAddress: "0x110A5E7F651730Ca3631a0980cE57533d866a6ba",
-      nftAddress: "0x3150D2C079C49077942536C40fba8a378897aD07"
-    },
-    59140: { // Linea network
-      gameAddress: "0xeC7cF964fFFA203337Dd33Da532515fD9c8d6EF5",
-      nftAddress: "0x1D5885c87cf64cBcf99eDdb3A3A3Ef823C266aE0"
-    },
     1440002: { // Xrp network
-      gameAddress: "0xa837aa583B8c4Ad0396058F82984A13F98a22677",
-      nftAddress: "0x2a830154207486eBe93d62A096f2834e1d72Ddeb"
+      gameAddress: "0xdaC40F1bC566a9FcA030fB1f146678E271cAB7c4",
+      nftAddress: "0x7516f8Ab047aBAeA4a59C87f2F5af3B89e790df7"
     }
   };
+  const switchToXRPLChain = async () => {
+    try {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x' + (1440002).toString(16) }], 
+      });
+    } catch (switchError) {
+      if (switchError.code === 4902) {
+        console.log('This chain does not exist on the user wallet. You might want to add it manually or provide a way to let the user add it.');
+      } else {
+        console.error(switchError);
+      }
+    }
+  };
+  
+  useEffect(() => {
+    const init = async () => {
+      if (window.ethereum) {
+        const accounts = await window.ethereum.request({
+          method: "eth_accounts",
+        });
+        const chainId = parseInt(window.ethereum.chainId, 16);
+        setChain(chainId);
+        setWalletAddress(accounts[0] || "");
+      }
+    };
+    init();
+  }, []);
 
   useEffect(() => {
     if (Chain) {
@@ -104,26 +112,20 @@ export const Web3Provider = ({ children }) => {
   const requestAccount = async () => {
     console.log('Requesting account...');
     if (window.ethereum) {
+      const chainId = parseInt(window.ethereum.chainId, 16);
+      setChain(chainId);
+  
+      if (chainId !== 1440002) {
+        await switchToXRPLChain();
+      }
+  
       try {
         const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        const chainId = parseInt(window.ethereum.chainId, 16);
-        setChain(chainId);
         setWalletAddress(accounts[0]);
       } catch (error) {
         console.log(error);
-      }
-    } else {
-      // Check if the user is on a mobile device
-      if (/Mobi|Android/i.test(navigator.userAgent)) {
-        // Create a MetaMask deep link
-        const metaMaskDeepLink = 'https://metamask.app.link/dapp/quest.tocon.io/';
-  
-        // Open the MetaMask app in a new tab
-        window.open(metaMaskDeepLink, '_blank');
-      } else {
-        alert('MetaMask not detected');
       }
     }
   };

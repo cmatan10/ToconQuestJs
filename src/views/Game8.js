@@ -6,15 +6,14 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/Overflow.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 function Game8() {
   const [value, setvalue] = useState("");
   const [InstanceAddress, setInstanceAddress] = useState("");
   const [TokenBalance, setTokenBalance] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // new loading state
+  const [isLoading, setIsLoading] = useState(false); 
   const codeRef = useRef(null);
   const { walletAddress, factoryContract, nftContract, web3 } = useContext(Web3Context);
   const [instanceContract, setInstanceContract] = useState(null);
@@ -46,7 +45,7 @@ function Game8() {
 
   const createGame = async () => {
     try {
-      setIsLoading(true); // set loading before starting the operation
+      setIsLoading(true); 
       const receipt = await factoryContract.methods.deploy(8).send({
         from: walletAddress,
         gas: 800000,
@@ -90,6 +89,7 @@ function Game8() {
               position: toast.POSITION.TOP_CENTER,
               autoClose: 5000,
             });
+            console.log(TokenBalance);
             if (TokenBalance < 1) {
               try {
                 await nftContract.methods.mint(8, InstanceAddress).send({
@@ -154,10 +154,10 @@ function Game8() {
   return (
     <>
       <Container className="game-container container-padding-fix">
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
 
           <CardBody>
-            <CardTitle className="game-title title-color" ><b>Overflow</b></CardTitle>
+            <CardTitle className="game-title title-color" ><b>Overflow Learning Lab</b></CardTitle>
             <div className="code-section">
               <CopyToClipboard text={code}>
                 <Button className="button-copy">
@@ -171,10 +171,10 @@ function Game8() {
           </CardBody>
         </Card>
 
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="card-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to trigger an overflow, navigating your way through a whirlwind of numbers.</b>
+            <p><b>Take on the overflow challenge in Solidity. Navigate and master numeric manipulations.</b>
               <br /><br />
               <b><strong> You need:</strong> To solve this puzzle, you need to understand the concept of integer overflow and underflow, how the 'unchecked' keyword works in Solidity ^0.8.0, and how to induce an overflow situation. </b>
             </p>
@@ -188,7 +188,7 @@ function Game8() {
 
         {!isLoading && InstanceAddress !== "" && (
           <>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white', minHeight: '150px' }}>
               <CardBody>
               <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -216,14 +216,14 @@ function Game8() {
               </CardBody>
             </Card>
 
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                 <FormGroup>
                   <Input
                     className="form-control-alternative"
                     id="input-city"
-                    placeholder="Enter ID"
+                    placeholder="value"
                     type="text"
                     onChange={(e) => setvalue(e.target.value)}
                   />
@@ -236,7 +236,7 @@ function Game8() {
           </>
         )}
         {isHintVisible && (
-          <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
               <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
               <p>
@@ -249,12 +249,7 @@ function Game8() {
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -265,7 +260,7 @@ function Game8() {
           )}
         </p>
       </Container>
-      <AdminFooter />
+       
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </>
   );

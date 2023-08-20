@@ -6,8 +6,7 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/SupportInterface.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle, Collapse } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 
@@ -168,9 +167,9 @@ function Game15() {
   return (
     <>
       <Container className="game-container container-padding-fix" >
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
-            <CardTitle className="game-title title-color" ><b>SupportInterface</b></CardTitle>
+            <CardTitle className="game-title title-color" ><b>Interface Learning Lab</b></CardTitle>
             <div className="code-section">
               <CopyToClipboard text={code}>
                 <Button className="button-copy">
@@ -184,10 +183,10 @@ function Game15() {
           </CardBody>
         </Card>
 
-        <Card className="game-card card-color" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card card-color" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="game-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to uncover the correct signature that represents the interface of this smart contract. </b>
+            <p><b>Dive into Solidity's contract interfaces. Uncover signatures and master their mechanics </b>
               <br /><br />
               <b><strong> You need:</strong> Understand the keccak256 hash functions, Bytes4 data type, and XOR operations, which are used to calculate a function's signature.</b></p>
             <div>
@@ -200,7 +199,7 @@ function Game15() {
 
         {!isLoading && InstanceAddress !== "" && (
           <>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
               <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
 
@@ -238,14 +237,14 @@ function Game15() {
             </Card>
 
 
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                 <FormGroup>
                   <Input
                     className="form-control-alternative"
                     id="input-city"
-                    placeholder="calculateXOR"
+                    placeholder="ID"
                     type="text"
                     onChange={(e) => setId(e.target.value)}
                   />
@@ -259,7 +258,7 @@ function Game15() {
         )}
 
         {isHintVisible && (
-        <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
             <p>
@@ -280,12 +279,7 @@ function Game15() {
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -296,7 +290,7 @@ function Game15() {
           )}
         </p>
       </Container>
-      <AdminFooter />
+       
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
 
     </>

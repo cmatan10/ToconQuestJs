@@ -6,15 +6,14 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/HashCollision.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 function Game12() {
   const [guess, setguess] = useState("");
   const [InstanceAddress, setInstanceAddress] = useState("");
   const [TokenBalance, setTokenBalance] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // new loading state
+  const [isLoading, setIsLoading] = useState(false); 
   const codeRef = useRef(null);
   const { walletAddress, factoryContract, nftContract, web3 } = useContext(Web3Context);
   const [instanceContract, setInstanceContract] = useState(null);
@@ -44,7 +43,7 @@ function Game12() {
 
   const createGame = async () => {
     try {
-      setIsLoading(true); // set loading before starting the operation
+      setIsLoading(true); 
       const receipt = await factoryContract.methods.deploy(12).send({
         from: walletAddress,
         gas: 700000,
@@ -118,13 +117,13 @@ function Game12() {
   const secretHash = async () => {
     const secret = await instanceContract.methods.secretHash().call();
     console.log(secret);
-    setSecretHashState(secret); // update state variable
+    setSecretHashState(secret); 
   } 
 
   const collisionFound = async () => {
     const collision = await instanceContract.methods.collisionFound().call();
     console.log(collision);
-    setCollisionFoundState(collision); // update state variable
+    setCollisionFoundState(collision);
   }
 
   const code = `// SPDX-License-Identifier: MIT
@@ -145,10 +144,10 @@ function Game12() {
   return (
     <>
     <Container className="game-container container-padding-fix">
-      <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+      <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
 
         <CardBody>
-          <CardTitle className="game-title title-color" ><b>Hash Collision</b></CardTitle>
+          <CardTitle className="game-title title-color" ><b>Hash Learning Lab</b></CardTitle>
           <div className="code-section">
             <CopyToClipboard text={code}>
               <Button className="button-copy">
@@ -162,10 +161,10 @@ function Game12() {
         </CardBody>
       </Card>
 
-      <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+      <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
       <CardBody>
           <CardTitle className="card-title title-color" ><b>Game Description</b></CardTitle>
-          <p><b>Your task is to find a "collision" - a guess that results in the same hashed output as our secret phrase.</b>
+          <p><b>Challenge Solidity's hash functions. Find collisions and match outputs.</b>
             <br /><br />
             <b><strong> You need:</strong> To solve this puzzle, you need to understand hash functions in Solidity, specifically keccak256 and sha256, as well as how to use the abi.encodePacked function. You'll also need to understand the concept of hash collisions, where different inputs produce the same hashed output. </b>
           </p>
@@ -179,7 +178,7 @@ function Game12() {
 
       {!isLoading && InstanceAddress !== "" && (
         <>
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
             <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
 
@@ -207,14 +206,14 @@ function Game12() {
             </CardBody>
           </Card>
 
-          <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
               <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
               <FormGroup>
                 <Input
                   className="form-control-alternative"
                   id="input-city"
-                  placeholder="Enter ID"
+                  placeholder="guess"
                   type="text"
                   onChange={(e) => setguess(e.target.value)}
                 />
@@ -228,7 +227,7 @@ function Game12() {
         </>
       )}
       {isHintVisible && (
-                <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+                <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
                     <CardBody>
                         <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
                         <p>
@@ -240,12 +239,7 @@ function Game12() {
             <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -256,7 +250,7 @@ function Game12() {
           )}
             </p>  
     </Container>
-    <AdminFooter/>
+     
     <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </>
   );

@@ -199,6 +199,13 @@
 	},
 	{
 		"inputs": [],
+		"name": "finalMint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "initialize",
 		"outputs": [],
 		"stateMutability": "nonpayable",

@@ -6,8 +6,7 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/LevelFactory.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle, Collapse } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 
@@ -145,10 +144,8 @@ function Game14() {
         const _address = await instanceContract.methods.checkAddress(_addr, Number(_sal), _bytecode).call();
         console.log(_address);
         set_Address(_address)
-        toast.success("Transaction sent successfully!"); // Success toast
       } catch (err) {
         console.error(err.message);
-        toast.error("Transaction failed."); // Error toast
       }
     }
   };
@@ -226,9 +223,9 @@ function Game14() {
   return (
     <>
       <Container className="game-container container-padding-fix" >
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
-            <CardTitle className="game-title title-color" ><b>Factory</b></CardTitle>
+            <CardTitle className="game-title title-color" ><b>Contract Learning Lab</b></CardTitle>
             <div className="code-section">
               <CopyToClipboard text={code}>
                 <Button className="button-copy">
@@ -242,10 +239,10 @@ function Game14() {
           </CardBody>
         </Card>
 
-        <Card className="game-card card-color" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card card-color" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="game-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to find out the address of the contract that will be deployed by calling the deploy function. </b>
+            <p><b>Anticipate contract deployments in Solidity. Calculate and predict with accuracy. </b>
               <br /><br />
               <b><strong> You need:</strong>understand how a smart contract address is calculated and calculate the address where the SomeContract contract will be deployed.</b></p>
             <div>
@@ -258,7 +255,7 @@ function Game14() {
 
         {!isLoading && InstanceAddress !== "" && (
           <>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
               <CardTitle className="card-title title-color" ><b>State Variables & Call Functions</b></CardTitle>
 
@@ -326,7 +323,7 @@ function Game14() {
             </Card>
 
 
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                 <FormGroup>
@@ -347,7 +344,7 @@ function Game14() {
         )}
 
         <Collapse isOpen={isHintVisible}>
-          <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
               <CardTitle className="game-title title-color" >Hint</CardTitle>
               <p>
@@ -360,12 +357,7 @@ function Game14() {
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -376,7 +368,7 @@ function Game14() {
           )}
         </p>
       </Container>
-      <AdminFooter />
+       
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
 
     </>

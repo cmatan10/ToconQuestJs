@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState, useRef } from 'react';
-import { Card, CardBody, CardTitle, Container, Row, Col, Button } from "reactstrap";
+import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 import { Web3Context } from '../../Web3Context';
 import { TypeAnimation } from 'react-type-animation';
 import '../../assets/css/game.css'
 
-const Header = () => {
+const Header = ({ scrollToRef }) => {
   const web3Context = useContext(Web3Context);
   const [walletAddress, setWalletAddress] = useState(web3Context.walletAddress);
   const [Chain, setChain] = useState(web3Context.Chain);
@@ -12,20 +12,19 @@ const Header = () => {
   const [tokenIDs, setTokenIDs] = useState(JSON.parse(localStorage.getItem('achievements')) || []);
   const walletAddressRef = useRef(walletAddress);
   const chainRef = useRef(Chain);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    console.log('Chain:', Chain);
-    console.log('tokenIDs:', tokenIDs);
-    console.log('walletAddress:', walletAddress);
+  // useEffect(() => {
+  //   console.log('Chain:', Chain);
+  //   console.log('tokenIDs:', tokenIDs);
+  //   console.log('walletAddress:', walletAddress);
 
-    if (nftContract !== null) {
-      console.log('nftContract:', nftContract);
-      console.log('nftContract _address:', nftContract._address);
-    } else {
-      console.log("nftContract is null");
-    }
-  }, [tokenIDs, walletAddress, nftContract, Chain]);
+  //   if (nftContract !== null) {
+  //     console.log('nftContract:', nftContract);
+  //     console.log('nftContract _address:', nftContract._address);
+  //   } else {
+  //     console.log("nftContract is null");
+  //   }
+  // }, [tokenIDs, walletAddress, nftContract, Chain]);
   
   useEffect(() => {
     if (nftContract) {
@@ -63,7 +62,6 @@ const Header = () => {
   useEffect(() => {
     walletAddressRef.current = walletAddress;
     chainRef.current = Chain;
-    // Trigger the update of achievements when the wallet address changes
     updateAchievements(walletAddress);
   }, [walletAddress, Chain]);
 
@@ -77,7 +75,6 @@ const Header = () => {
         
       };
       const handleChainChanged = (chainId) => {
-        // this line will convert chainId to decimal from hexadecimal
         const decimalChainId = parseInt(chainId, 16);
         setChain(decimalChainId);
       };
@@ -118,75 +115,41 @@ useEffect(() => {
         fetchData();
 }, [nftContract]);
 
-  const ChainToNetwork = {
-    5: 'Goerli',
-    11155111: 'Sepolia',
-    80001: 'Mumbai',
-    97: 'Bsc Testnet'
-  };
-
-  const tokenIDtoGame = {
-    1: 'Bytes2',
-    2: 'Fallback',
-    3: 'BalanceChecker',
-    4: 'PayableContract',
-    5: 'Timestamp',
-    6: 'GasChecker',
-    7: 'ChangePassword',
-    8: 'Overflow',
-    9: 'BlockHash',
-    10: 'InterfaceId',
-    11: 'EncodeData',
-    12: 'HashCollision',
-    13: 'DecodeData',
-    14: 'Factory',
-    15: 'SupportInterface',
-    16: 'LimitedTickets',
-    17: 'EducatedGuess'
-  };
+const tokenIDtoGame = {
+  1: 'Byte2 Lab',
+  2: 'Fallback Lab',
+  3: 'Balance Lab',
+  4: 'Wei Lab',
+  5: 'Timestamp Lab',
+  6: 'Gas Lab',
+  7: 'Password Lab',
+  8: 'Overflow Lab',
+  9: 'BlockHash Lab',
+  10: 'Signature Lab',
+  11: 'EncodeData Lab',
+  12: 'Hash Lab',
+  13: 'DecodeData Lab',
+  14: 'Contract Lab',
+  15: 'Interface Lab',
+  16: 'Ticket Lab',
+  17: 'Random Number Lab'
+};
   return (
     <div className="header header-component mt--0  pt-md-9 header-background ">
-    
-      <Col className="text-center ">
-        <h1 className="page-title" style={{ fontFamily: 'Montserrat',color:'#a3a4af'}}>
-          Tocon Quest
-        </h1>
-
-        <div className='animation-media '>
-          <TypeAnimation
-            className='type-animation-container'
-            sequence={[
-              // Same substring at the start will only be typed once, initially
-              'With Intriguing Games, We convert Complex Solidity Coding Learnings into a Thrilling Quest.',
-              6000, 
-              'You Can Play In The Following Test networks: Mumbai, Goerli, Sepolia, Liena, Xrp And BSC Testnet.',
-              6000,
-              'Get ready to Learn, Play, and Thrive!',
-              6000,
-            ]}
-            speed={50}
-            repeat={Infinity}
-          />
-        </div>
-        
-      </Col>
-
       <br />
       <Container fluid>
-
         <div className="header-body">
-
           <Row>
             <Col xl="1" />
 
-            <Col lg="6" xl="10">
-              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#001636', color: 'white', position: 'relative', top: '120px' }}>
+            <Col lg="6" xl="8">
+              <Card className="card-stats mb-4 mb-xl-0 card-fixed card-frame" style={{ backgroundColor: '#000000', color: 'white', position: 'relative', top: '460px' }}>
                 <CardBody>
                   <Row>
                     <div className="col">
                       <CardTitle
                         tag="h5"
-                        className="text-uppercase mb--3 "
+                        className="text-uppercase mb--1 "
                         style={{ color: '#ffffff', fontFamily: 'Montserrat', fontSize: '18px' }}
                       >
                         Achievements
@@ -215,7 +178,19 @@ useEffect(() => {
                 </CardBody>
               </Card>
             </Col>
-            <Col xl="2" />
+            <Col xl="2">
+              <button 
+                className="btn btn-black button-custom" 
+                style={{position: 'relative', top: '510px', color:'#31EA8A'}}
+                onClick={() => {
+                  if (scrollToRef.current) {
+                    scrollToRef.current.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                GET STARTED
+              </button>
+            </Col>
           </Row>
         </div>
       </Container>

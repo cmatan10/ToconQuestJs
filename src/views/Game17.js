@@ -8,8 +8,7 @@ import InstanceABI_2 from '../interfaces/EducatedGuessHack.json'
 
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 
@@ -124,41 +123,41 @@ function Game17() {
       }
     }
   };
-  const checkEducatedGuess  = async () => {
+  const checkEducatedGuess = async () => {
     const correctGuess = await instanceContract.methods.correctGuess().call();
     console.log(correctGuess);
     set_correctGuess(correctGuess);
-    if(correctGuess == true){
-        console.log('The Mission Is Complete');
-        toast("Well done! You have solved this level!", {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 5000, 
-          }); 
-    if (TokenBalance < 1) {
+    if (correctGuess == true) {
+      console.log('The Mission Is Complete');
+      toast("Well done! You have solved this level!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 5000,
+      });
+      if (TokenBalance < 1) {
         try {
-            await nftContract.methods.mint(17, InstanceAddress).send({
-                from: walletAddress,
-                gas: 700000,
+          await nftContract.methods.mint(17, InstanceAddress).send({
+            from: walletAddress,
+            gas: 700000,
+          })
+            .once("error", (err) => {
+              console.log(err);
+              toast.error("Minting failed."); // Error toast
             })
-                .once("error", (err) => {
-                    console.log(err);
-                    toast.error("Minting failed."); // Error toast
-                })
-                .once("receipt", async () => {
-                    const balance = await nftContract.methods.balanceOf(walletAddress, 17).call();
-                    setTokenBalance(balance);
-                    console.log(balance);
-                    toast.success("Minting completed successfully!"); // Success toast
-                });
+            .once("receipt", async () => {
+              const balance = await nftContract.methods.balanceOf(walletAddress, 17).call();
+              setTokenBalance(balance);
+              console.log(balance);
+              toast.success("Minting completed successfully!"); // Success toast
+            });
         } catch (err) {
-            console.error(err.message);
-            toast.error("Minting failed."); // Error toast
+          console.error(err.message);
+          toast.error("Minting failed."); // Error toast
         }
-    }
-    }else{
+      }
+    } else {
       toast.error("You don't have enough tickets."); // Error toast
     }
-};
+  };
 
   const code = `
   // SPDX-License-Identifier: MIT
@@ -190,9 +189,9 @@ function Game17() {
   return (
     <>
       <Container className="game-container container-padding-fix" >
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
-            <CardTitle className="game-title title-color" ><b>EducatedGuess </b></CardTitle>
+            <CardTitle className="game-title title-color" ><b>Random Number Learning Lab </b></CardTitle>
             <div className="code-section">
               <CopyToClipboard text={code}>
                 <Button className="button-copy">
@@ -206,10 +205,10 @@ function Game17() {
           </CardBody>
         </Card>
 
-        <Card className="game-card card-color" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card card-color" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="game-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to correctly guess a random number between 0 and 1000, generated using the keccak256 function in Solidity. </b>
+            <p><b>Navigate Solidity's number generation. Track and master the art of randomness. </b>
               <br /><br />
               <b><strong> You need:</strong> In order to play, you need to find a way to track the process of generating a random number in Solidity.</b></p>
             <div>
@@ -222,20 +221,20 @@ function Game17() {
 
         {!isLoading && InstanceAddress !== "" && (
           <>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <h3 className="mt-1 title-color" >EducatedGuess  Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                 <h3 className="mt-1 title-color" >HackEducatedGuess  Address: <p className="Instance-color"> {InstanceAddress_2} </p></h3>
               </CardBody>
             </Card>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <CardTitle className="card-title title-color" ><b>EducatedGuess </b></CardTitle>
                 <div style={{ display: 'flex', alignItems: 'flex-start', minHeight: '50px' }}>
                   <Button className="mt-1" onClick={() => correctGuess()} style={{ backgroundColor: '#355f7d', color: 'white' }}>
-                  correctGuess
+                    correctGuess
                   </Button>
-                  {CorrectGuess !== null && 
+                  {CorrectGuess !== null &&
                     <p style={{ marginLeft: '10px', marginTop: '12px' }}>
                       {CorrectGuess.toString()}
                     </p>
@@ -252,26 +251,11 @@ function Game17() {
                   />
                 </FormGroup>
                 <Button style={{ backgroundColor: '#c97539', color: 'white' }} className="mt-1" onClick={() => random(Gusess)}>
-                random
+                  random
                 </Button>
-
               </CardBody>
             </Card>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <CardTitle className="card-title" style={{ color: 'red' }} ><b>HackEducatedGuess </b></CardTitle>
                 <FormGroup>
@@ -308,24 +292,22 @@ function Game17() {
                 </Button>
               </CardBody>
             </Card>
-
-
-            <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
-  <CardBody style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-    <Button style={{ backgroundColor: '#c97539', color: 'white' }} className="button" onClick={checkEducatedGuess }>
-      Submit
-    </Button>
-  </CardBody>
-</Card>
+            <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
+              <CardBody style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Button style={{ backgroundColor: '#c97539', color: 'white' }} className="button" onClick={checkEducatedGuess}>
+                  Submit
+                </Button>
+              </CardBody>
+            </Card>
           </>
         )}
 
         {isHintVisible && (
-          <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
               <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
               <p>
-              Consider how external factors, such as the block.timestamp, can influence the generation of a "random" number.
+                Consider how external factors, such as the block.timestamp, can influence the generation of a "random" number.
               </p>
             </CardBody>
           </Card>
@@ -334,11 +316,7 @@ function Game17() {
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
+ 
               <br />
               <strong>
                 Congratulations! You Got A Badge{" "}
@@ -350,7 +328,7 @@ function Game17() {
           )}
         </p>
       </Container>
-      <AdminFooter />
+
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
 
     </>

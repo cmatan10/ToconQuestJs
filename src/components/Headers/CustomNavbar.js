@@ -13,7 +13,6 @@ const CustomNavbar = () => {
   const toggle = () => setIsOpen(!isOpen);
   const closeNavbar = () => setIsOpen(false);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 620);
-  const [Chain, setChain] = useState(web3Context.Chain);
   const { requestAccount } = web3Context;
   
   const shortAddress = walletAddress
@@ -63,7 +62,6 @@ const CustomNavbar = () => {
       icon: "ni ni-tv-2 text-primary",
       layout: "/",
       showInSidebar: false,
-
     },
     {
       path: "/preparation",
@@ -71,114 +69,127 @@ const CustomNavbar = () => {
       icon: "ni ni-tv-2 text-primary",
       layout: "/",
       showInSidebar: false,
-
+    },  {
+      path: "/achievements",
+      name: "Achievements",
+      icon: "ni ni-tv-2 text-primary",
+      layout: "/",
+      showInSidebar: false,
     },
     {
       path: "/game1",
-      name: "Bytes2",
+      name: "Byte2 Lab",
       layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game2",
-      name: "Fallback",
+      name: "Fallback Lab",
       layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game3",
-      name: "Balance Checker", layout: "/",
+      name: "Balance Lab",
+      layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game4",
-      name: "Payable Contract", layout: "/",
+      name: "Wei Lab",
+      layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game5",
-      name: "Timestamp", layout: "/",
+      name: "Timestamp Lab",
+      layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game6",
-      name: "Gas Checker", layout: "/",
+      name: "Gas Lab",
+      layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game7",
-      name: "Change Password", layout: "/",
+      name: "Password Lab",
+      layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game8",
-      name: "Overflow", layout: "/",
+      name: "Overflow Lab",
+      layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game9",
-      name: "Blockhash", layout: "/",
+      name: "BlockHash Lab",
+      layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game10",
-      name: "Interfaceid",
+      name: "Signature Lab",
       layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game11",
-      name: "Encode Data",
+      name: "EncodeData Lab",
       layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game12",
-      name: "Hash Collision",
+      name: "Hash Lab",
       layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game13",
-      name: "Decode Data",
+      name: "DecodeData Lab",
       layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game14",
-      name: "Factory",
+      name: "Contract Lab",
       layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game15",
-      name: "SupportInterface",
+      name: "Interface Lab",
       layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game16",
-      name: "LimitedTickets",
+      name: "Ticket Lab",
       layout: "/",
       showInSidebar: false,
     },
     {
       path: "/game17",
-      name: "EducatedGuess",
+      name: "Random Number Lab",
       layout: "/",
       showInSidebar: false,
     }
-  ];
+];
+
 
   const gameRoutes = routes.filter(route => route.path.startsWith("/game"));
 
   return (
-    <Navbar dark expand="md" style={{ backgroundColor: '#001636', position: 'fixed', width: '100%', top: 0, zIndex: 1029 }}>
+    <Navbar dark expand="md" style={{ backgroundColor: '#000000', position: 'fixed', width: '100%', top: 0, zIndex: 1029 }}>
       <NavbarToggler onClick={toggle} className="mr-2" style={{ zIndex: 2, position: 'relative' }} />
       <NavLink tag={Link} to={'/'} className="custom-link" onClick={closeNavbar}>
         <img src="/favicon.ico" alt="Home" style={{ width: '30px' }} />
       </NavLink>
-      <Collapse isOpen={isOpen} navbar style={{ backgroundColor: '#001636', zIndex: 1, position: 'relative' }}>
+      <Collapse isOpen={isOpen} navbar style={{ backgroundColor: '#000000', zIndex: 1, position: 'relative' }}>
         <Nav className="navbar-nav" style={{ width: '100%' }} navbar>
           {routes.map((route, index) => {
             if ( route.name === "Home" || route.path.startsWith("/game")) {
@@ -196,9 +207,9 @@ const CustomNavbar = () => {
             <DropdownToggle nav caret>
               Games
             </DropdownToggle>
-            <DropdownMenu className="custom-dropdown-menu" style={{ color: 'white', backgroundColor: '#001636' }}>
+            <DropdownMenu className="custom-dropdown-menu" style={{ color: 'white', backgroundColor: '#000000' }}>
               {gameRoutes.map((gameRoute, index) => (
-                <DropdownItem key={index} tag={Link} to={gameRoute.path} className="custom-link" style={{ color: 'white', backgroundColor: '#001636' }} onClick={closeNavbar}>
+                <DropdownItem key={index} tag={Link} to={gameRoute.path} className="custom-link" style={{ color: 'white', backgroundColor: '#000000' }} onClick={closeNavbar}>
                   {gameRoute.name}
                 </DropdownItem>
               ))}

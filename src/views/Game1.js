@@ -6,7 +6,6 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/Bytes2.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle, Collapse } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
@@ -62,7 +61,9 @@ function Game1() {
     } catch (err) {
       setIsLoading(false);
       console.log(err);
-      toast.error("Game creation failed. Please make sure your Metamask wallet is properly connected."); // Error toast
+      toast.error(`Game creation failed. 
+      Please make sure:
+-That your Metamask wallet is properly connected.`); // Error toast
     }
   };
 
@@ -140,10 +141,10 @@ function Game1() {
   return (
     <>
       <Container className="game-container container-padding-fix" >
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
 
           <CardBody>
-            <CardTitle className="game-title title-color" ><b>Bytes2</b></CardTitle>
+            <CardTitle className="game-title title-color" ><b>Byte2 Learning Lab</b></CardTitle>
             <div className="code-section">
               <CopyToClipboard text={code}>
                 <Button className="button-copy">
@@ -156,10 +157,10 @@ function Game1() {
             </div>
           </CardBody>
         </Card>
-        <Card className="game-card card-color" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card card-color" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="game-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to explore and manipulate the bytes2 data type in Solidity effectively. Don't let the bytes intimidate you! </b>
+            <p><b>Traverse the bytes2 data type in Solidity. Share insights and master byte manipulation. </b>
               <br /><br />
               <b><strong> You need:</strong>   To play this game, you need to understand Solidity's bytes data type, specifically bytes2, and how to use it in a contract function.</b></p>
             <div>
@@ -172,7 +173,7 @@ function Game1() {
 
         {!isLoading && InstanceAddress !== "" && (
           <>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
               <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
                 <div style={{ display: 'flex', alignItems: 'flex-start', minHeight: '50px' }}>
@@ -189,7 +190,7 @@ function Game1() {
             </Card>
 
 
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                 <FormGroup>
@@ -210,7 +211,7 @@ function Game1() {
         )}
 
         <Collapse isOpen={isHintVisible}>
-          <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
               <CardTitle className="game-title title-color" >Hint</CardTitle>
               <p>
@@ -226,12 +227,7 @@ function Game1() {
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -242,7 +238,7 @@ function Game1() {
           )}
         </p>
       </Container>
-      <AdminFooter />
+       
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
 
     </>

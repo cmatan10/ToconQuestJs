@@ -5,10 +5,8 @@ import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/LimitedTickets.json'
 import InstanceABI_2 from '../interfaces/LimitedTicketsHack.json'
-
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
@@ -143,37 +141,37 @@ function Game16() {
     const count = await instanceContract.methods.Count(walletAddress).call();
     console.log(count);
     setUserTicketsCount(count);
-    if(UserTicketsCount > 3){
-        console.log('The Mission Is Complete');
-        toast("Well done! You have solved this level!", {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 5000, 
-          }); 
-    if (TokenBalance < 1) {
+    if (UserTicketsCount > 3) {
+      console.log('The Mission Is Complete');
+      toast("Well done! You have solved this level!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 5000,
+      });
+      if (TokenBalance < 1) {
         try {
-            await nftContract.methods.mint(16, InstanceAddress).send({
-                from: walletAddress,
-                gas: 700000,
+          await nftContract.methods.mint(16, InstanceAddress).send({
+            from: walletAddress,
+            gas: 700000,
+          })
+            .once("error", (err) => {
+              console.log(err);
+              toast.error("Minting failed."); // Error toast
             })
-                .once("error", (err) => {
-                    console.log(err);
-                    toast.error("Minting failed."); // Error toast
-                })
-                .once("receipt", async () => {
-                    const balance = await nftContract.methods.balanceOf(walletAddress, 16).call();
-                    setTokenBalance(balance);
-                    console.log(balance);
-                    toast.success("Minting completed successfully!"); // Success toast
-                });
+            .once("receipt", async () => {
+              const balance = await nftContract.methods.balanceOf(walletAddress, 16).call();
+              setTokenBalance(balance);
+              console.log(balance);
+              toast.success("Minting completed successfully!"); // Success toast
+            });
         } catch (err) {
-            console.error(err.message);
-            toast.error("Minting failed."); // Error toast
+          console.error(err.message);
+          toast.error("Minting failed."); // Error toast
         }
-    }
-    }else{
+      }
+    } else {
       toast.error("You don't have enough tickets."); // Error toast
     }
-};
+  };
 
   const code = `
   // SPDX-License-Identifier: MIT
@@ -209,9 +207,9 @@ function Game16() {
   return (
     <>
       <Container className="game-container container-padding-fix" >
-        <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
-            <CardTitle className="game-title title-color" ><b>LimitedTickets</b></CardTitle>
+            <CardTitle className="game-title title-color" ><b>Ticket Learning Lab</b></CardTitle>
             <div className="code-section">
               <CopyToClipboard text={code}>
                 <Button className="button-copy">
@@ -225,10 +223,10 @@ function Game16() {
           </CardBody>
         </Card>
 
-        <Card className="game-card card-color" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="game-card card-color" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="game-title title-color" ><b>Game Description</b></CardTitle>
-            <p><b>Your task is to find a way to bypass the ticket claim limitation in the contract, which restricts users to 3 tickets. To beat the game, you need to gain at least four tickets. </b>
+            <p><b>Strategize and bypass ticket limitations in Solidity. Challenge the system and claim rewards. </b>
               <br /><br />
               <b><strong> You need:</strong> To play this game, you must creatively explore communication with the ticketing contract, understanding how to potentially bypass a limitation that restricts users to three tickets. Familiarity with intermediate contracts could prove valuable.</b></p>
             <div>
@@ -241,13 +239,13 @@ function Game16() {
 
         {!isLoading && InstanceAddress !== "" && (
           <>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <h3 className="mt-1 title-color" >LimitedTickets Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                 <h3 className="mt-1 title-color" >HacklimitedTickets Address: <p className="Instance-color"> {InstanceAddress_2} </p></h3>
               </CardBody>
             </Card>
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <CardTitle className="card-title title-color" ><b>LimitedTickets</b></CardTitle>
 
@@ -299,24 +297,9 @@ function Game16() {
                 <Button style={{ backgroundColor: '#c97539', color: 'white' }} className="mt-1" onClick={() => claimTickets(Receiver, TicketAmount)}>
                   claimTickets
                 </Button>
-
               </CardBody>
             </Card>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <CardTitle className="card-title" style={{ color: 'red' }} ><b>HacklimitedTickets</b></CardTitle>
                 <FormGroup>
@@ -355,22 +338,22 @@ function Game16() {
             </Card>
 
 
-            <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
-  <CardBody style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-    <Button style={{ backgroundColor: '#c97539', color: 'white' }} className="button" onClick={checkLimitedTickets}>
-      Submit
-    </Button>
-  </CardBody>
-</Card>
+            <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
+              <CardBody style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Button style={{ backgroundColor: '#c97539', color: 'white' }} className="button" onClick={checkLimitedTickets}>
+                  Submit
+                </Button>
+              </CardBody>
+            </Card>
           </>
         )}
 
         {isHintVisible && (
-          <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+          <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
             <CardBody>
               <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
               <p>
-              Consider how the 'claimTickets' function tracks ticket count. When the attacker contract calls this function, it's defined as the msg.sender. Even though the tickets are transferred to your address through the attacker contract, the balance of the attacker contract will always remain at zero tickets.
+                Consider how the 'claimTickets' function tracks ticket count. When the attacker contract calls this function, it's defined as the msg.sender. Even though the tickets are transferred to your address through the attacker contract, the balance of the attacker contract will always remain at zero tickets.
               </p>
             </CardBody>
           </Card>
@@ -379,11 +362,7 @@ function Game16() {
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
+
               <br />
               <strong>
                 Congratulations! You Got A Badge{" "}
@@ -395,7 +374,7 @@ function Game16() {
           )}
         </p>
       </Container>
-      <AdminFooter />
+
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
 
     </>

@@ -6,8 +6,7 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/DecodeData.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 function Game13() {
@@ -15,14 +14,14 @@ function Game13() {
   const [_num, set_num] = useState("");
   const [InstanceAddress, setInstanceAddress] = useState("");
   const [TokenBalance, setTokenBalance] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // new loading state
+  const [isLoading, setIsLoading] = useState(false); 
   const codeRef = useRef(null);
   const { walletAddress, factoryContract, nftContract, web3 } = useContext(Web3Context);
   const [instanceContract, setInstanceContract] = useState(null);
   const [isHintVisible, setIsHintVisible] = useState(false);
   const hintLink = 'https://web3js.readthedocs.io/en/v1.7.1/web3-eth-abi.html#decodeparameters'
-  const [_encodeStringAndUint, setEncodeStringAndUint] = useState(null); // Added status variable for encodeStringAndUint
-  const [playerState, setPlayerState] = useState(null); // Added status variable for player
+  const [_encodeStringAndUint, setEncodeStringAndUint] = useState(null); 
+  const [playerState, setPlayerState] = useState(null); 
   const toggleHint = () => {
     setIsHintVisible(!isHintVisible);
   };
@@ -47,7 +46,7 @@ function Game13() {
 
   const createGame = async () => {
     try {
-      setIsLoading(true); // set loading before starting the operation
+      setIsLoading(true); 
       const receipt = await factoryContract.methods.deploy(13).send({
         from: walletAddress,
         gas: 800000,
@@ -122,13 +121,13 @@ function Game13() {
   const encodeStringAndUint = async () => {
     const encode = await instanceContract.methods.encodeStringAndUint().call()
     console.log(encode);
-    setEncodeStringAndUint(encode); // Update status variable after call
+    setEncodeStringAndUint(encode); 
   }
   
   const player = async () => {
     const play = await instanceContract.methods.player().call()
     console.log(play);
-    setPlayerState(play); // Update status variable after call
+    setPlayerState(play); 
   }
   const code = `// SPDX-License-Identifier: MIT
   pragma solidity ^0.8.10;
@@ -153,9 +152,9 @@ function Game13() {
   return (
     <>
     <Container className="game-container container-padding-fix">
-      <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+      <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
         <CardBody>
-          <CardTitle className="game-title title-color" ><b>Decode Data</b></CardTitle>
+          <CardTitle className="game-title title-color" ><b>Decode Data Learning Lab</b></CardTitle>
           <div className="code-section">
             <CopyToClipboard text={code}>
               <Button className="button-copy">
@@ -169,10 +168,10 @@ function Game13() {
         </CardBody>
       </Card>
 
-      <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+      <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
         <CardBody>
           <CardTitle className="card-title title-color" ><b>Game Description</b></CardTitle>
-          <p><b>Your task is to decode an encoded string and a number. You'll need to correctly pass the decoded data to the encode function, which will verify if the transferred data is correct.</b>
+          <p><b>Master data decryption in Solidity. Decode and pass data with precision.</b>
             <br /><br />
             <b><strong> You need:</strong> To complete this mission, you need to be familiar with the abi.encode function for encoding data in Solidity, understand how the keccak256 hash function works, and use these tools to decode data. </b>
           </p>
@@ -186,7 +185,7 @@ function Game13() {
 
       {!isLoading && InstanceAddress !== "" && (
   <>
-    <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+    <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
       <CardBody>
       <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
 
@@ -211,7 +210,7 @@ function Game13() {
       </CardBody>
     </Card>
 
-    <Card className="game-card" style={{ backgroundColor: '#001636', color: 'white' }}>
+    <Card className="game-card" style={{ backgroundColor: '#000000', color: 'white' }}>
       <CardBody>
         <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
         <FormGroup>
@@ -240,7 +239,7 @@ function Game13() {
 )}
 
       {isHintVisible && (
-        <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
             <p>
@@ -256,12 +255,7 @@ function Game13() {
       <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -272,7 +266,7 @@ function Game13() {
           )}
             </p>
     </Container>
-    <AdminFooter/>
+     
     <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </>
   );

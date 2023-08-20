@@ -6,25 +6,21 @@ import { Web3Context } from '../Web3Context';
 import InstanceABI from '../interfaces/Timestamp.json'
 import { FormGroup, Button, Input, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 function Game5() {
   const [Timestamp, setTimestamp] = useState("");
   const [InstanceAddress, setInstanceAddress] = useState("");
   const [TokenBalance, setTokenBalance] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // new loading state
+  const [isLoading, setIsLoading] = useState(false); 
   const codeRef = useRef(null);
   const { walletAddress, factoryContract, nftContract, web3 } = useContext(Web3Context);
   const [instanceContract, setInstanceContract] = useState(null);
   const [isHintVisible, setIsHintVisible] = useState(false);
   const [successState, setSuccessState] = useState(null);
-  const hintLink = 'https://web3js.readthedocs.io/en/v1.2.11/web3-eth.html?highlight=getTransaction#gettransaction'
+  const [Hash, setHash] = useState("");
   const hintLink2 = 'https://web3js.readthedocs.io/en/v1.2.11/web3-eth.html?highlight=getBlock#getblock'
-  const hintLink3 = 'https://web3js.readthedocs.io/en/v1.2.11/web3-eth.html?highlight=getStorageAt#getstorageat'
-  const hintLink4 = 'https://web3js.readthedocs.io/en/v1.2.11/web3-utils.html?highlight=todecimal#hextonumber'
-
 
   const toggleHint = () => {
     setIsHintVisible(!isHintVisible);
@@ -48,7 +44,7 @@ function Game5() {
 
   const createGame = async () => {
     try {
-      setIsLoading(true); // set loading before starting the operation
+      setIsLoading(true); 
       const receipt = await factoryContract.methods.deploy(5).send({
         from: walletAddress,
         gas: 700000,
@@ -61,6 +57,7 @@ function Game5() {
         for (let index = 0; index < events.length; index++) {
           if (receipt.transactionHash === events[index].transactionHash) {
             setInstanceAddress(events[index].returnValues.Instance);
+            setHash(receipt.transactionHash)
           }
         }
       });
@@ -121,7 +118,7 @@ function Game5() {
   const success = async () => {
     const success = await instanceContract.methods.success().call();
     console.log(success);
-    setSuccessState(success); // set state here
+    setSuccessState(success);
   }
   const code = `// SPDX-License-Identifier: MIT
   pragma solidity 0.8.10;
@@ -143,10 +140,10 @@ function Game5() {
   return (
     <>
     <Container className="game-container container-padding-fix">
-      <Card className="game-card"  style={{ backgroundColor: '#001636', color: 'white' }}>
+      <Card className="game-card"  style={{ backgroundColor: '#000000', color: 'white' }}>
 
         <CardBody>
-          <CardTitle className="game-title title-color" ><b>Timestamp</b></CardTitle>
+          <CardTitle className="game-title title-color" ><b>Timestamp Learning Lab</b></CardTitle>
           <div className="code-section">
             <CopyToClipboard text={code}>
               <Button className="button-copy">
@@ -160,10 +157,10 @@ function Game5() {
         </CardBody>
       </Card>
 
-      <Card className="game-card"  style={{ backgroundColor: '#001636', color: 'white' }}>
+      <Card className="game-card"  style={{ backgroundColor: '#000000', color: 'white' }}>
         <CardBody>
           <CardTitle className="card-title  title-color" ><b>Game Description</b></CardTitle>
-          <p><b>Your task is to understand and interact with the block.timestamp in Solidity, which provides the timestamp of the current block.</b>
+          <p><b>Engage with Solidity's block.timestamp. Understand and ensure perfect synchronization.</b>
             <br /><br />
             <b><strong> You need:</strong>  To complete this puzzle, you need to understand how block.timestamp works in Solidity and how to access it. </b></p>
           <div>
@@ -175,7 +172,7 @@ function Game5() {
       </Card>
       {!isLoading && InstanceAddress !== "" && (
           <>
-            <Card className="game-card"  style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
+            <Card className="game-card"  style={{ backgroundColor: '#000000', color: 'white', minHeight: '150px' }}>
               <CardBody>
               <CardTitle className="card-title title-color" ><b>State Variables</b></CardTitle>
 
@@ -196,7 +193,7 @@ function Game5() {
               </CardBody>
             </Card>
             
-            <Card className="game-card"  style={{ backgroundColor: '#001636', color: 'white' }}>
+            <Card className="game-card"  style={{ backgroundColor: '#000000', color: 'white' }}>
               <CardBody>
                 <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                 <FormGroup>
@@ -217,12 +214,12 @@ function Game5() {
         )}
      
       {isHintVisible && (
-        <Card className="card"  style={{ backgroundColor: '#001636', color: 'white' }}>
+        <Card className="card"  style={{ backgroundColor: '#000000', color: 'white' }}>
           <CardBody>
             <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
             <p>
               <strong>
-                <p style={{ wordBreak: "break-all" }}> You will find the block number in the block explorer by the contract address created for you.</p>
+                <p style={{ wordBreak: "break-all" }}> You will find the block number in the block explorer by this hash: "{Hash}".</p>
                 <br />
                 <p style={{ wordBreak: "break-all" }}>Then use this function:</p>
                 <a style={{ textDecoration: "underline" }} href={hintLink2} target="_blank" rel="noopener noreferrer"> https://web3js.readthedocs.io/en/v1.2.11/web3-eth.html?highlight=getBlock#getblock</a>
@@ -234,12 +231,7 @@ function Game5() {
       <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -250,7 +242,7 @@ function Game5() {
           )}
             </p>
     </Container>
-    <AdminFooter/>
+     
     <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </>
   );

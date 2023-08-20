@@ -25,9 +25,6 @@ const Admin = (props) => {
       }
     });
   };
-
-
-
   return (
     <>
       <div className="main-content container-color " ref={mainContent}>

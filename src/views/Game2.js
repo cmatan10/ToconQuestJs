@@ -6,15 +6,14 @@ import { Web3Context } from '../Web3Context';
 import { Button, Container, Card, CardBody, CardTitle } from "reactstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import InstanceABI from '../interfaces/Fallback.json'
-import AdminFooter from '../components/Footers/AdminFooter.js'
-import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/css/game.css';
 
 function Game2() {
     const [InstanceAddress, setInstanceAddress] = useState("");
     const [TokenBalance, setTokenBalance] = useState("");
-    const [isLoading, setIsLoading] = useState(false); // new loading state
+    const [isLoading, setIsLoading] = useState(false); 
     const codeRef = useRef(null);
     const { walletAddress, factoryContract, nftContract, web3 } = useContext(Web3Context);
     const [isHintVisible, setIsHintVisible] = useState(false);
@@ -47,7 +46,7 @@ function Game2() {
 
     const createGame = async () => {
         try {
-            setIsLoading(true); // set loading before starting the operation
+            setIsLoading(true); 
             const receipt = await factoryContract.methods.deploy(2).send({
                 from: walletAddress,
                 gas: 700000,
@@ -106,7 +105,7 @@ function Game2() {
         }
     };
     const fixMe = async () => {
-        setIsButtonClicked(true); // Set the button clicked state to true
+        setIsButtonClicked(true); 
         const fixMeValue = await instanceContract.methods.fixMe().call();
         console.log(fixMeValue);
         setFixMeState(fixMeValue);
@@ -131,10 +130,10 @@ function Game2() {
     return (
         <>
             <Container className="game-container container-padding-fix">
-                <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+                <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
 
                     <CardBody>
-                        <CardTitle className="card-title title-color" ><b>Fallback</b></CardTitle>
+                        <CardTitle className="card-title title-color" ><b>Fallback Learning Lab</b></CardTitle>
                         <div style={{ position: 'relative' }}>
                             <CopyToClipboard text={code}>
                                 <Button className="button-copy">
@@ -148,10 +147,10 @@ function Game2() {
                     </CardBody>
                 </Card>
 
-                <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+                <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
                     <CardBody>
                         <CardTitle className="card-title title-color" ><b>Game Description</b></CardTitle>
-                        <p><b>Your task is to unravel the logic behind the fallback function in a Solidity contract.</b>
+                        <p><b>Delve into Solidity's fallback intricacies. Discover its mechanics and maximize its potential. </b>
                             <br /><br />
                             <b><strong> You need:</strong>  To complete this mission, you need to understand how Solidity's fallback function works, when it's triggered, and how to activate it. </b></p>
                         <div>
@@ -165,7 +164,7 @@ function Game2() {
 
                 {!isLoading && InstanceAddress !== "" && (
                     <>
-                        <Card className="card" style={{ backgroundColor: '#001636', color: 'white', minHeight: '150px' }}>
+                        <Card className="card" style={{ backgroundColor: '#000000', color: 'white', minHeight: '150px' }}>
                             <CardBody>
                             <CardTitle className="card-title title-color" ><b>State Variables & Call Functions</b></CardTitle>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -182,7 +181,7 @@ function Game2() {
                         </Card>
 
 
-                        <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+                        <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
                             <CardBody>
                                 <h3 className="mt-1 title-color" >Your Test Address: <p className="Instance-color"> {InstanceAddress} </p></h3>
                                 <Button style={{backgroundColor: '#c97539' , color: 'white'}} className="button" onClick={checkFallbackGame}>
@@ -194,7 +193,7 @@ function Game2() {
                 )}
 
                 {isHintVisible && (
-                    <Card className="card" style={{ backgroundColor: '#001636', color: 'white' }}>
+                    <Card className="card" style={{ backgroundColor: '#000000', color: 'white' }}>
                         <CardBody>
                             <CardTitle className="card-title title-color" ><b>Hint</b></CardTitle>
                             <p>
@@ -208,12 +207,7 @@ function Game2() {
                 <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 {TokenBalance < 1 ? null : (
             <div>
-              <img
-                src={process.env.PUBLIC_URL + "/gotBadge.png"}
-                alt="got badge"
-                style={{ width: "260px", height: "180px" }}
-              />
-              <br/>
+ 
               <strong>
                 Congratulations! You Got A Badge{" "}
                 <i className="fas fa-medal" style={{ color: "gold", fontSize: "20px", position: 'relative', top: '3px' }}></i>
@@ -224,7 +218,7 @@ function Game2() {
           )}
                 </p>
             </Container>
-            <AdminFooter />
+             
             <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
 
         </>
